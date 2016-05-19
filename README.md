@@ -37,8 +37,7 @@ Don’t forget to launch your Apache server.
     "enableBrowserSync": true
 }
 ```
-
-5. When you're done you can compile the assets with the `gulp` command.
+When you're done you can compile the assets with the `gulp` command.
 
 ### Some pieces of advice
   1. Take the habit of writing your css methodically as proposed by the SMACSS methodology:

@@ -31,7 +31,6 @@ Don’t forget to launch your Apache server.
 2. Clone this repo in your dev directory via your git interface or via your CLI (Command Line Interface). I personally use [iTerm](https://iterm2.com/).
 
 3. Once you are in the repo directory download node packages : `(sudo) npm install`. It will download all the packages listed in the `package.json` situated at the root of the project.
-
 4. Since we use [BrowserSync](http://www.browsersync.io/) in our Gulp build process you have to set your own 'proxy’.  Modify at the root of the project the localconfig.json file so it suits your own configuration : 
 ```json
 {

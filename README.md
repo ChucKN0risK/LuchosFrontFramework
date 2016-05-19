@@ -14,7 +14,7 @@ You can drop me a line on [@chuckn0risK](www.twitter.com/chuckn0risk)
 
 ### Features
 
-- Sanitize.css [https://github.com/jonathantneal/sanitize.css/blob/master/sanitize.scss](https://github.com/jonathantneal/sanitize.css/blob/master/sanitize.scss)  
+- [Sanitize.css](https://github.com/jonathantneal/sanitize.css/blob/master/sanitize.scss)  
 - Responsive Typography with : [Modular Scale](https://github.com/modularscale/modularscale-sass) + [Responsive Modular Scale](https://github.com/gakimball/responsive-modular-scale)  
 For further informations about Responsive Web Typography: [Pro Web Type](https://prowebtype.com)
 - [SMACSS Architecture](https://smacss.com/)
@@ -128,3 +128,4 @@ Don’t forget to launch your Apache server.
   - [@davidwalshblog](https://twitter.com/davidwalshblog)  
   - [@paul_irish](https://twitter.com/paul_irish)  
   - [@lukew](https://twitter.com/lukew)
+

@@ -1,0 +1,98 @@
+// =======================
+// Tools/Functions
+// Thanks to @sutterlity
+// https://github.com/sutter/POPY-Starter-integration-web/blob/master/scss/tools/_fonctions.scss
+// =======================
+
+// Convert px to em
+@function pxtoem($target, $context){
+    @return ($target/$context)+0em;
+}
+
+// Convert em to px
+@function emtopx($target, $context){
+    @return ($target*$context)+0px;
+}
+
+//Calc Percentage
+@function calc-percent($target, $container) {
+  @return ($target / $container) * 100%;
+}
+
+/// Set color based on background color so that we have the most contrast possible. We can use this to set text color or border-color for example.
+/// 
+/// @param {Color} $color - Background color of the element
+/// @example scss 
+///  .myElement {
+///    // Let's consider our background color is $blue
+///    color: set-color($blue);
+///  }
+///
+/// @returns {String}
+/// @link http://thesassway.com/intermediate/dynamically-change-text-color-based-on-its-background-with-sass Full example
+@function set-color($color) {
+  @if (lightness($color) > 50) {
+    @return #404040; // Lighter background, return dark color
+  } @else {
+    @return #fff; // Darker background, return light color
+  }
+}
+
+/// Slightly lighten a color
+/// @access public
+/// @param {Color} $color - color to tint
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
+/// Slightly darken a color
+/// @access public
+/// @param {Color} $color - color to shade
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
+
+/// Generates the color black, with, optionally, a set opacity.
+/// @access public
+/// @param {Float} $opacity - Opacity
+/// @example scss - Usage
+///   .foo {
+///     border-color: black(0.1);
+///   }
+/// @example css - Result
+///   .foo {
+///     border-color: rgba(0, 0, 0, 0.1);
+///   }
+@function black($opacity) {
+    @return rgba(0, 0, 0, $opacity);
+}
+
+
+/// Generates the color white, with, optionally, a set opacity.
+/// @access public
+/// @param {Float} $opacity - Opacity
+/// @example scss - Usage
+///   .foo {
+///     border-color: white(0.1);
+///   }
+/// @example css - Result
+///   .foo {
+///     border-color: rgba(255, 255, 255, 0.1);
+///   }
+@function white($opacity) {
+    @return rgba(255, 255, 255, $opacity);
+}
+
+
+
+
+
+
+
+
+
+

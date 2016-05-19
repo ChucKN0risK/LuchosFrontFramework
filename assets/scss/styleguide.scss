@@ -1,0 +1,224 @@
+/// -------------------------
+/// STYLEGUIDE SPECIFIC STYLE
+/// -------------------------
+
+@import "tools/variables";
+@import "tools/functions";
+@import "tools/mixins";
+@import "tools/site-settings";
+@import "tools/media-queries";
+@import "base/sanitize";
+@import "base/typography/modular-scale";
+@import "base/typography/responsive-modular-scale";
+@import "base/base";
+@import "fonts/fonts";
+
+/// ----------------------
+/// GENERAL STYLE
+/// ----------------------
+.styleguide {
+    &__title {
+        text-align: center;
+        margin: 3rem 0;
+    }
+}
+
+.styleguide__section {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0;
+    overflow: hidden;
+    
+    &:last-child {
+        padding-bottom: 0;
+    }
+}
+
+.styleguide__section__title {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: $blue;
+    a {
+        text-align: center;
+    }
+}
+
+.styleguide__section__item {
+    display: flex;
+    flex-flow: column wrap;
+    &--spaced {
+        flex-flow: row wrap;
+        align-items: center;
+        justify-content: space-around;
+    }
+    &--cards {
+        flex-flow: row wrap;
+        align-items: center;
+        justify-content: space-around;
+        padding: 0 5rem;
+    }
+    &--typography,
+    &--buttons {
+        @include flex-vertical-center();
+        .btn--primary,
+        .btn--secondary {
+            margin-bottom: 1rem;
+        }
+    }
+}
+
+/// ----------------------
+/// TYPOGRAPHY STYLE
+/// ----------------------
+.styleguide__section__item--typography {
+    margin: 0 auto;
+    @include mq($from: mobile, $until: tablet) {
+        padding: 0 1rem;
+    }
+    @include mq($from: tablet, $until: desktop) {
+        padding: 0 2rem;
+        width: 35rem;
+    }
+    @include mq($from: desktop) {
+        padding: 0 2rem;
+        width: 45rem;
+    }
+}
+
+.headings,
+.text-wrapper,
+.lists {
+    margin-bottom: 2rem;
+}
+
+.text-wrapper {
+    p {
+        // @include rms(1);
+        line-height: 1.5;
+    }
+    p + p {
+        @include mq($from: mobile, $until: desktop) {
+            margin-bottom: 1rem;
+        }
+        @include mq($from: desktop) {
+            margin-bottom: 1.5rem;
+        }
+    }
+}
+
+.text-wrapper--thin {
+    font-weight: 200;
+    h5 {
+        font-weight: 600;
+    }
+}
+
+.paragraph__subtitle {
+    margin-bottom: .5rem;
+    margin-top: 1.5rem;
+    &:first-child {
+        > p {
+            font-weight: normal;
+        }
+    }
+}
+
+.lists {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    @include mq($from: mobileLandscape) {
+        justify-content: flex-start;
+        .list-wrapper {
+            margin-right: 2rem;
+        }
+    }
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+/// ----------------------
+/// MEDIA ITEMS
+/// ----------------------
+.styleguide__section__item--media {
+    .service-pros {
+        margin-bottom: 2rem;
+    }
+
+    .service-presentation {
+        .media--presentation-item:nth-child(odd) {
+            background-color: $lightgrey;
+            .media__title {
+                color: $blue;
+            }
+            .media__figure {
+                margin-right: 0;
+                @include mq($from: desktop) {
+                    order: 1;
+                    margin-left: $padding-media;
+                }
+            }
+        }
+
+        .media--presentation-item:nth-child(even) {
+            .media__title {
+                color: $red;
+            }
+        }
+    }
+
+    .teams-wrapper {
+        margin: auto;
+        @include mq($from: tablet, $until: wide) {
+            width: 80%;
+        }
+        @include mq($from: wide) {
+            max-width: 65rem;
+        }
+    }
+}
+
+/// ----------------------
+/// FORMS
+/// ----------------------
+.styleguide__section__item--form {
+    max-width: 30rem;
+    margin: auto;
+
+    .input-wrapper,
+    .checkbox-wrapper,
+    select {
+        margin-bottom: 1rem;
+    }
+
+    .radio-wrapper {
+        margin-bottom: .5rem;
+    }
+}
+
+/// ----------------------
+/// ALERT
+/// ----------------------
+.styleguide__section__item--alert {
+    justify-content: center;
+    align-items: center;
+
+    .alert,
+    .alert--success,
+    .alert--error {
+        margin-bottom: 1rem;
+    }
+}
+
+/// ----------------------
+/// FOOTER
+/// ----------------------
+.styleguide__section__item--footer {
+    margin-top: 2rem;
+}

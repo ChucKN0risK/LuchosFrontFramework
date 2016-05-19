@@ -1,0 +1,28 @@
+/* ==|====================
+   Components / Avatar
+   ======================= */
+
+.avatar {
+  position: relative;
+  display: block;
+  border: 1px solid $white;
+  border-radius: 50%;
+  background-color: $white;
+  overflow: hidden;
+}
+
+.avatar--small {
+  @include size(2rem);
+}
+
+.avatar--medium {
+  @include size(4rem);
+}
+
+.avatar--large {
+  @include size(5rem);
+}
+
+.avatar--big {
+  @include size(7rem);
+}

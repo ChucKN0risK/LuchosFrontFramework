@@ -1,0 +1,46 @@
+/* ==|====================
+   Layout / Media Wrappers
+   ======================= */
+
+// Media wappers are blocks containings media objects
+.service-pros {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0 auto 1rem;
+  @include mq($from: tablet, $until: wide) {
+    width: 80%;
+    & .media--icon {
+      flex-basis: calc(100% / 2);
+    }
+  }
+  @include mq($from: wide) {
+    max-width: $max-content-width;
+    & .media--icon {
+      flex-direction: column;
+      flex-basis: calc(25% - 2rem);
+      width: calc(25% - 2rem);
+    }
+  }
+}
+
+.service-presentation {
+  margin-right: auto;
+  margin-left: auto;
+  @include mq($from: tablet) {
+    width: 80%;
+  }
+  @include mq($from: wide) {
+    max-width: $max-content-width;
+  }
+}
+
+.media--presentation-item,
+.media--team {
+  margin-bottom: 2rem;
+}
+
+.media--presentation-item {
+  margin: 0 auto;
+  max-width: $max-content-width;
+}
+

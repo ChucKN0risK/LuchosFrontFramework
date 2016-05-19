@@ -1,0 +1,36 @@
+/* =======================
+   Components / Searchbar
+   ======================= */
+
+.searchbar {
+  display: flex;
+  @include border-radius();
+  width: 100%;
+  overflow: hidden;
+  @include mq($from: desktop) {
+    max-width: 40rem;
+  }
+}
+
+input.searchbar__input {
+  width: calc(100% - #{$input-height});
+  height: $input-height;
+  border: none;
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.searchbar__submit {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  @include flex-absolute-center();
+  @include size($input-height);
+  .btn__icon {
+    margin: 0;
+    @include rms(1);
+  }
+  .btn__text {
+    display: none;
+  }
+}
+

@@ -1,0 +1,22 @@
+/* ==|======================
+   Components / Store Links
+   ========================= */
+
+.store-links {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: $footer-padding * 2;
+  max-width: 25rem;
+}
+
+.store-links__item__link {
+  display: block;
+  height: 40px;
+  img {
+    height: 100%;
+    width: auto;
+  }
+}
+

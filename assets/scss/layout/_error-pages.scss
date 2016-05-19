@@ -1,0 +1,14 @@
+/* ==|======================
+   Layout / Error Pages
+   ========================= */
+
+// Style relative to error page such as 404, 500...
+.error-page__message {
+  @include rms(1);
+  color: $grey;
+}
+
+.error-page__img {
+  margin: 2rem 0;
+}
+

@@ -1,0 +1,347 @@
+/* ==|====================
+   Layout / Footer
+   ======================= */
+
+.footer-main {
+  position: relative;
+  background-color: $black;
+  @include flex-absolute-center();
+}
+
+.footer-main__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-top: $footer-padding * 3;
+  padding-bottom: $footer-padding;
+  @include mq($from: desktop) {
+    justify-content: space-around;
+    flex-flow: row wrap;
+    padding-top: $footer-padding * 5;
+    padding-bottom: $footer-padding * 2;
+    width: $max-content-width - 10rem;
+  }
+  @include mq($from: wide) {
+    max-width: $max-content-width;
+    width: $max-content-width;
+  }
+}
+
+.footer__main__item {
+  @include mq($from: desktop) {
+    max-width: 25%;
+  }
+}
+
+.footer-main__title {
+  display: none;
+  margin-bottom: $footer-padding;
+  color: $white;
+  @include rms(0);
+  font-weight: 600;
+  // If the title is on a dark background we slightly 
+  // increase the letter-spacing for a better readability
+  // http://johndjameson.com/blog/guidelines-for-letterspacing-type/
+  letter-spacing: 0.5px;
+  @include mq($from: desktop) {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.footer-main__link {
+  color: $lightgrey2;
+  text-decoration: none;
+  font-weight: 200;
+  &:hover {
+    color: $white;
+  }
+}
+
+.footer-main__cta {
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 25rem;
+  transform: translateY(-50%);
+  @include mq($from: mobile, $until: tablet) {
+    width: 70%;
+    max-width: 20rem;
+  }
+}
+
+// --------------------
+// STORES
+// --------------------
+.footer-main__stores {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: flex-start;
+  margin-right: auto;
+  margin-left: auto;
+  @include mq($from: mobile, $until: tablet) {
+    width: 100%;
+  }
+  @include mq($from: tablet, $until: desktop) {
+    width: 80%;
+  }
+  @include mq($from: desktop) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  @include mq($from: desktop, $until: wide) {
+    max-width: 20%;
+  }
+}
+
+.footer-main__stores .store-links {
+  @include mq($from: mobile, $until: mobileLandscape) {
+    width: 100%;
+    max-width: 20rem;
+  }
+  @include mq($from: mobileLandscape, $until: desktop) {
+    width: 70%;
+    max-width: 25rem;
+  }
+  @include mq($from: desktop) {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+.footer-main__stores .language-select {
+  @include mq($from: tablet) {
+    width: 40%;
+  }
+  @include mq($from: desktop) {
+    width: 100%;
+  }
+}
+
+.footer-main__stores .store-links__item {
+  &:last-child {
+    margin-right: 0;
+  }
+  @include mq($from: desktop) {
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+  }
+}
+
+.footer-main__stores .store-links__item__link {
+  @include mq($from: tablet, $until: desktop) {
+    height: 50px;
+  }
+}
+
+// --------------------
+// LANGUAGE SELECTION
+// --------------------
+.language-select {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 60%;
+  @include border-radius();
+  background-color: $black;
+  border: 2px solid $grey;
+  select {
+    width: 100%;
+    font-weight: 200;
+    color: $white;
+    background-color: transparent;
+    border: none;
+    margin-bottom: 0;
+    &:focus {
+      outline: none;
+    }
+    option {
+      color: $white;
+      background-color: $black;
+      padding: .3rem .5rem;
+    }
+  }
+  @include mq($from: mobile, $until: desktop) {
+    margin-bottom: $footer-padding * 2;
+  }
+  @include mq($from: desktop) {
+    margin-bottom: $footer-padding * 1;
+  }
+}
+
+.language-select__input {
+  background-color: $white;
+}
+
+// --------------------
+// ABOUT
+// --------------------
+.footer-main__about {
+  display: none;
+  align-self: flex-start;
+  @include mq($from: desktop) {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+// -------------------
+// HELP
+// -------------------
+.footer-main__help {
+  display: none;
+  align-self: flex-start;
+  margin-bottom: $footer-padding * 2;
+  @include mq($from: desktop) {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0;
+  }
+}
+
+.footer-main__help .phone {
+  cursor: default;
+}
+
+.footer-main__help__content {
+  width: 100%;
+}
+
+.footer-main__contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  margin-bottom: $footer-padding;
+  @include mq($from: desktop) {
+    margin-bottom: 0;
+    margin-top: 3rem;
+  }
+}
+
+.footer-main__contact__links {
+  display: flex;
+  @include mq($from: desktop) {
+    display: none;
+  }
+}
+
+.footer-main__contact__link {
+  margin-right: 1rem;
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+// -------------------
+// SOCIAL 
+// -------------------
+.footer-main__social {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @include mq($from: mobile, $until: tablet) {
+    width: 100%;
+  }
+  @include mq($from: tablet, $until: desktop) {
+    width: 70%;
+  }
+  @include mq($from: desktop) {
+    justify-content: center;
+    align-items: center;
+    align-self: flex-start;
+    align-items: flex-start;
+    flex: 0 1 100%;
+    flex-flow: row wrap;
+    margin-top: 3rem;
+  }
+  .footer-main__title {
+    flex: 0 1 100%;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+}
+
+.social-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: $footer-padding * 2;
+  max-width: 15rem;
+  @include mq($from: mobile, $until: tablet) {
+    width: 70%;
+  }
+  @include mq($from: tablet, $until: desktop) {
+    width: 50%;
+  }
+  @include mq($from: desktop) {
+    flex-direction: row;
+    min-width: 35rem;
+    margin-bottom: 0;
+  }
+}
+
+.social-links__item {
+  display: flex;
+  text-decoration: none;
+  @include mq($from: desktop) {
+    align-self: flex-start;
+    align-items: center;
+    margin-bottom: .5rem;
+  }
+}
+
+.social-links__item__text {
+  display: none;
+  color: $lightgrey2;
+  @include transition();
+  font-weight: 200;
+  @include mq($from: desktop) {
+    display: inline;
+    margin-left: .5rem;
+  }
+  .social-links__item:hover & {
+    color: $white;
+  }
+}
+
+.social-links__item__icon {
+  display: flex;
+  height: $footer-social-icon-size;
+  line-height: $footer-social-icon-size;
+  font-size: $footer-social-icon-size;
+  border-radius: 50%;
+  // This gradient is used so that the icons are not rounded by an ugly white sided color. We want the inner color to be white and the outer color to be the one of the footer's background.
+  background: radial-gradient(circle, $white 55%, $black 45%);
+  // & > i {
+  //     margin-right: 0;
+  //     font-size: 2rem;
+  // }
+  @include mq($from: desktop) {
+    height: $footer-social-icon-size - .7rem;
+    line-height: $footer-social-icon-size - .7rem;
+    font-size: $footer-social-icon-size - .7rem;
+  }
+}
+
+// -------------------
+// COPYRIGHTS
+// -------------------
+.copyrights {
+  width: 100%;
+  @include rms(-1);
+  text-align: center;
+  font-weight: 200;
+  color: shade($white, 30%);
+  @include mq($from: tablet) {
+    @include rms(0);
+  }
+}
+

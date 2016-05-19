@@ -1,0 +1,112 @@
+$rms-base: 16px;
+$rms-intervals: (0px $fourth), (768px $fifth);
+$rms-usepixels: false;
+
+/// Sets user-defined values for the modular scale, which replace the default values defined above. The function accepts any number of arguments which should take the form: $base, $interval1, $interval2, ...
+///
+/// @param  (number / list) $base: one or more pixel values to use as the base of the modular scale. These don't change between breakpoints.
+/// @param  (list) $interval: A list containing a pixel value (representing a min-width breakpoint) followed by an interval (an integer or one of modular-scale's predefined ratios).
+@mixin rms-set-scales($args...) {
+  // If no arguments were given
+  @if length($args) == 0 {
+    @warn 'No base values or intervals were set, so the default values will be used.';
+  }
+  // If at least one argument was given
+  @else {
+    // The first argument should be one or more pixel values
+    $rms-base: nth($args, 1);
+
+    // If more than one argument was given
+    @if length($args) > 1 {
+      // Remove the default breakpoints and intervals
+      $rms-intervals: () !global;
+
+      @for $i from 2 through length($args) {
+        // If a list item only has one value, assume it's an interval and set the breakpoint to 0px
+        @if length(nth($args, $i)) == 1 {
+          $rms-intervals: append($rms-intervals, 0px nth($args, $i)) !global;
+        }
+        // Otherwise copy the list as-is
+        @else {
+          $rms-intervals: append($rms-intervals, nth($args, $i)) !global;
+        }
+      }
+    }
+    // If only one argument was given
+    @else {
+      @warn 'No intervals were set, so the default values will be used.';
+    }
+  }
+}
+
+/// Outputs the values of each scale to the console using modular-scale's modular-scale-list() mixin. The range of values to be returned can be specified; otherwise, 20 values starting from the base value will be returned.
+///
+/// @param  (number) $start: index on the scale to start at (0 is the base value).
+/// @param  (number) $end: index on the scale to end at.
+
+@mixin rms-list-scales($start: 0, $end: 20) {
+  @each $scale in $rms-intervals {
+    $scale-breakpoint: nth($scale, 1);
+    $scale-interval:   nth($scale, 2);
+
+    @if $scale-breakpoint == 0px {
+      @debug 'Default --';
+    }
+    @else {
+      @debug 'Min-width: #{$scale-breakpoint} --';
+    }
+
+    @debug ms-list($start, $end, $rms-base, $scale-interval);
+  }
+}
+
+/// Use pixel values for breakpoints and font sizes.
+///
+/// @param  (boolean) $true: if true, the system will use pixels; otherwise, ems.
+@mixin rms-use-pixels($true: true) {
+  $rms-usepixels: $true;
+}
+
+/// Change the base font size from the default of 16px, for use by the to-em() function.
+///
+/// @param  (number) $number: pixel value to change to.
+@mixin rms-set-base($number) {
+  $rms-basefont: $number;
+}
+
+/// Iterates through the list of breakpoints and intervals, outputting multiple font-size declarations for each breakpoint.
+///
+/// @param  (number) $n: position on the modular scale to use.
+@mixin rms($n: 0, $base: false) {
+  // Output one font-size defenition for each defined breakpoint
+  @each $interval in $rms-intervals {
+    // Pull the breakpoint and interval from the list and generate the final font size
+    $scale-breakpoint: nth($interval, 1);
+    $scale-interval:   nth($interval, 2);
+    $output: ms($n, $rms-base, $scale-interval);
+
+    // Convert the px values to em unless otherwise specified
+    @if $rms-usepixels == false {
+      $scale-breakpoint: to-em($scale-breakpoint);
+      $output:           to-em($output);
+
+      // If a different base has been passed in, adjust the output font size to compensate
+      @if $base != false {
+        // The base value is the em value derived from the px value at position $base on the scale
+        $base-value: to-em(ms($base, $rms-base, $scale-interval));
+        // The adjusted value is the original value divided by the base value
+        $output: $output / $base-value * 1em;
+      }
+    }
+
+    // Don't insert a 0px/em media query, just output the value
+    @if strip-units($scale-breakpoint) == 0 {
+      font-size: $output;
+    }
+    @else {
+      @media screen and (min-width: $scale-breakpoint) {
+        font-size: $output;
+      }
+    }
+  }
+}

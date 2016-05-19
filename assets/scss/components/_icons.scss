@@ -1,0 +1,69 @@
+/* ==========================
+   Components / Icons
+   ========================== */
+
+.icon {
+  @include size (1.1rem);
+  @include transition;
+  fill: $white;
+  &--left {
+    margin-right: .3rem;
+  }
+  &--right {
+    margin-left: .3rem;
+  }
+  &--black {
+    fill: $black;
+  }
+}
+
+.icon-wrapper {
+  position: relative;
+  @include size(2.5rem);
+  background-color: $red;
+  border-radius: 50%;
+  @include transition;
+  .icon {
+    @include absolute-center;
+  }
+  &--black {
+    background-color: $black;
+  }
+  &--success {
+    background-color: $success;
+    .icon {
+      fill: $white;
+    }
+  }
+  &--squared {
+    border-radius: 0;
+  }
+  &--tiny {
+    @include size(1.5rem);
+    .icon {
+      @include size(.7rem);
+      @include absolute-center();
+    }
+  }
+  &--huge {
+    @include size(5rem);
+    .icon {
+      @include size(2.3rem);
+      @include absolute-center();
+    }
+  }
+  &--text {
+    text-align: center;
+    line-height: 2.5rem;
+    text-transform: uppercase;
+    color: $white;
+  }
+}
+
+// This rule is meant to work with Modernizr
+// Browsers supporting flexbox will have a '.flexbox' class
+// applied on them.
+.flexbox .icon-wrapper .icon {
+  @include flex-absolute-center;
+}
+

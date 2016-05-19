@@ -1,0 +1,100 @@
+/* ==|====================
+   Layout / Header
+   ======================= */
+
+// The '.headnav' class must be applied on the
+// element wrapping the header and the navigation
+.headnav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: $zIndex-headerMain;
+}
+
+.header-main {
+  position: relative;
+  height: $header--main-height;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  overflow: hidden;
+  // This z-index has to be .dropdown-menu z-index + 1
+  z-index: $zIndex-headerMain;
+  background-color: $black;
+  @include transition();
+  &.is-hidden {
+    transform: translateY(-100%);
+  }
+}
+
+.header-main__menu {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  height: $header--main-height;
+}
+
+.header-main__menu__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 0 .5rem;
+  &:last-child {
+    padding-right: 0;
+  }
+}
+
+.header-main__link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  @include reset-link($white);
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// On mobile we hide the subscription btn...
+.header-main__subscription-btn {
+  display: none;
+  @include mq($from: tablet) {
+    display: flex;
+  }
+}
+
+//... and we remove the padding right of the previous element
+.header-main__login-btn {
+  @include mq($from: mobile, $until: tablet) {
+    padding-right: 0;
+  }
+}
+
+.header-main__toggle-user-menu {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100%;
+  @include reset-link($white);
+  // & > i {
+  //     color: $white;
+  //     margin-left: .5rem;
+  //     @include transition();
+  // }
+  // & > i.is-active {
+  //     transform: rotate(180deg);
+  // }
+  .avatar {
+    margin-right: .5rem;
+  }
+  .username {
+    display: none;
+    @include mq($from: tablet) {
+      display: inline-block;
+    }
+  }
+}
+

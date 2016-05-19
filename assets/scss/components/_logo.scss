@@ -1,0 +1,17 @@
+/* ==|====================
+   Components / Logo
+   ======================= */
+
+.logo {
+  height: 2rem;
+  width: 5rem;
+  //@include vector-bg-with-fallback(logoFileName);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  @include mq($from: desktop) {
+    width: 8rem;
+    height: 2.5rem;
+  }
+}
+

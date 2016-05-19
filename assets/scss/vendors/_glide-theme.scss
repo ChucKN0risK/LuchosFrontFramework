@@ -1,0 +1,67 @@
+.glide__arrows {
+  position: absolute;
+  top: 15%;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 10%;
+  width: 80%;
+}
+
+.glide__arrow {
+  position: absolute;
+  z-index: $zIndex-slider;
+  transform: translateY(-50%);
+  color: $blue;
+  @include rms(3);
+  @include transition();
+}
+
+.glide__arrow:hover {
+  border-color: white;
+}
+
+.glide__arrow.prev {
+  left: 0;
+}
+
+.glide__arrow.next {
+  right: 0;
+}
+
+.glide__bullets {
+  width: 100%;
+  text-align: center;
+  list-style: none;
+}
+
+.glide__bullets li {
+  display: inline-block;
+  background-color: tint($blue, 60%);
+  width: 12px;
+  height: 12px;
+  margin: 0 5px;
+  cursor: pointer;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  @include transition();
+}
+
+.glide__bullets li:hover {
+  border: 2px solid white;
+}
+
+.glide__bullets li.active {
+  background-color: $blue;
+}
+
+.glide--slider .glide__arrow {
+  opacity: 1;
+  -webkit-transition: visibility 0 ease 150ms,
+            opacity 150ms ease;
+          transition: visibility 0 ease 150ms,
+            opacity 150ms ease;
+}
+
+.glide--slider .glide__arrow.disabled {
+  opacity: 0.5;
+}

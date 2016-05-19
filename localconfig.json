@@ -1,0 +1,5 @@
+{
+    "serverName": "localhost:8888/",
+    "subDirectory": "Perso/NewProject",
+    "enableBrowserSync": true
+}

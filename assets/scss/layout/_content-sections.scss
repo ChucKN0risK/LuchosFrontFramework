@@ -1,0 +1,66 @@
+/* ==|======================
+   Layout / Content Sections
+   ========================= */
+
+// These blocks are meant to be inside larger block such as {mypage}-section__content.
+.content-section {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 2rem;
+  &:last-child {
+    margin-bottom: 0;
+  }
+  @include mq($from: desktop) {
+    margin-bottom: 3rem;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.content-section__header {
+  display: flex;
+  align-items: center;
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid $grey;
+  width: 100%;
+}
+
+.content-section__title {
+  margin: 0;
+  color: $blue;
+  flex-shrink: 0;
+}
+
+.content-section__actions {
+  width: auto;
+  margin-left: auto;
+  .btn--icon {
+    justify-content: center;
+    border-radius: 50%;
+  }
+  .btn__text {
+    display: none;
+  }
+  @include mq($from: tablet) {
+    .btn--icon {
+      @include border-radius;
+    }
+    .btn__text {
+      display: inline;
+      margin-left: .3rem;
+    }
+  }
+}
+
+.content-section__body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  @include mq($from: tablet) {
+    flex-flow: row wrap;
+  }
+}
+

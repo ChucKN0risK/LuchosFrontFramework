@@ -1,0 +1,93 @@
+ // ----------------------
+ // == Utility Classes
+ // ----------------------
+
+ // Apply these classes on element only when
+ // the rule you want to set is independant from
+ // the rest of your element style. 
+ // Using '!important' here is recommanded 
+
+.u-no-scroll {
+  overflow: hidden !important;
+}
+
+.u-hide {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+.u-text-uppercase {
+  text-transform: uppercase !important;
+}
+
+.u-text-bold {
+  font-weight: bold !important;
+}
+
+.u-text-italic {
+  font-style: italic !important;
+}
+
+.u-text-left-align {
+  text-align: left !important;
+}
+
+.u-text-centered {
+  text-align: center !important;
+}
+
+.u-text-right-align {
+  text-align: right !important;
+}
+
+.u-text-justify {
+  text-align: justify !important;
+}
+
+.u-text-red {
+  color: $red !important;
+}
+
+.u-text-blue {
+  color: $blue !important;
+}
+
+.u-text-yellow {
+  color: $yellow !important;
+}
+
+.u-text-green {
+  color: $green !important;
+}
+
+.u-text-orange {
+  color: $orange !important;
+}
+
+// This class aims to show list bullets wo that list doesn't touch the edge of the screen
+.u-list-default {
+  margin-left: 1rem !important;
+}
+
+.u-list-reset {
+  list-style: none !important;
+  padding-left: 0 !important;
+}
+
+// This class adds a coma at every li except the ast one.
+.u-coma-sep-items > li:not(:last-child):after {
+  content: ',';
+}
+
+// Apply this class to add vertical lines helping
+// you to apply a proper vertical rythm
+.u-baseline:after {
+  background: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05) 24px, rgba(0, 0, 0, 0.1) 24px, rgba(0, 0, 0, 0.1) 48px);
+  content: '';
+  position: absolute;
+  display: block;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}

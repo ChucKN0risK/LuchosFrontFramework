@@ -1,0 +1,250 @@
+/* ==|======================
+   Layout / Hero Sections
+   ========================= */
+
+.hero {
+  position: relative;
+  padding: 1rem;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: $white;
+  @include mq($from: mobile, $until: desktop) {
+    padding: 3rem 0;
+  }
+  @include mq($from: tablet) {
+    text-align: center;
+  }
+  @include mq($from: desktop, $until: wide) {
+    text-align: left;
+  }
+  //We simulate a black background filter above the image
+  &:before {
+    content: '';
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $black;
+    opacity: .6;
+  }
+}
+
+.hero--homepage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // Take all the height available on the screen 
+  // minus the header + navbar height (3rem + 3rem)
+  height: calc(100vh - 6rem);
+  padding-top: 1rem;
+  background-image: url('../img/homebg.jpg');
+  .hero__section {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+  .hero__title {
+    font-size: 1.5rem;
+  }
+  .hero__video-link {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+  .hero__section__content-part {
+    justify-content: center;
+    align-items: center;
+  }
+  .hero__text {
+    margin: auto;
+    margin-bottom: 1rem;
+  }
+  .hero__video-link {
+    justify-content: center;
+  }
+  .hero__cta--homepage,
+  .hero__store-links {
+    margin: auto;
+    width: 17rem;
+  }
+  .hero__cta--homepage {
+    margin-bottom: 1rem;
+  }
+  .hero__store-links {
+    justify-content: space-between;
+  }
+  .devices-wrapper .hero__video-link {
+    display: none;
+  }
+  &:before {
+    opacity: 0;
+  }
+  @include mq($from: tablet,
+  $until: desktop) {
+    height: 90%;
+    padding-top: 3rem;
+    padding-bottom: 5rem;
+    .hero__title {
+      font-size: 2rem;
+    }
+  }
+  @include mq($from: desktop) {
+    // Take all the height available on the screen 
+    // minus the header + navbar height (4rem + 3rem)
+    height: calc(100vh - 7rem);
+    .hero__section {
+      flex-flow: row wrap;
+      justify-content: flex-start;
+      min-height: 50%;
+      max-width: $max-content-width;
+    }
+    .hero__section__content-part {
+      display: flex;
+      flex-direction: column;
+      width: calc(45% - 2rem);
+    }
+    .hero__video-link {
+      display: none;
+    }
+    .hero__title,
+    .hero__text {
+      text-align: left;
+      width: 100%;
+    }
+    .hero__title {
+      width: 100%;
+      font-size: 3.3rem;
+    }
+    .hero__text {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    .hero__cta--homepage {
+      padding: 1rem 1.2rem;
+      min-height: 3rem;
+      margin-left: 0;
+    }
+    .hero__cta--homepage,
+    .store-links {
+      width: 20rem;
+    }
+    .store-links {
+      display: flex;
+      height: 2.8rem;
+      justify-content: space-between;
+      margin-left: 0;
+    }
+    .store-links__item,
+    .store-links__item__link {
+      height: 100%;
+      color: $black;
+    }
+  }
+}
+
+.hero__section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  @include hero-z-index();
+}
+
+.hero__title,
+.hero__text {
+  text-align: center;
+  @include hero-z-index();
+}
+
+.hero__title {
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+  @include transition();
+  @include mq($from: tablet) {
+    width: 80%;
+  }
+  @include mq($from: wide) {
+    max-width: $max-content-width;
+  }
+}
+
+.hero__text {
+  margin-bottom: 1rem;
+  font-weight: normal;
+  opacity: .9;
+  @include mq($from: tablet) {
+    width: 80%;
+  }
+  @include mq($from: desktop) {
+    @include rms(1);
+    width: 40rem;
+  }
+  @include mq($from: wide) {
+    max-width: $max-content-width;
+  }
+}
+
+.hero__cta {
+  color: $black;
+  @include hero-z-index();
+  @include mq($from: tablet) {
+    width: 15rem;
+  }
+}
+
+.hero__video-link {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  color: $white;
+  text-decoration: none;
+  @include transition();
+  @include hero-z-index();
+  &.no-text {
+    margin-top: 0;
+  }
+  &:hover {
+    color: $white;
+    text-decoration: none;
+  }
+}
+
+.hero__store-links {
+  @include hero-z-index();
+}
+
+.hero__video-link__icon {
+  @include icon(2rem,
+  2px,
+  $white);
+  @include hero-z-index();
+  i:before {
+    margin-left: 3px;
+  }
+  .hero__video-link.no-text & {
+    @include size(4rem);
+    font-size: 2rem;
+    i:before {
+      margin-left: 5px;
+    }
+  }
+}
+
+.hero__video-link__text {
+  margin-left: 1rem;
+  text-decoration: underline;
+  @include hero-z-index();
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.hero__form {
+  width: 100%;
+  @include hero-z-index();
+  @include mq($from: tablet) {
+    max-width: 30rem;
+  }
+}
+

@@ -1,0 +1,30 @@
+/* =======================
+   Components / Pagination
+   ======================= */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 1rem 0;
+}
+
+.pagination__prev,
+.pagination__next {
+  border: 1px solid $grey;
+  i {
+    margin: 0;
+  }
+  .btn__text {
+    display: none;
+    @include mq($from: desktop) {
+      display: flex;
+    }
+  }
+}
+
+.pagination__prev {
+  margin-right: 1rem;
+}
+

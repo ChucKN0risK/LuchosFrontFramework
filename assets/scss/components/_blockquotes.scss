@@ -1,0 +1,36 @@
+/* ==|====================
+   Components / Blockquotes
+   ======================= */
+
+/// Quotes layout taken from CSS Tricks :
+/// https://css-tricks.com/snippets/css/simple-and-nice-blockquote-styling/
+blockquote {
+  quotes: "\201C" "\201D";
+  p {
+    display: inline;
+  }
+}
+
+blockquote::before {
+  color: $blue;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.5rem;
+  vertical-align: -0.4em;
+  @include mq($from: desktop) {
+    font-size: 3em;
+  }
+}
+
+blockquote::after {
+  color: $blue;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.5rem;
+  vertical-align: -0.5em;
+  @include mq($from: desktop) {
+    font-size: 3em;
+  }
+}

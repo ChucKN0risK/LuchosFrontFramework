@@ -1,0 +1,38 @@
+/* ==|====================
+   Components / Separator
+   ======================= */
+
+.separator {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 30rem;
+  font-weight: 200;
+  color: $grey;
+  margin: 2rem 0;
+  &:before,
+  &:after {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 40%;
+    background-color: $grey;
+  }
+  @include mq($from: tablet) {
+    max-width: $single-form-width--tablet;
+    width: $single-form-width--tablet;
+  }
+  @include mq($from: desktop) {
+    max-width: $single-form-width--desktop;
+    width: $single-form-width--desktop;
+  }
+}
+
+.separator--vertical {
+  &:before {
+    content: '|';
+    padding: 0 5px;
+  }
+}
+

@@ -7,12 +7,14 @@ You can drop me a line on [@chuckn0risK](www.twitter.com/chuckn0risk)
 
 ### Requirements
 * [node.js 0.12.x/npm](http://nodejs.org/download/)
+* [Bower](http://bower.io/)
+    * Install with `npm install -g bower`
 * [Gulp](http://gulpjs.com//)
     * Install with `npm install -g gulp`
 
 ### Features
 
-- [Sanitize.css](https://github.com/jonathantneal/sanitize.css/blob/master/sanitize.scss)  
+- Sanitize.css [https://github.com/jonathantneal/sanitize.css/blob/master/sanitize.scss](https://github.com/jonathantneal/sanitize.css/blob/master/sanitize.scss)  
 - Responsive Typography with : [Modular Scale](https://github.com/modularscale/modularscale-sass) + [Responsive Modular Scale](https://github.com/gakimball/responsive-modular-scale)  
 For further informations about Responsive Web Typography: [Pro Web Type](https://prowebtype.com)
 - [SMACSS Architecture](https://smacss.com/)
@@ -37,10 +39,12 @@ Don’t forget to launch your Apache server.
     "enableBrowserSync": true
 }
 ```
-When you're done you can compile the assets with the `gulp` command.
+
+5. When you're done you can compile the assets with the `gulp` command.
 
 ### Some pieces of advice
-  1. Take the habit of writing your css methodically as proposed by the SMACSS methodology:
+
+1. Take the habit of writing your css methodically as proposed by the SMACSS methodology:
 ```  
  .my-selector {  
     // mixins and extends first, unless  
@@ -110,9 +114,8 @@ When you're done you can compile the assets with the `gulp` command.
     }
 }
 ```
-
-2. Never use `#ids` in your css. [It’s bad for specificity](http://csswizardry.com/2011/09/when-using-ids-can-be-a-pain-in-the-class/).  
-3. Try to separate the disposition of a component from its core style. The former will change according to the page whereas the latter should remain untouched.<br><br>
+2. Never use `#ids` in your css. [It’s bad for specificity](http://csswizardry.com/2011/09/when-using-ids-can-be-a-pain-in-the-class/).
+3. Try to separate the disposition of a component from its core style. The former will change according to the page whereas the latter should remain untouched. <br><br>
 4. Monitoring closely what’s happening in the front-end world will help you improve this framework so you can tweak it and optimize it. Here are some awesome people I encourage you to follow :     
   - [@adactio](https://twitter.com/adactio)  
   - [@beep](https://twitter.com/beep)  

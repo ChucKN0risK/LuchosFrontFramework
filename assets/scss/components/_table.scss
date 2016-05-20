@@ -25,17 +25,44 @@ tbody {
 }
 
 
+/* ==|=====================
+   Components / Table
+   ======================== */
+
+table {
+  overflow: hidden;
+}
+
+th,
+td {
+  padding: 1rem;
+}
+
+th {
+  font-family: $font1;
+  font-weight: 700;
+}
+
+thead tr {
+  border: 0;
+}
+
+tbody {
+  font-family: $font1;
+}
+
+
 /*!
-// CSS only Responsive Tables
-// http://dbushell.com/2016/03/04/css-only-responsive-tables/
-// by David Bushell
+  CSS only Responsive Tables
+  http://dbushell.com/2016/03/04/css-only-responsive-tables/
+  by David Bushell
 */
 
 .rtable {
   /*!
-  // IE needs inline-block to position scrolling shadows otherwise use:
-  // display: block;
-  // max-width: min-content;
+    IE needs inline-block to position scrolling shadows otherwise use:
+    display: block;
+    max-width: min-content;
   */
   display: inline-block;
   vertical-align: top;

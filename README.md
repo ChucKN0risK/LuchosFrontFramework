@@ -7,8 +7,6 @@ You can drop me a line on [@chuckn0risK](www.twitter.com/chuckn0risk)
 
 ### Requirements
 * [node.js 0.12.x/npm](http://nodejs.org/download/)
-* [Bower](http://bower.io/)
-    * Install with `npm install -g bower`
 * [Gulp](http://gulpjs.com//)
     * Install with `npm install -g gulp`
 

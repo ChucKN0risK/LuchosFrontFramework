@@ -7,9 +7,26 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+.AppleDouble
+.LSOverride
 
-# Other
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+
+# Dependency directories
 ######################
 node_modules/
+.tmp
+.sass-cache
 sassdoc/
+
+# log
+npm-debug.log
+
+# Local Development Configuration
 localconfig.json

@@ -7,8 +7,6 @@ You can drop me a line on [@chuckn0risK](www.twitter.com/chuckn0risk)
 
 ### Requirements
 * [node.js 0.12.x/npm](http://nodejs.org/download/)
-* [Gulp](http://gulpjs.com//)
-    * Install with `npm install -g gulp`
 
 ### Development Features
 

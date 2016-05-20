@@ -33,7 +33,7 @@ Don’t forget to launch your Apache server.
 
 3. Once you are in the repo directory download node packages : `(sudo) npm install`. It will download all the packages listed in the `package.json` situated at the root of the project.
 
-4. Since we use [BrowserSync](http://www.browsersync.io/) in our Gulp build process you have to set your own 'proxy’.  Modify at the root of the project the localconfig.json file so it suits your own configuration : 
+4. Since we use [BrowserSync](http://www.browsersync.io/) in our Gulp build process you have to set your own 'proxy’. Create at the root of the project the localconfig.json file so it suits your own configuration : 
 ```json
 {
     "serverName": "localhost:XXXX/",

@@ -8,7 +8,8 @@
 ehthumbs.db
 Thumbs.db
 
-# Modules
+# Other
 ######################
 node_modules/
 sassdoc/
+localconfig.json

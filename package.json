@@ -23,7 +23,7 @@
     "gulp-concat": "^2.6.0",
     "gulp-imagemin": "^2.2.1",
     "gulp-load-plugins": "^0.10.0",
-    "gulp-clean-css": "^0.4.5",
+    "gulp-clean-css": "^2.0.7",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.1.1",
     "gulp-scss-lint": "^0.2.0",

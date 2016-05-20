@@ -12,16 +12,21 @@ You can drop me a line on [@chuckn0risK](www.twitter.com/chuckn0risk)
 * [Gulp](http://gulpjs.com//)
     * Install with `npm install -g gulp`
 
-### Features
+### Development Features
 
 - [Sanitize.css](https://github.com/jonathantneal/sanitize.css/blob/master/sanitize.scss)  
 - Responsive Typography with : [Modular Scale](https://github.com/modularscale/modularscale-sass) + [Responsive Modular Scale](https://github.com/gakimball/responsive-modular-scale)  
 For further informations about Responsive Web Typography: [Pro Web Type](https://prowebtype.com)
 - [SMACSS Architecture](https://smacss.com/)
 - [Media Queries With Superpowers](https://github.com/sass-mq/sass-mq)
-- [Automated Sass documentation](http://sassdoc.com/)  
+- [Automated Sass documentation](http://sassdoc.com/)
 Just go to: `path/to/your/directory/sassdoc`
-- Build process with Gulp
+- Build process with Gulp which includes:
+    - Live preview sever (using [BrowserSync](http://www.browsersync.io/))
+    - Image optimization
+    - CSS Autoprefixing
+    - Sass compilation
+    - SVG Spriting
 
 ### Getting Started
 
@@ -31,6 +36,7 @@ Don’t forget to launch your Apache server.
 2. Clone this repo in your dev directory via your git interface or via your CLI (Command Line Interface). I personally use [iTerm](https://iterm2.com/).
 
 3. Once you are in the repo directory download node packages : `(sudo) npm install`. It will download all the packages listed in the `package.json` situated at the root of the project.
+
 4. Since we use [BrowserSync](http://www.browsersync.io/) in our Gulp build process you have to set your own 'proxy’.  Modify at the root of the project the localconfig.json file so it suits your own configuration : 
 ```json
 {

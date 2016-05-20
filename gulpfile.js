@@ -123,6 +123,16 @@ gulp.task('img', function () {
   .pipe(gulp.dest(path.dist + '/img'));
 });
 
+// Sprite all the SVG
+gulp.task('svgstore', function () {
+    return gulp
+      .src('assets/icons/*.svg')
+      .pipe(svgmin())
+      .pipe(svgstore())
+      .pipe(rename({baseline: 'sprite'}))
+      .pipe(gulp.dest('assets/icons/dest'));
+});
+
 // Generate & Inline Critical-path CSS
 gulp.task('critical', function () {
   return gulp
@@ -161,16 +171,6 @@ gulp.task('desktop', function () {
         console.log(data.score);
         console.log(data.pageStats);
     });
-});
-
-// Sprite all the SVG
-gulp.task('svgstore', function () {
-    return gulp
-      .src('assets/icons/*.svg')
-      .pipe(svgmin())
-      .pipe(svgstore())
-      .pipe(rename({baseline: 'sprite'}))
-      .pipe(gulp.dest('assets/icons/dest'));
 });
 
 gulp.task('default', ['sass','serve'], function () {});

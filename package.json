@@ -1,9 +1,9 @@
 {
-  "name": "Lucho's Front Framework",
+  "name": "LuchosFrontFramework",
   "version": "1.0.0",
   "description": "Front-End Framework providing a modular architecture",
   "keywords" : ["Module", "SMACSS", "ES6", "Hetic"],
-  "main": "index.html",
+  "main": "README.md",
   "author": {
     "name": "Louis Chenais",
     "email": "lchenais@gmail.com",
@@ -11,9 +11,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:xxxxxxxxxxx.git"
+    "url": "github.com/ChucKN0risK/LuchosFrontFramework.git"
   },
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "browser-sync": "^2.3.1",
     "critical": "^0.6.0",
@@ -36,9 +36,5 @@
     "imagemin-pngquant": "^4.0.0",
     "sassdoc": "^2.1.15",
     "svg4everybody": "^2.0.3"
-  },
-  "dependencies": {
-    "modernizr": "^3.0.0-alpha.4",
-    "psi": "^1.0.6"
   }
 }

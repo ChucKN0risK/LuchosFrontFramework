@@ -7,7 +7,7 @@ var concat       = require('gulp-concat');
 var sourcemaps   = require('gulp-sourcemaps');
 var browserSync  = require('browser-sync');
 var uglify       = require('gulp-uglify');
-var minify       = require('gulp-minify-css');
+var minify       = require('gulp-clean-css');
 var uncss        = require('gulp-uncss');
 var rename       = require('gulp-rename');
 var autoprefixer = require('gulp-autoprefixer');
@@ -86,7 +86,10 @@ gulp.task('sass-prod', function () {
     .pipe(rename({
       suffix: '.min'
     }))
-    .pipe(minify())
+    .pipe(cleanCSS({debug: true}, function(details) {
+        console.log(details.name + ': ' + details.stats.originalSize);
+        console.log(details.name + ': ' + details.stats.minifiedSize);
+    }))
     .pipe(size())
     .pipe(gulp.dest(path.dist + '/css'));
 });

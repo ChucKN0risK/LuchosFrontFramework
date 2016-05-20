@@ -56,9 +56,10 @@ gulp.task('serve', function() {
   //});
 });
 
-// Add Sourcemaps + Autoprefixer + cache modified files 
-// + lint these files to detect scss errors 
+// Generate SassDoc + Add Sourcemaps + Autoprefixer 
+// + cache modified files 
 // + size the final css filereload on change
+// + refresh stream
 gulp.task('sass', function () {
   return gulp
     .src(path.sass)
@@ -66,6 +67,9 @@ gulp.task('sass', function () {
     .pipe(sourcemaps.init())
     .pipe(sass({
       onError: console.error.bind(console, 'SASS error')
+    }))
+    .pipe(uncss({
+        html: ['index.html']
     }))
     .pipe(autoprefixer(autoprefixerOptions))
     .pipe(sourcemaps.write())
@@ -87,8 +91,8 @@ gulp.task('sass-prod', function () {
       suffix: '.min'
     }))
     .pipe(cleanCSS({debug: true}, function(details) {
-        console.log(details.name + ': ' + details.stats.originalSize);
-        console.log(details.name + ': ' + details.stats.minifiedSize);
+        console.log(details.name + 'Original Size : ' + details.stats.originalSize);
+        console.log(details.name + 'Minified Size : ' + details.stats.minifiedSize);
     }))
     .pipe(size())
     .pipe(gulp.dest(path.dist + '/css'));

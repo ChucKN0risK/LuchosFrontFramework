@@ -2,23 +2,23 @@
 var gulp = require('gulp');
 
 // Include Plugins
-var sass         = require('gulp-sass');
-var concat       = require('gulp-concat');
-var sourcemaps   = require('gulp-sourcemaps');
-var browserSync  = require('browser-sync');
-var uglify       = require('gulp-uglify');
-var cleanCSS     = require('gulp-clean-css');
-var uncss        = require('gulp-uncss');
-var rename       = require('gulp-rename');
-var autoprefixer = require('gulp-autoprefixer');
-//var extender     = require('gulp-html-extend');
-var critical     = require('critical').stream;
-var imagemin     = require('gulp-imagemin');
-var svgstore     = require('gulp-svgstore');
-var svgmin       = require('gulp-svgmin');
-var rename       = require('gulp-rename');
-var size         = require('gulp-size');
-var sassdoc      = require('sassdoc');
+var sass             = require('gulp-sass');
+var concat           = require('gulp-concat');
+var sourcemaps       = require('gulp-sourcemaps');
+var browserSync      = require('browser-sync');
+var uglify           = require('gulp-uglify');
+var cleanCSS         = require('gulp-clean-css');
+var stripCssComments = require('gulp-strip-css-comments');
+var uncss            = require('gulp-uncss');
+var rename           = require('gulp-rename');
+var autoprefixer     = require('gulp-autoprefixer');
+var critical         = require('critical').stream;
+var imagemin         = require('gulp-imagemin');
+var svgstore         = require('gulp-svgstore');
+var svgmin           = require('gulp-svgmin');
+var rename           = require('gulp-rename');
+var size             = require('gulp-size');
+var sassdoc          = require('sassdoc');
 
 // Configuration
 var path = {
@@ -78,13 +78,18 @@ gulp.task('sass', function () {
     .pipe(reload({stream: true}));
 });
 
-// Production Sass Task : Generate SassDoc + Autoprefixer 
-// + Remove unused css + Rename + Minify + Move to dest folder
+// Production Sass Task : Compile SASS into CSS + Remove comments 
+// + Remove unused css + Autoprefixer
+// + Rename + Minify + Move to dest folder
 gulp.task('sass-prod', function () {
   return gulp
     .src(path.sass)
     .pipe(sass({
       onError: console.error.bind(console, 'SASS error')
+    }))
+    .pipe(stripCssComments())
+    .pipe(uncss({
+        html: ['index.html']
     }))
     .pipe(autoprefixer(autoprefixerOptions))
     .pipe(rename({

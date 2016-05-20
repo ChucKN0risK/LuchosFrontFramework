@@ -91,8 +91,8 @@ gulp.task('sass-prod', function () {
       suffix: '.min'
     }))
     .pipe(cleanCSS({debug: true}, function(details) {
-        console.log(details.name + 'Original Size : ' + details.stats.originalSize);
-        console.log(details.name + 'Minified Size : ' + details.stats.minifiedSize);
+        console.log(details.name + ' original size : ' + details.stats.originalSize);
+        console.log(details.name + ' minified size : ' + details.stats.minifiedSize);
     }))
     .pipe(size())
     .pipe(gulp.dest(path.dist + '/css'));

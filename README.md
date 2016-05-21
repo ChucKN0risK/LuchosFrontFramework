@@ -116,11 +116,16 @@ Don’t forget to launch your Apache server.
     }
 }
 ```  
-Further reading: [idiomatic CSS](https://github.com/necolas/idiomatic-css) by [@necolas](https://twitter.com/necolas)  
+Further reading: [idiomatic CSS](https://github.com/necolas/idiomatic-css) by [@necolas](https://twitter.com/necolas)
 
-2. Never use `#ids` in your css. [It’s bad for specificity](http://csswizardry.com/2011/09/when-using-ids-can-be-a-pain-in-the-class/).
-3. Try to separate the disposition of a component from its core style. The former will change according to the page whereas the latter should remain untouched. <br><br>
-4. Monitoring closely what’s happening in the front-end world will help you improve this framework so you can tweak it and optimize it. Here are some awesome people I encourage you to follow :     
+2. When creating/renaming classes:
+    - Don't delete old class names until it is safe to do so. Leave them in place and include new class names.
+    - Avoid content based class names, use functional class names instead.
+    - Use conventions like [BEM naming methodology](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/).
+
+3. Never use `#ids` in your css. [It’s bad for specificity](http://csswizardry.com/2011/09/when-using-ids-can-be-a-pain-in-the-class/).
+4. Try to separate the disposition of a component from its core style. The former will change according to the page whereas the latter should remain untouched. <br><br>
+5. Monitoring closely what’s happening in the front-end world will help you improve this framework so you can tweak it and optimize it. Here are some awesome people I encourage you to follow :     
 	  - [@adactio](https://twitter.com/adactio)  
 	  - [@beep](https://twitter.com/beep)  
 	  - [@brad_frost](https://twitter.com/brad_frost)  

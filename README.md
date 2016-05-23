@@ -5,10 +5,10 @@ This framework is built over several years of front-end development knowledge. I
 
 You can drop me a line on [@chuckn0risK](www.twitter.com/chuckn0risk)
 
-### Requirements
+## Requirements
 * [node.js 0.12.x/npm](http://nodejs.org/download/)
 
-### Development Features
+## Development Features
 
 * [Sanitize.css](https://github.com/jonathantneal/sanitize.css/blob/master/sanitize.scss)  
 * Responsive Typography with : [Modular Scale](https://github.com/modularscale/modularscale-sass) + [Responsive Modular Scale](https://github.com/gakimball/responsive-modular-scale)  
@@ -24,7 +24,7 @@ Just go to: `path/to/your/directory/sassdoc`
     * Sass compilation
     * SVG Spriting (generate PNG fallbacks with [svg4everybody](https://github.com/jonathantneal/svg4everybody) for accessibility)
 
-### Getting Started
+## Getting Started
 
 1. If you already have MAMP/WAMP installed go to the corresponding folder : `/www` for Windows or `/htdocs` for OSX.
 Don’t forget to launch your Apache server.
@@ -43,6 +43,31 @@ Don’t forget to launch your Apache server.
 ```
 
 5. When you're done you can compile the assets and start the server with the `gulp` command.
+
+## Sass Architecture
+
+```
+└── scss
+    ├── base
+    ├── components
+    ├── fonts
+    ├── layouts
+    ├── pages
+    ├── tools
+    ├── vendors
+    └── style.scss
+    └── styleguide.scss
+```
+
+#### Definitions
+
+- **Base**: typography, base style, [sanitize.scss](https://github.com/jonathantneal/sanitize.css/blob/master/sanitize.scss) 
+- **Components**: contains atoms and molecules (see [Atomic Design Methodology](http://atomicdesign.bradfrost.com/table-of-contents/))
+- **Fonts**: just fonts
+- **Layouts**: organisms aka wrapper templates 
+- **Pages**: individual pages
+- **Tools**: variables, sass functions, mixins, media-queries, utility-classes
+- **Vendors**: holds 3rd party code (here [animate.css](https://github.com/daneden/animate.css))
 
 ### Some pieces of advice
 

@@ -10,7 +10,7 @@ You can drop me a line on [@chuckn0risK](www.twitter.com/chuckn0risk)
 
 ## Development Features
 
-* [Sanitize.css](https://github.com/jonathantneal/sanitize.css/blob/master/sanitize.scss)  
+* Render elements consistently with [Sanitize.css](https://github.com/jonathantneal/sanitize.css/blob/master/sanitize.scss)  
 * Responsive Typography with : [Modular Scale](https://github.com/modularscale/modularscale-sass) + [Responsive Modular Scale](https://github.com/gakimball/responsive-modular-scale)  
 For further informations about Responsive Web Typography: [Pro Web Type](https://prowebtype.com)
 * [SMACSS Architecture](https://smacss.com/)

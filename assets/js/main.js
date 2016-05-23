@@ -1,9 +1,3 @@
-/**
- * Global variables
- *
- * @author Jonathan Path
- */
-
 // CREATE ELEMENT
 // var newEl = document.createElement('div');
 
@@ -21,7 +15,6 @@
 
 // function remove(el) {
 //   var toRemove = document.querySelector(el);
-
 //   toRemove.parentNode.removeChild(toRemove);
 // }
 
@@ -31,20 +24,6 @@
 // PREV/NEXT ELEMENT
 // document.querySelector('.el').previousElementSibling;
 // document.querySelector('.el').nextElementSibling;
-
-// Remove NavBar from iOS
-if( !window.location.hash && window.addEventListener ){
-    window.addEventListener( "load",function() {
-        setTimeout(function(){
-            window.scrollTo(0, 0);
-        }, 0);
-    });
-    window.addEventListener( "orientationchange",function() {
-        setTimeout(function(){
-            window.scrollTo(0, 0);
-        }, 0);
-    });
-}
 
 // $(function(){
     console.info('main.js Loaded');

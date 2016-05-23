@@ -1,7 +1,6 @@
 // ----------------------
 // == Text Wrapper
 // ----------------------
-// Apply this class on blocks containing text content
 .text-wrapper {
   margin-bottom: 2rem;
   max-width: 35rem;
@@ -10,9 +9,21 @@
     margin-top: 1rem;
   }
 
+  p + .text-subtitle {
+    margin-top: 1.5rem;
+  }
+
+  .text-subtitle + p {
+    margin-top: initial;
+  }
+
   ul {
     margin-top: 1rem;
     margin-bottom: 1rem;
+  }
+
+  .content-section__body & {
+    margin-right: auto;
   }
 }
 
@@ -21,14 +32,12 @@
   font-size: 1.2rem;
   font-weight: 400;
   color: $grey;
-  p + & {
-    margin-top: 2rem;
-  }
+
   &--medium {
     font-size: 1.5rem;
   }
+
   &--big {
     font-size: 2rem;
   }
 }
-

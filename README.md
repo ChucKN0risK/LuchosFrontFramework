@@ -10,19 +10,19 @@ You can drop me a line on [@chuckn0risK](www.twitter.com/chuckn0risk)
 
 ### Development Features
 
-- [Sanitize.css](https://github.com/jonathantneal/sanitize.css/blob/master/sanitize.scss)  
-- Responsive Typography with : [Modular Scale](https://github.com/modularscale/modularscale-sass) + [Responsive Modular Scale](https://github.com/gakimball/responsive-modular-scale)  
+* [Sanitize.css](https://github.com/jonathantneal/sanitize.css/blob/master/sanitize.scss)  
+* Responsive Typography with : [Modular Scale](https://github.com/modularscale/modularscale-sass) + [Responsive Modular Scale](https://github.com/gakimball/responsive-modular-scale)  
 For further informations about Responsive Web Typography: [Pro Web Type](https://prowebtype.com)
-- [SMACSS Architecture](https://smacss.com/)
-- [Media Queries With Superpowers](https://github.com/sass-mq/sass-mq)
-- [Automated Sass documentation](http://sassdoc.com/)
+* [SMACSS Architecture](https://smacss.com/)
+* [Media Queries With Superpowers](https://github.com/sass-mq/sass-mq)
+* [Automated Sass documentation](http://sassdoc.com/)
 Just go to: `path/to/your/directory/sassdoc`
-- Build process with Gulp which includes:
-    - Live preview sever (using [BrowserSync](http://www.browsersync.io/))
-    - Image optimization
-    - CSS Autoprefixing
-    - Sass compilation
-    - SVG Spriting
+* Build process with Gulp which includes:
+    * Live preview server (using [BrowserSync](http://www.browsersync.io/))
+    * Image optimization
+    * CSS Autoprefixing
+    * Sass compilation
+    * SVG Spriting (generate PNG fallbacks with [svg4everybody](https://github.com/jonathantneal/svg4everybody) for accessibility)
 
 ### Getting Started
 

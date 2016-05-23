@@ -135,7 +135,8 @@ gulp.task('img', function () {
   .pipe(gulp.dest(path.dist + '/img'));
 });
 
-// Sprite all the SVG
+// Sprite all the SVG inside the 'icons' folder
+// into a single SVG file in 'icons/dest'
 gulp.task('svgstore', function () {
     return gulp
       .src('assets/icons/*.svg')

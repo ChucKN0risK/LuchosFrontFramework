@@ -69,7 +69,7 @@ Don’t forget to launch your Apache server.
 - **Tools**: variables, sass functions, mixins, media-queries, utility-classes
 - **Vendors**: holds 3rd party code (here [animate.css](https://github.com/daneden/animate.css))
 
-### Some pieces of advice
+## Some pieces of advice
 
 * Take the habit of writing your css methodically as proposed by the SMACSS methodology:
 ```  

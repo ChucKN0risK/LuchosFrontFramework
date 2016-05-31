@@ -75,6 +75,9 @@
 }
 
 // This class adds a coma at every li except the ast one.
+// Note: This tip may not be ideal for accessibility, 
+// specifically screen readers. And copy/paste from the browser 
+// doesn't work with CSS-generated content. Proceed with caution.
 .u-coma-sep-items > li:not(:last-child):after {
   content: ',';
 }

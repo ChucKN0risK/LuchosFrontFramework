@@ -68,9 +68,6 @@ gulp.task('sass', function () {
     .pipe(sass({
       onError: console.error.bind(console, 'SASS error')
     }))
-    .pipe(uncss({
-        html: ['index.html']
-    }))
     .pipe(autoprefixer(autoprefixerOptions))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('./assets/css/'))

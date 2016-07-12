@@ -9,6 +9,14 @@
   align-items: center;
   width: 100%;
 
+  .btn {
+    margin-bottom: 1rem;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
   @include mq($from: tablet) {
     width: auto;
 
@@ -19,14 +27,6 @@
       &:last-child {
         margin-right: 0;
       }
-    }
-  }
-
-  .btn {
-    margin-bottom: 1rem;
-    
-    &:last-child {
-      margin-bottom: 0;
     }
   }
 }

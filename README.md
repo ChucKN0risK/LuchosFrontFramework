@@ -150,7 +150,10 @@ Further reading: [idiomatic CSS](https://github.com/necolas/idiomatic-css) by [@
 
 * Never use `#ids` in your css. [It’s bad for specificity](http://csswizardry.com/2011/09/when-using-ids-can-be-a-pain-in-the-class/).
 * Try to separate the disposition of a component from its core style. The former will change according to the page whereas the latter should remain untouched. <br><br>
-* Monitoring closely what’s happening in the front-end world will help you improve this framework so you can tweak it and optimize it. Here are some awesome people I encourage you to follow :     
+
+## Some pieces of advice
+
+Monitoring closely what’s happening in the front-end world will help you improve this framework so you can tweak it and optimize it. Here are some awesome people I encourage you to follow :     
 	* [@adactio](https://twitter.com/adactio)  
 	* [@beep](https://twitter.com/beep)  
 	* [@brad_frost](https://twitter.com/brad_frost)  

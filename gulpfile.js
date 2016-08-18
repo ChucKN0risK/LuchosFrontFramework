@@ -4,6 +4,7 @@ var gulp = require('gulp');
 // Include Plugins
 var sass             = require('gulp-sass');
 var concat           = require('gulp-concat');
+var plumber          = require('gulp-plumber');
 var sourcemaps       = require('gulp-sourcemaps');
 var browserSync      = require('browser-sync');
 var uglify           = require('gulp-uglify');
@@ -63,6 +64,12 @@ gulp.task('serve', function() {
 gulp.task('sass', function () {
   return gulp
     .src(path.sass)
+    .pipe(plumber({
+      errorHandler: function (err) {
+        console.log(err);
+        this.emit('end');
+      }
+    }))
     .pipe(sassdoc())
     .pipe(sourcemaps.init())
     .pipe(sass({
@@ -100,6 +107,22 @@ gulp.task('sass-prod', function () {
     .pipe(gulp.dest(path.dist + '/css'));
 });
 
+// Concat all the files in js directory to build/all.js 
+// and reload the page
+gulp.task('js-dev', function() {
+  return gulp
+    .src(path.js)
+    .pipe(plumber({
+      errorHandler: function (err) {
+        console.log(err);
+        this.emit('end');
+      }
+    }))
+    .pipe(concat('all.js'))
+    .pipe(gulp.dest(path.js_dist))
+    .pipe(reload({stream: true}));
+});
+
 // JS Prod Task = Minimify JS + Rename it + Move it to build/js
 // TODO : Copy vendor minified files in build/js 
 // + Concat files + Rename final file
@@ -109,16 +132,6 @@ gulp.task('js-prod', function() {
   .pipe(uglify())
   .pipe(rename({ suffix: '.min' }))
   .pipe(gulp.dest(path.dist + '/js'));
-});
-
-// Concat all the files in js directory to build/all.js 
-// and reload the page
-gulp.task('js-dev', function() {
-  return gulp
-    .src(path.js)
-    .pipe(concat('all.js'))
-    .pipe(gulp.dest(path.js_dist))
-    .pipe(reload({stream: true}));
 });
 
 // Compress Images

@@ -153,7 +153,7 @@ Further reading: [idiomatic CSS](https://github.com/necolas/idiomatic-css) by [@
 
 ## People worth to follow
 
-Monitoring closely what’s happening in the front-end world will help you improve this framework so you can tweak it and optimize it. Here are some awesome people I encourage you to follow :  <br><br>   
+Monitoring closely what’s happening in the front-end world will help you improve this framework so you can tweak it and optimize it. Here are some awesome people I encourage you to follow :  <br>   
 	* [@adactio](https://twitter.com/adactio)  
 	* [@beep](https://twitter.com/beep)  
 	* [@brad_frost](https://twitter.com/brad_frost)  

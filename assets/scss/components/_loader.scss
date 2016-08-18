@@ -1,0 +1,38 @@
+/* ===================
+   Components / Loader
+   =================== */
+
+.loader {
+  width: 130px;
+  height: 130px;
+  margin-bottom: 2rem;
+  // Since the dasharray starts at the end of the
+  // first quarter of the circle's perimeter we
+  // we rotate our loader container of -90deg to make
+  // the dasharray look like it's starting at the top center.
+  transform: rotate(-90deg);
+}
+
+svg circle { 
+  // According to the formula 2*PI*R to
+  // calculate a circle's perimeter we know 
+  // our circle's perimeter will be: 2*PI*50 = 1130.9733553
+
+  // The stroke-dasharray property defines the length
+  // of the stroke rendered part and the length of the gap
+  // which between these stroke parts. This dasharray starts
+  // by default at the beginning of the stroke. If we want
+  // to modify the starting point of this dasharray then we need
+  // to use the stroke-dashoffset property.
+  stroke-dasharray: 1130.9733553;
+  // See the stroke-dashoffset like the property allowing you
+  // to specify how much stroke you want to hide :
+  // O => all the stroke is visible
+  // 1130.9733553 => all the stroke is hidden
+  // See : https://jakearchibald.com/2013/animated-line-drawing-svg/
+  stroke-dashoffset: 0;
+  stroke-width: 6;
+  stroke: white;
+  fill: transparent;
+  transition: stroke-dashoffset .2s linear;  
+}

@@ -144,12 +144,12 @@ gulp.task('img', function () {
 // Sprite all the SVG inside the 'icons' folder
 // into a single SVG file in 'icons/dest'
 gulp.task('svgstore', function () {
-    return gulp
-      .src('assets/icons/*.svg')
-      .pipe(svgmin())
-      .pipe(svgstore())
-      .pipe(rename({baseline: 'sprite'}))
-      .pipe(gulp.dest('assets/icons/dest'));
+  return gulp
+    .src('assets/icons/*.svg')
+    .pipe(svgmin())
+    .pipe(svgstore())
+    .pipe(rename({baseline: 'sprite'}))
+    .pipe(gulp.dest('assets/icons/dest'));
 });
 
 // Generate & Inline Critical-path CSS
@@ -170,26 +170,26 @@ gulp.task('critical', function () {
 
 // Run a Google Page Speed Insight Test for mobile
 gulp.task('mobile', function () {
-    return psi(site, {
-        // key: key
-        nokey: 'true',
-        strategy: 'mobile',
-    }, function (err, data) {
-        console.log(data.score);
-        console.log(data.pageStats);
-    });
+  return psi(site, {
+    // key: key
+    nokey: 'true',
+    strategy: 'mobile',
+}, function (err, data) {
+    console.log(data.score);
+    console.log(data.pageStats);
+  });
 });
 
 // Run a Google Page Speed Insight Test for desktop
 gulp.task('desktop', function () {
-    return psi(site, {
-        nokey: 'true',
-        // key: key,
-        strategy: 'desktop',
-    }, function (err, data) {
-        console.log(data.score);
-        console.log(data.pageStats);
-    });
+  return psi(site, {
+    nokey: 'true',
+    // key: key,
+    strategy: 'desktop',
+  }, function (err, data) {
+    console.log(data.score);
+    console.log(data.pageStats);
+  });
 });
 
 gulp.task('default', ['watch'], function () {});

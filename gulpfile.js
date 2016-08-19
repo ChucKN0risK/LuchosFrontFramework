@@ -1,61 +1,81 @@
-// Require
-var gulp = require('gulp');
-
+// ---------------------------------------------------------------
 // Include Plugins
+// ---------------------------------------------------------------
+var gulp = require('gulp');
 var sass             = require('gulp-sass');
-var concat           = require('gulp-concat');
+var sassdoc          = require('sassdoc');
 var plumber          = require('gulp-plumber');
+var gutil            = require('gulp-util');
+var concat           = require('gulp-concat');
 var sourcemaps       = require('gulp-sourcemaps');
-var browserSync      = require('browser-sync');
-var uglify           = require('gulp-uglify');
+var autoprefixer     = require('gulp-autoprefixer');
 var cleanCSS         = require('gulp-clean-css');
 var stripCssComments = require('gulp-strip-css-comments');
 var uncss            = require('gulp-uncss');
+var browserSync      = require('browser-sync');
+var uglify           = require('gulp-uglify');
 var rename           = require('gulp-rename');
-var autoprefixer     = require('gulp-autoprefixer');
 var critical         = require('critical').stream;
 var imagemin         = require('gulp-imagemin');
 var svgstore         = require('gulp-svgstore');
 var svgmin           = require('gulp-svgmin');
 var rename           = require('gulp-rename');
 var size             = require('gulp-size');
-var sassdoc          = require('sassdoc');
 
+// ---------------------------------------------------------------
 // Configuration
+// ---------------------------------------------------------------
 var path = {
-  sass: './assets/scss/**/*.scss',
-  js: [
-    './assets/js/vendor/modernizr-2.8.3.min.js',
-    './assets/js/vendor/typerendering-1.1.0.min.js',
-    './assets/js/main.js'
-  ],
-  img: './assets/img/*',
-  html: './*.html',
-  dist: './assets/build/',
-  js_dist: './assets/js/build/'
+  sass: './app/assets/scss/**/*.scss',
+  css: './app/assets/css/',
+  js: './app/js/**/*.js',
+  img: './app/assets/img/*',
+  html: './app/*.html',
+  dist: './dist/assets/',
+  dist_js: './dist/assets/js/',
+  dist_css: './dist/assets/css/'
 };
+
 var autoprefixerOptions = {
   browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1']
 };
+
 var reload = browserSync.reload;
-var localConfig = require('./localconfig');
+// var localConfig = require('./localconfig');
 
-// Static Server + watching scss/html files
-gulp.task('serve', function() {
-  if(localConfig.enableBrowserSync)
-  {
-    browserSync({
-      proxy: 'http://' + localConfig.serverName + localConfig.subDirectory
-    });
-  }
+// gulp-plumber + gulp-util are used for proper error handling and formatting
+// see source : https://www.timroes.de/2015/01/06/proper-error-handling-in-gulp-js/
+var gulp_src = gulp.src;
+gulp.src = function() {
+  return gulp_src.apply(gulp, arguments)
+    .pipe(plumber(function(error) {
+      // Output an error message
+      gutil.log(gutil.colors.red('Error (' + error.plugin + '): ' + error.message));
+      // emit the end event, to properly end the task
+      this.emit('end');
+    })
+  );
+};
 
-  gulp.watch(path.sass, ['sass']);
-  gulp.watch(path.html).on('change', reload);
-  gulp.watch(path.js, ['js-dev']);
-  //.on('change', function(event) {
-  //  console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
-  //});
-});
+// ---------------------------------------------------------------
+// MAIN TASKS
+// ---------------------------------------------------------------
+
+// Static Server
+gulp.task( 'serve', function(){
+  browserSync.init( {
+    server: {
+      baseDir: 'app'
+    },
+  } )
+} );
+
+// Watch task
+gulp.task( 'watch', ['serve'], function(){
+  gulp.watch( path.sass, ['sass'] ); 
+  gulp.watch( path.html, reload );
+  gulp.watch( path.js, reload ); 
+} );
 
 // Generate SassDoc + Add Sourcemaps + Autoprefixer 
 // + cache modified files 
@@ -64,20 +84,12 @@ gulp.task('serve', function() {
 gulp.task('sass', function () {
   return gulp
     .src(path.sass)
-    .pipe(plumber({
-      errorHandler: function (err) {
-        console.log(err);
-        this.emit('end');
-      }
-    }))
     .pipe(sassdoc())
     .pipe(sourcemaps.init())
-    .pipe(sass({
-      onError: console.error.bind(console, 'SASS error')
-    }))
+    .pipe(sass())
     .pipe(autoprefixer(autoprefixerOptions))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('./assets/css/'))
+    .pipe(gulp.dest(path.css))
     .pipe(size())
     .pipe(reload({stream: true}));
 });
@@ -93,7 +105,7 @@ gulp.task('sass-prod', function () {
     }))
     .pipe(stripCssComments())
     .pipe(uncss({
-        html: ['index.html']
+        html: ['app/index.html']
     }))
     .pipe(autoprefixer(autoprefixerOptions))
     .pipe(rename({
@@ -107,22 +119,6 @@ gulp.task('sass-prod', function () {
     .pipe(gulp.dest(path.dist + '/css'));
 });
 
-// Concat all the files in js directory to build/all.js 
-// and reload the page
-gulp.task('js-dev', function() {
-  return gulp
-    .src(path.js)
-    .pipe(plumber({
-      errorHandler: function (err) {
-        console.log(err);
-        this.emit('end');
-      }
-    }))
-    .pipe(concat('all.js'))
-    .pipe(gulp.dest(path.js_dist))
-    .pipe(reload({stream: true}));
-});
-
 // JS Prod Task = Minimify JS + Rename it + Move it to build/js
 // TODO : Copy vendor minified files in build/js 
 // + Concat files + Rename final file
@@ -131,7 +127,7 @@ gulp.task('js-prod', function() {
   .src(path.js)
   .pipe(uglify())
   .pipe(rename({ suffix: '.min' }))
-  .pipe(gulp.dest(path.dist + '/js'));
+  .pipe(gulp.dest(path.dist_js));
 });
 
 // Compress Images
@@ -196,7 +192,7 @@ gulp.task('desktop', function () {
     });
 });
 
-gulp.task('default', ['sass','serve'], function () {});
+gulp.task('default', ['watch'], function () {});
 
 gulp.task('prod', ['sass-prod', 'js-prod', 'critical', 'img']);
 

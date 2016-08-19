@@ -15,6 +15,7 @@ var uncss            = require( 'gulp-uncss' );
 var browserSync      = require( 'browser-sync' );
 var uglify           = require( 'gulp-uglify' );
 var rename           = require( 'gulp-rename' );
+var del              = require( 'del' );
 var critical         = require( 'critical' ).stream;
 var imagemin         = require( 'gulp-imagemin' );
 var svgstore         = require( 'gulp-svgstore' );
@@ -26,19 +27,21 @@ var size             = require( 'gulp-size' );
 // Configuration
 // ---------------------------------------------------------------
 var path = {
-  sass: './app/assets/scss/**/*.scss',
-  css: './app/assets/css/',
-  js: './app/js/**/*.js',
-  img: './app/assets/img/*',
-  icons: './app/assets/icons/*.svg',
-  fonts: './app/assets/fonts/*.{ttf,woff,eof,svg,otf}',
-  html: './app/*.html',
-  php: './app/*.php',
-  dist: './dist/',
-  dist_js: './dist/assets/js/',
-  dist_css: './dist/assets/css/',
-  dist_fonts: './dist/assets/fonts/',
-  dist_icons: './dist/assets/icons/',
+  sass: 'app/assets/scss/**/*.scss',
+  css: 'app/assets/css/',
+  js: 'app/assets/js/*.js',
+  img: 'app/assets/img/**/*',
+  icons: 'app/assets/icons/*.svg',
+  svgSprite: 'app/assets/icons/dest',
+  fonts: 'app/assets/fonts/*.{ttf,woff,eof,svg,otf}',
+  html: 'app/*.html',
+  php: 'app/*.php',
+  dist: 'dist/',
+  dist_js: 'dist/assets/js/',
+  dist_css: 'dist/assets/css/',
+  dist_img: 'dist/assets/img/',
+  dist_fonts: 'dist/assets/fonts/',
+  dist_icons: 'dist/assets/icons/',
 };
 
 var autoprefixerOptions = {
@@ -46,7 +49,6 @@ var autoprefixerOptions = {
 };
 
 var reload = browserSync.reload;
-// var localConfig = require('./localconfig');
 
 // gulp-plumber + gulp-util are used for proper error handling and formatting
 // see source : https://www.timroes.de/2015/01/06/proper-error-handling-in-gulp-js/
@@ -63,7 +65,7 @@ gulp.src = function() {
 };
 
 // ---------------------------------------------------------------
-// MAIN TASKS
+// MICRO TASKS
 // ---------------------------------------------------------------
 
 // Static Server
@@ -110,7 +112,7 @@ gulp.task( 'sass-prod', function () {
     }) )
     .pipe( stripCssComments() )
     .pipe( uncss({
-        html: ['app/index.html']
+        html: [path.html]
     }) )
     .pipe( autoprefixer(autoprefixerOptions) )
     .pipe( rename({
@@ -121,7 +123,7 @@ gulp.task( 'sass-prod', function () {
         console.log( details.name + ' minified size : ' + details.stats.minifiedSize );
     }) )
     .pipe( size() )
-    .pipe( gulp.dest(path.dist + '/css') );
+    .pipe( gulp.dest(path.dist_css) );
 } );
 
 // JS Prod Task = Minimify JS + Rename it + Move it to build/js
@@ -143,18 +145,19 @@ gulp.task( 'img', function () {
     progressive: true,
     svgoPlugins: [{removeViewBox: false}],
   }))
-  .pipe(gulp.dest(path.dist + '/img'));
+  .pipe(gulp.dest(path.dist_img));
 } );
 
 // Sprite all the SVG inside the 'icons' folder
 // into a single SVG file in 'icons/dest'
+// Usage : <svg><use xlink:href="icons/dest/icons.svg#twitter"></use></svg>
 gulp.task( 'svgstore', function () {
   return gulp
-    .src('assets/icons/*.svg')
+    .src(path.icons)
     .pipe(svgmin())
     .pipe(svgstore())
     .pipe(rename({baseline: 'sprite'}))
-    .pipe(gulp.dest('assets/icons/dest'));
+    .pipe(gulp.dest(path.svgSprite));
 } );
 
 // Generate & Inline Critical-path CSS
@@ -174,7 +177,7 @@ gulp.task( 'critical', function () {
 } );
 
 // Run a Google Page Speed Insight Test for mobile
-gulp.task( 'mobile', function () {
+gulp.task( 'PSIMobile', function () {
   return psi(site, {
     // key: key
     nokey: 'true',
@@ -186,7 +189,7 @@ gulp.task( 'mobile', function () {
 } );
 
 // Run a Google Page Speed Insight Test for desktop
-gulp.task( 'desktop', function () {
+gulp.task( 'PSIDesktop', function () {
   return psi(site, {
     nokey: 'true',
     // key: key,
@@ -202,9 +205,17 @@ gulp.task( 'clean', function() {
   return del.sync( 'dist' );
 } );
 
+// ---------------------------------------------------------------
+// MACRO TASKS
+// ---------------------------------------------------------------
+
 gulp.task( 'default', ['watch'], function () {} );
 
-gulp.task( 'build', ['clean', 'sass-prod', 'js-prod', 'critical', 'img'], function() {
+gulp.task( 'build', ['clean', 'sass-prod', 'js-prod', 'img', 'svgstore'], function() {
+  // Copy HTML files to dist
+  gulp.src( path.html )
+    .pipe( gulp.dest( path.dist ) );
+
   // Copy PHP files to dist
   gulp.src( path.php )
     .pipe( gulp.dest( path.dist ) );
@@ -218,7 +229,11 @@ gulp.task( 'build', ['clean', 'sass-prod', 'js-prod', 'critical', 'img'], functi
     .pipe( gulp.dest( path.dist_icons ) );
     
   // Copy SVG sprite & PNG fallbacks to dist
-  gulp.src( 'app/icons/dest/*.{svg,png}' )
+  gulp.src( 'app/assets/icons/dest/*.{svg,png}' )
     .pipe( gulp.dest( path.dist_icons + 'dest/' ) );
+
+  // Copy js vendor files to dist
+  gulp.src( 'app/assets/js/vendor/*.js' )
+    .pipe( gulp.dest( 'dist/assets/js/vendor' ) );
 } );
 

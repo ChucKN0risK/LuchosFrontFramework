@@ -4,15 +4,23 @@
 
 /// Quotes layout taken from CSS Tricks :
 /// https://css-tricks.com/snippets/css/simple-and-nice-blockquote-styling/
+/// @example html - Usage
+///   <blockquote>
+///     <p>Lorem ipsum dolor sit amet</p>
+///     <cite>Author</cite>
+///   </blockquote>
 blockquote {
   quotes: "\201C" "\201D";
   p {
     display: inline;
   }
+  cite {
+    display: inline;
+  }
 }
 
 blockquote::before {
-  color: $blue;
+  color: $color1;
   content: open-quote;
   font-size: 2em;
   line-height: 0.1em;
@@ -24,7 +32,7 @@ blockquote::before {
 }
 
 blockquote::after {
-  color: $blue;
+  color: $color1;
   content: close-quote;
   font-size: 2em;
   line-height: 0.1em;

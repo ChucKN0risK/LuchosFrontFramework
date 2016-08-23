@@ -27,5 +27,4 @@
 
 // $(function(){
     console.info('main.js Loaded');
-    console.info('main.js reloadede');
 // });

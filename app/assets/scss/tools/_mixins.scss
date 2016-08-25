@@ -43,6 +43,29 @@
   justify-content: center;
 }
 
+/// Vertical Center
+///
+/// @author Louis Chenais
+///
+/// @access public
+///
+/// @example scss - Usage
+///   .foo {
+///     @include vertical-center();
+///   }
+///
+/// @example css - CSS output
+///   .foo {
+///     position: absolute;
+///     top: 50%;
+///     transform: translateY(-50%);
+///   }
+@mixin vertical-center {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 /// Vertical & Horizontal Center
 ///
 /// @author Louis Chenais

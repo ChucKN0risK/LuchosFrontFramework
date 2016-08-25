@@ -51,7 +51,7 @@
 }
 
 .footer-main__link {
-  color: $lightgrey2;
+  color: $lightgrey;
   text-decoration: none;
   font-weight: 200;
   &:hover {
@@ -300,7 +300,7 @@
 
 .social-links__item__text {
   display: none;
-  color: $lightgrey2;
+  color: $lightgrey;
   @include transition();
   font-weight: 200;
   @include mq($from: desktop) {

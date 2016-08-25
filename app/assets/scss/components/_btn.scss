@@ -2,8 +2,48 @@
    Components / Buttons
    ======================= */
 
-// This is meant to be applied on a block element which  will wrap at least two <button class="btn"> vertically on small resolutons and horizontaly on bigger resolutions.
+// This is meant to be applied on a block element 
+// which will wrap at least two <button class="btn"> 
+// vertically on small resolutons and horizontaly 
+// on bigger resolutions.
 .btn-wrapper {
+  display: block;
+  width: 100%;
+  max-width: 12.5rem;
+
+  button[class*="btn--"],
+  a[class*="btn--"] {
+    width: 100%;
+    margin-bottom: 1rem;
+    margin-right: auto;
+    margin-left: auto;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  @include mq($from: tablet) {
+    display: block;
+    width: auto;
+    max-width: none;
+    text-align: center;
+
+    button[class*="btn--"],
+    a[class*="btn--"] {
+      display: inline-block;
+      margin-right: 1.875rem;
+      margin-bottom: 0;
+      width: auto;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+html.flex .btn-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -34,6 +74,20 @@
 // If you wonder when to use %extend and when to use mixin read this : http://csswizardry.com/2014/11/when-to-use-extend-when-to-use-a-mixin/
 // This module is supposed to be applied on a <a> or a >button> element.
 %button {
+  display: block;
+  padding: 15px 20px 13px;
+  max-width: 25rem;
+  font-family: $ArquitectaBook;
+  @include rms(0);
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  @include transition;
+  backface-visibility: hidden;
+  cursor: pointer;
+}
+
+html.flex %button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -91,12 +145,12 @@
 
 %primary {
   border: none;
-  background-color: $gold;
+  background-color: $red;
   color: $black;
 
   &:hover {
     color: $black;
-    background-color: $gold-darker; //$gold-darker
+    background-color: $blue;
   }
 
   &:active {

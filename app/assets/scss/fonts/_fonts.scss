@@ -2,16 +2,5 @@
    Fonts
    ======================= */
 
-// Set your font-face here. For example :
-// @font-face {
-//   font-family: 'sporteasy';
-//   src: url('../fonts/sporteasy.eot?11474696');
-//   src: url('../fonts/sporteasy.eot?11474696#iefix') format('embedded-opentype'),
-//        url('../fonts/sporteasy.woff?11474696') format('woff'),
-//        url('../fonts/sporteasy.woff?11474696') format('woff2'),
-//        url('../fonts/sporteasy.ttf?11474696') format('truetype'),
-//        url('../fonts/sporteasy.svg?11474696#sporteasy') format('svg');
-//   font-weight: normal;
-//   font-style: normal;
-// }
-
+// Droid Serif
+// @include font-face('DroidSerifRegular', '../fonts/droidserif-regular-webfont');

@@ -61,8 +61,8 @@
     &--typography,
     &--buttons {
         @include flex-vertical-center();
-        .btn--primary,
-        .btn--secondary {
+        button[class*="btn--"],
+        a[class*="btn--"] {
             margin-bottom: 1rem;
         }
     }

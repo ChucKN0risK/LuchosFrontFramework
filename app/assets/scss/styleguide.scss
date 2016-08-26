@@ -2,20 +2,6 @@
 /// STYLEGUIDE SPECIFIC STYLE
 /// -------------------------
 
-@import "tools/variables";
-@import "tools/functions";
-@import "tools/mixins";
-@import "tools/site-settings";
-@import "tools/media-queries";
-@import "base/sanitize";
-@import "base/typography/modular-scale";
-@import "base/typography/responsive-modular-scale";
-@import "base/base";
-@import "fonts/fonts";
-
-/// ----------------------
-/// GENERAL STYLE
-/// ----------------------
 .styleguide {
     &__title {
         text-align: center;

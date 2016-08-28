@@ -51,7 +51,7 @@ Just go to: `path/to/your/directory/sassdoc`
 
 - **Base**: typography, base style, [sanitize.scss](https://github.com/jonathantneal/sanitize.css/blob/master/sanitize.scss) 
 - **Components**: contains atoms and molecules (see [Atomic Design Methodology](http://atomicdesign.bradfrost.com/table-of-contents/))
-- **Fonts**: just fonts
+- **Fonts**: just fonts files (`.eot`, `.ttf`, `.woof`, `.woff2`, `.svg` ...)
 - **Layouts**: organisms aka wrapper templates 
 - **Pages**: individual pages
 - **Tools**: variables, sass functions, mixins, media-queries, utility-classes

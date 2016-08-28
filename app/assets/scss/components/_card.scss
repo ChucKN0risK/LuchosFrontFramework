@@ -58,7 +58,7 @@
   overflow: hidden;
 
   &:hover {
-    @include box-shadow-gi;
+    @include box-shadow;
     transform: translateY(-.2rem);
   }
 
@@ -154,7 +154,7 @@
   color: $white;
   @include no-outline();
   @include icon(3rem, $blue, null, $blue);
-  @include box-shadow-gi();
+  @include box-shadow();
   @include transition();
 }
 

@@ -52,7 +52,7 @@
     content: attr(data-tooltip);
     width: 15rem;
     padding: 5px;
-    background-color: $lightblue;
+    background-color: $blue;
     @include border-radius();
     @include rms(-1);
     line-height: 1.3;
@@ -82,7 +82,7 @@
   }
   &:after {
     @include mq($from: desktop) {
-      border-top-color: $lightblue;
+      border-top-color: $blue;
       border-bottom: none;
       bottom: 100%;
       left: 5px;
@@ -101,7 +101,7 @@
   }
   &:after {
     @include mq($from: desktop) {
-      border-right-color: $lightblue;
+      border-right-color: $blue;
       border-left: none;
       top: 50%;
       left: 100%;
@@ -121,7 +121,7 @@
   }
   &:after {
     @include mq($from: desktop) {
-      border-bottom-color: $lightblue;
+      border-bottom-color: $blue;
       border-top: none;
       top: 100%;
       left: 5px;
@@ -140,7 +140,7 @@
   }
   &:after {
     @include mq($from: desktop) {
-      border-left-color: $lightblue;
+      border-left-color: $blue;
       border-right: none;
       top: 50%;
       right: 100%;

@@ -1,16 +1,37 @@
 // =======================
 // Tools / Mixins
 // =======================
+
 /// Placeholder
-@mixin placeholder($color: $clr-mixin-placeholder) {
+///
+/// @author Louis Chenais
+///
+/// @access public
+///
+/// @example scss - Usage
+///   @include placeholder() {
+///     color: blue;
+///   }
+///
+/// @example css - CSS output
+///   &::-webkit-input-placeholder {
+///     color: blue;
+///   }
+///   &:-moz-placeholder {
+///     color: blue;
+///   }
+///   &:-ms-input-placeholder {
+///     color: blue;
+///   }
+@mixin placeholder() {
   &::-webkit-input-placeholder {
-    color: $color;
+    @content;
   }
   &:-moz-placeholder {
-    color: $color;
+    @content;
   }
   &:-ms-input-placeholder {
-    color: $color;
+    @content;
   }
 }
 

@@ -19,9 +19,26 @@ select {
   border: 1px solid $lightgrey;
   @include border-radius();
   background-color: #f7f7f7;
-  @include placeholder(rgba($black, 0.4));
+  @include placeholder() {
+    color: rgba($black, 0.4);
+  }
+  will-change: border-color;
+
   &:focus {
     border-color: $blue;
+  }
+
+  &.touched:required:valid {
+      border-color: $success;
+      background-color: transparent ;
+  }
+
+  &.touched:required:invalid {
+      border-color: $error;
+
+      & + .input-error-msg {
+        display: block;
+      }
   }
 }
 
@@ -37,6 +54,7 @@ textarea {
   align-items: baseline;
   width: 100%;
   margin-bottom: 1rem;
+  font-family: $font1;
   &:last-child {
     margin-bottom: 0;
   }
@@ -72,6 +90,31 @@ textarea {
       border-color: $error;
     }
   }
+  &--arrow-down {
+    &::after {
+      content: '';
+      position: absolute;
+      display: block;
+      @include size(13px);
+      top: 50%;
+      transform: translateY(-50%);
+      right: 1rem;
+      background-image: url('../icons/arrow-down.svg');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: contain;
+    }
+  }
+}
+
+// Text displaying some requirements for 
+// the associated input
+// eg : 500 letters maximum (textarea)
+.input-upper-text {
+    font-family: $LatoRegular;
+    color: $grey;
+    @include rms(-1);
+    margin-bottom: 10px;
 }
 
 .input-error-msg {

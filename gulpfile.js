@@ -22,6 +22,7 @@ var svgstore         = require('gulp-svgstore');
 var svgmin           = require('gulp-svgmin');
 var rename           = require('gulp-rename');
 var size             = require('gulp-size');
+var dom              = require('gulp-dom');
 
 // ---------------------------------------------------------------
 // Configuration
@@ -210,8 +211,12 @@ gulp.task('clean', function() {
 gulp.task('default', ['watch'], function() {});
 
 gulp.task('build', ['clean', 'sass-prod', 'js-prod', 'img', 'svgstore'], function() {
-    // Copy HTML files to dist
+    // Remove breakpoint block in document + Copy HTML files to dist
     gulp.src(path.html)
+        .pipe(dom(function(){
+          this.querySelector('body').classList.add('build-prod');
+          return this;
+        }))
         .pipe(gulp.dest(path.dist));
 
     // Copy PHP files to dist

@@ -75,6 +75,14 @@ body {
           padding-top: calc(#{$header--main-height} + #{$nav--main-height});
       }
   }
+
+  // Remove the breakpoint block added 
+  // by the media-queries mixin
+  &.build-prod {
+    &::before {
+      display: none !important;
+    }
+  }
 }
 
 h1,

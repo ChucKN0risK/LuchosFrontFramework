@@ -1,0 +1,146 @@
+/* ==|=======================
+   Components / Item Selector
+   ========================== */
+
+// This component is the same as the one described here:
+// http://bradfrost.com/blog/post/designing-an-effective-donate-form/
+// Live version :
+// http://foodbank.bradfrostweb.com/patternlab/v9/patterns/04-pages-05-donate-00-donate/04-pages-05-donate-00-donate.html
+
+$item-padding: .5rem;
+$item-height: 3rem;
+
+.item-selector {
+    position: relative;
+    width: 100%;
+    max-width: 50rem;
+    margin-left: auto;
+    margin-right: auto;
+    
+    // Sometimes we shouldn't select by default one 
+    // of the item so we create an empty radio with
+    // with no value. In our validation process we will
+    // have to check that this input is not checked to ensure
+    // the user has checked a 'real' item.
+    input[name="reset-item"] {
+        position: absolute;
+        top: 0;
+        left: -20px;
+        opacity: 0;
+        z-index: -1;
+    }
+}
+
+.item-selector__item {
+    position: relative;
+    width: 100%;    
+
+    input[type="radio"] {
+        position: absolute;
+        top: 0;
+        right: 100%;
+        opacity: 0;
+    }
+
+    label {
+        display: block;
+        width: 100%;
+        height: $item-height;
+        padding: $item-padding;
+        border: 2px solid $blue;
+        border-radius: $item-height;
+        font-family: $RalewaySemiBold;
+        line-height: calc(#{$item-height} - (#{$item-padding} * 2));
+        color: $blue;
+        opacity: .6;
+        @include transition;
+        will-change: opacity;
+        cursor: pointer;
+    }
+
+    :checked + label {
+        opacity: 1;
+    }
+
+    @include mq($from: mobile, $until: mobileLandscape) {
+        & + & {
+            margin-top: 1rem;
+        }
+    }
+
+    @include mq($from: mobileLandscape, $until: tablet) {
+        display: inline-block;
+        float: left;
+        width: calc(50% - 0.5rem);
+        margin-top: 0;
+
+        &:nth-child(even) {
+            margin-left: 1rem;
+        }
+        @include after-first(2) {
+            margin-top: 1rem;
+        }
+    }
+
+    @include mq($from: tablet) {
+        display: inline-block;
+        float: left;
+        width: calc(25% - (3rem/4));
+
+        &:not(:last-child) {
+            margin-right: 1rem;
+        }
+
+        label {
+            height: auto;
+            text-align: center;
+            border: none;
+        }
+
+        .item-selector__item__img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        // .candidate__avatar {
+        //     margin-top: .5rem;
+        // }
+
+        .candidate__name {
+            margin-top: .5rem;
+        }
+    }
+}
+
+.item-selector__item__img {
+    display: none;
+
+    @include mq($from: tablet) {
+        border: 2px solid transparent;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            @include size(100%);
+            border: 3px solid $lightgrey;
+            border-radius: 100%;
+            opacity: 0;
+            will-change: opacity;
+            @include transition;
+        }
+
+        :checked + label & {
+            border-color: $red;
+
+            &::before {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.item-selector__item__text {
+    font-family: inherit;
+}

@@ -154,7 +154,7 @@
 
 .dropdown-content__item {
   @include flex-vertical-center();
-  border-bottom: 1px solid $lightgrey2;
+  border-bottom: 1px solid $lightgrey;
 
   &:last-child {
     border: none;

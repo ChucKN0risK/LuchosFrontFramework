@@ -351,7 +351,7 @@
   }
   .input-wrapper &:after {
     @include mq($from: mobile, $until: desktop) {
-      border-bottom-color: $lightblue;
+      border-bottom-color: $blue;
       border-top: none;
       margin-left: 10px;
       top: 50%;

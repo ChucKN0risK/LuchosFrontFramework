@@ -1,0 +1,53 @@
+/* ==|====================
+   Components / Lists
+   ======================= */
+
+// These styles must be applied on <ul> and <ol>
+// elements.
+
+// Tips : In order to remove default style on lists
+// use the class 'u-list-reset' in tools/_utility-classes.scss
+
+// Style Ordered List
+// Link : http://stackoverflow.com/questions/23610151/can-you-style-ordered-list-numbers
+
+ol {
+    counter-reset: item;
+    font-family: $RalewayRegular;
+
+    li {
+        position: relative;
+        padding-left: 2rem;
+        font-family: inherit;
+        counter-increment: item;
+
+        &:not(:last-child) {
+            margin-bottom: 1.5rem;
+        }
+
+        &::before {
+            content: counter(item)".";
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+            height: 100%;
+            @include rms(2);
+            line-height: 1;
+            font-family: $DroidRegular;
+            color: $red;
+        }
+
+        @include mq($from: tablet) {
+            @include rms(1);
+            // This is a magic number :/
+            // It vertically aligns the text with the number
+            padding-top: 8px;
+            padding-left: 3.5rem;
+
+            &:not(:last-child) {
+                margin-bottom: 2.5rem;
+            }
+        }
+    }
+}

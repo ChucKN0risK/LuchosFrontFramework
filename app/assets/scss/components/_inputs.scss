@@ -96,7 +96,7 @@ textarea {
       position: absolute;
       display: block;
       @include size(13px);
-      top: 50%;
+      top: $input-height / 2;
       transform: translateY(-50%);
       right: 1rem;
       background-image: url('../icons/arrow-down.svg');

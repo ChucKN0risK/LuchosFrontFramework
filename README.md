@@ -148,8 +148,8 @@ Here the devices we want to support are small, medium and large screens. Devices
 In a mobile-first strategy we set a default `src` for our fallback image and set the others images in the `srcset`.
 
 For each devices we chose here to generate 2 images:
-    * 1 for device with standard DPI
-    * 1 for device with higher DPI (@2x)
+- 1 for device with standard DPI
+- 1 for device with higher DPI (@2x)
 
 We end up with the following HTML : 
 ```html
@@ -172,9 +172,9 @@ Note: When adding an image to your project choose one of the best resolution pos
 The framework automates the creation of all the images of your project. You just have to choose one with a proper resolution at first. You'll find in the [gulpfile](gulpfile.js) all the tasks in charge of generating/cleaning/copying image files in our image directories: [app/assets/img-to-resize/](app/assets/img-to-resize/) and [app/assets/img/](app/assets/img/).
 
 Everytime you add/delete image from the `img-to-resize/` folder the `img/` will be recreated with the requested images.
-To sum up : 
-    *`img-to-resize/` is the directory you will deal with
-    *`img/` is the directory your HTML will deal with
+To sum up :
+- `img-to-resize/` is the directory you will deal with
+- `img/` is the directory your HTML will deal with
 
 #### What do I have to do left ?
 1. Install GraphicsMagick and ImageMagick via [Homebrew](brew.sh) : `brew install imagemagick graphicsmagick`

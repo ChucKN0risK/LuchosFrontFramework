@@ -147,9 +147,9 @@ Here the devices we want to support are small, medium and large screens. Devices
 
 In a mobile-first strategy we set a default `src` for our fallback image and set the others images in the `srcset`.
 
-For each devices we chose here to generate two images: 
-    * one for device with standard DPI
-    * one for device with higher DPI (@2x)
+For each devices we chose here to generate 2 images:
+    * 1 for device with standard DPI
+    * 1 for device with higher DPI (@2x)
 
 We end up with the following HTML : 
 ```html

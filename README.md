@@ -172,6 +172,7 @@ Note: When adding an image to your project choose one of the best resolution pos
 The framework automates the creation of all the images of your project. You just have to choose one with a proper resolution at first. You'll find in the [gulpfile](gulpfile.js) all the tasks in charge of generating/cleaning/copying image files in our image directories: [app/assets/img-to-resize/](app/assets/img-to-resize/) and [app/assets/img/](app/assets/img/).
 
 Everytime you add/delete image from the `img-to-resize/` folder the `img/` will be recreated with the requested images.
+
 To sum up :
 - `img-to-resize/` is the directory you will deal with
 - `img/` is the directory your HTML will deal with

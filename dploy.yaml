@@ -1,7 +1,7 @@
-server_name:
+preprod:
     host: ftp.myserver.com
     user: user
     pass: password
     path:
-        local: deploy/
-        remote: public_html/00000000
+        local: path/to/my/local/folder
+        remote: path/to/the/ftp/folder

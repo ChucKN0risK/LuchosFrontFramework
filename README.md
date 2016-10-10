@@ -19,7 +19,7 @@ For further informations about Responsive Web Typography: [Pro Web Type](https:/
 Just go to: `path/to/your/directory/sassdoc`
 * Build process with Gulp which includes:
     * Live preview server (using [BrowserSync](http://www.browsersync.io/))
-    * Image optimization
+    * [Responsive Image Creation](#responsive-image-workflow)
     * CSS Autoprefixing
     * Sass compilation
     * SVG Spriting (generate PNG fallbacks with [svg4everybody](https://github.com/jonathantneal/svg4everybody) for accessibility)
@@ -128,7 +128,7 @@ Just go to: `path/to/your/directory/sassdoc`
       
     }
 }
-```  
+``` 
 Further reading: [idiomatic CSS](https://github.com/necolas/idiomatic-css) by [@necolas](https://twitter.com/necolas)
 
 * When creating/renaming classes:
@@ -138,6 +138,48 @@ Further reading: [idiomatic CSS](https://github.com/necolas/idiomatic-css) by [@
 
 * Never use `#ids` in your css. [It’s bad for specificity](http://csswizardry.com/2011/09/when-using-ids-can-be-a-pain-in-the-class/).
 * Try to separate the disposition of a component from its core style. The former will change according to the page whereas the latter should remain untouched. <br><br>
+
+## Responsive Image Workflow
+
+This framework helps you adopt a responsive image workflow. The idea is to quickly generate image files in several resolutions. These resolutions should be chosen according to the devices your app will be interacted on. And remember that your [breakpoints must be determined by your content](http://bradfrost.com/blog/post/7-habits-of-highly-effective-media-queries/#content) and not by your devices.
+
+Here the devices we want to support are small, medium and large screens. Devices differ from their physical screen size (viewport) and their resolution (or, the device-pixel ratio, which is the ratio of device pixel and CSS pixel). 
+
+In a mobile-first strategy we set a default `src` for our fallback image and set the others images in the `srcset`.
+
+For each devices we chose here to generate 2 images:
+- 1 for device with standard DPI
+- 1 for device with higher DPI (@2x)
+
+We end up with the following HTML : 
+```html
+<img 
+    src="assets/img/landscape.png"
+    srcset="assets/img/landscape.png 200w,
+            assets/img/landscape@2x.png 400w,
+            assets/img/landscape_med.png 768w,
+            assets/img/landscape_med@2x.png 1536w,
+            assets/img/landscape_large.png 1024w,
+            assets/img/landscape_large@2x.png 2048w"
+    alt="A beautiful mountain landscape">
+```
+
+The image linked in the `src` attribute is the image fallback for browsers not supporting `srcset`. As we said earlier we have 2 images per devices each corresponding to a viewport and DPI. Note that the '@2x' appended in the filename is just a convention indicating high-DPI images.
+
+#### What does the framework does for me ?
+Note: When adding an image to your project choose one of the best resolution possible. Indeed, we will need to scale it down to generate the images for the other devices with a lower DPI and smaller viewport.
+
+The framework automates the creation of all the images of your project. You just have to choose one with a proper resolution at first. You'll find in the [gulpfile](gulpfile.js) all the tasks in charge of generating/cleaning/copying image files in our image directories: [app/assets/img-to-resize/](app/assets/img-to-resize/) and [app/assets/img/](app/assets/img/).
+
+Everytime you add/delete image from the `img-to-resize/` folder the `img/` will be recreated with the requested images.
+
+To sum up :
+- `img-to-resize/` is the directory you will deal with
+- `img/` is the directory your HTML will deal with
+
+#### What do I have to do left ?
+1. Install GraphicsMagick and ImageMagick via [Homebrew](brew.sh) : `brew install imagemagick graphicsmagick`
+2. Simply choose proper images to add in your `img-to-resize/` folder and use the HTML snippet previously linked.
 
 ## People worth to follow
 

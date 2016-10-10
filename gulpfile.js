@@ -23,6 +23,10 @@ var svgmin           = require('gulp-svgmin');
 var rename           = require('gulp-rename');
 var size             = require('gulp-size');
 var dom              = require('gulp-dom');
+var changed          = require('gulp-changed');
+var parallel         = require('concurrent-transform');
+var os               = require('os');
+var rename           = require('gulp-rename');
 
 // ---------------------------------------------------------------
 // Configuration
@@ -31,7 +35,10 @@ var path = {
     sass: 'app/assets/scss/**/*.scss',
     css: 'app/assets/css/',
     js: 'app/assets/js/*.js',
-    img: 'app/assets/img/**/*',
+    js_vendor: 'app/assets/js/vendor/*.js',
+    img: 'app/assets/img/**/*.{png,jpeg,jpg,gif}',
+    img_resized: 'app/assets/img/',
+    img_to_resize: 'app/assets/img-to-resize/**/*.{png,jpeg,jpg,gif}',
     icons: 'app/assets/icons/*.svg',
     svgSprite: 'app/assets/icons/dest',
     fonts: 'app/assets/fonts/*.{ttf,woff,eof,svg,otf}',
@@ -39,6 +46,7 @@ var path = {
     php: 'app/*.php',
     dist: 'dist/',
     dist_js: 'dist/assets/js/',
+    dist_js_vendor: 'dist/assets/js/vendor/',
     dist_css: 'dist/assets/css/',
     dist_img: 'dist/assets/img/',
     dist_fonts: 'dist/assets/fonts/',
@@ -77,11 +85,12 @@ gulp.task('serve', function() {
     })
 });
 
-// Watch task
-gulp.task('watch', ['serve'], function() {
+// Watch our .scss, .html, .js or img files
+gulp.task('watch', ['sass', 'serve'], function() {
     gulp.watch(path.sass, ['sass']);
     gulp.watch(path.html, reload);
     gulp.watch(path.js, reload);
+    gulp.watch(path.img_to_resize, ['img']);
 });
 
 // Generate SassDoc + Add Sourcemaps + Autoprefixer 
@@ -111,13 +120,7 @@ gulp.task('sass-prod', function() {
             onError: console.error.bind(console, 'SASS error')
         }))
         .pipe(stripCssComments())
-        .pipe(uncss({
-            html: [path.html]
-        }))
         .pipe(autoprefixer(autoprefixerOptions))
-        .pipe(rename({
-            suffix: '.min'
-        }))
         .pipe(cleanCSS({ debug: true }, function(details) {
             console.log(details.name + ' original size : ' + details.stats.originalSize);
             console.log(details.name + ' minified size : ' + details.stats.minifiedSize);
@@ -126,20 +129,87 @@ gulp.task('sass-prod', function() {
         .pipe(gulp.dest(path.dist_css));
 });
 
-// JS Prod Task = Minimify JS + Rename it + Move it to build/js
-// + Concat files + Rename final file
+// Once the sass-prod task has compiled the
+// style.scss into a style.css we remove inside
+// this file the css rules that are not applied
+// in the .html files of the app/.
+gulp.task('uncss', function() {
+    return gulp
+        .src(path.dist_css + "style.css")
+        .pipe(uncss({
+            html: [path.html]
+        }))
+        .pipe(gulp.dest(path.dist_css));
+});
+
+// JS Prod Task = Minimify JS + Move it to dist
 gulp.task('js-prod', function() {
     return gulp
         .src(path.js)
         .pipe(uglify())
-        .pipe(rename({ suffix: '.min' }))
         .pipe(gulp.dest(path.dist_js));
 });
 
+gulp.task('copy-img', function() {
+    return gulp.src(path.img_to_resize)
+        .pipe(changed(path.img_resized))
+        .pipe(gulp.dest(path.img_resized));
+});
+
+gulp.task('resize-ipad2', function() {
+    return gulp.src(path.img_to_resize)
+        .pipe(changed(path.img_resized))
+        .pipe(parallel(
+            imageResize({ width: 2048 }),
+            os.cpus().length
+        ))
+        .pipe(rename(function(path) { path.basename += "_med2"; }))
+        .pipe(gulp.dest(path.img_resized));
+});
+
+gulp.task('resize-ipad', function() {
+    return gulp.src(path.img_to_resize)
+        .pipe(changed(path.img_resized))
+        .pipe(parallel(
+            imageResize({ width: 1024 }),
+            os.cpus().length
+        ))
+        .pipe(rename(function(path) { path.basename += "_med"; }))
+        .pipe(gulp.dest(path.img_resized));
+});
+
+gulp.task('resize-mobile2', function() {
+    return gulp.src(path.img_to_resize)
+        .pipe(changed(path.img_resized))
+        .pipe(parallel(
+            imageResize({ width: 1536 }),
+            os.cpus().length
+        ))
+        .pipe(rename(function(path) { path.basename += "_small2"; }))
+        .pipe(gulp.dest(path.img_resized));
+});
+
+gulp.task('resize-mobile', function() {
+    return gulp.src(path.img_to_resize)
+        .pipe(changed(path.img_resized))
+        .pipe(parallel(
+            imageResize({ width: 768 }),
+            os.cpus().length
+        ))
+        .pipe(rename(function(path) { path.basename += "_small"; }))
+        .pipe(gulp.dest(path.img_resized));
+});
+
 // Compress Images
-gulp.task('img', function() {
+gulp.task('clean-img-resized', function() {
+    return del.sync(path.img_resized);
+});
+
+// Compress Images
+gulp.task('img', ['copy-img', 'clean-img-resized', 'resize-ipad2', 'resize-ipad', 'resize-mobile2', 'resize-mobile'], function() {
     return gulp
         .src(path.img)
+        .pipe(changed(path.dist_img))
         .pipe(imagemin({
             progressive: true,
             svgoPlugins: [{ removeViewBox: false }],
@@ -211,11 +281,15 @@ gulp.task('clean', function() {
 gulp.task('default', ['watch'], function() {});
 
 gulp.task('build', ['clean', 'sass-prod', 'js-prod', 'img', 'svgstore'], function() {
+    // Copy JS Vendor files to dist
+    gulp.src(path.js_vendor)
+        .pipe(gulp.dest(path.dist_js_vendor));
+
     // Remove breakpoint block in document + Copy HTML files to dist
     gulp.src(path.html)
         .pipe(dom(function(){
-          this.querySelector('body').classList.add('build-prod');
-          return this;
+            this.querySelector('body').classList.add('build-prod');
+            return this;
         }))
         .pipe(gulp.dest(path.dist));
 
@@ -235,7 +309,7 @@ gulp.task('build', ['clean', 'sass-prod', 'js-prod', 'img', 'svgstore'], functio
     gulp.src('app/assets/icons/dest/*.{svg,png}')
         .pipe(gulp.dest(path.dist_icons + 'dest/'));
 
-    // Copy js vendor files to dist
-    gulp.src('app/assets/js/vendor/*.js')
-        .pipe(gulp.dest('dist/assets/js/vendor'));
+    // Copy Config files to dist
+    gulp.src('app/*.{htaccess,xml,txt}', { dot: true })
+        .pipe(gulp.dest(path.dist));
 });

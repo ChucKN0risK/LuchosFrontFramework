@@ -383,27 +383,18 @@
   url('#{$public_path}images/frontend/logos/#{$name}.svg');
 }
 
-/// Given the location of a webfont, will generate a font-face declaration with multiple file formats.
+/// Given the location of a webfont, will generate a font-face declaration with multiple file formats. IE9+ Support :)
 /// @access public
 /// @param {String} $font-name - Font family name
-/// @param {String} $file-name - File name (no extension)
-/// @param {String | Number} $weight [normal] - Font weight
-/// @param {String} $style [normal] - Font style
+/// @param {String} $file-name - File name with directory
 /// @example scss - Usage
 ///   @include font-face('gotham', '/fonts/gotham');
-@mixin font-face($font-name,
-$file-name,
-$weight: normal,
-$style: normal) {
+@mixin font-face($font-name, $file-name) {
   @font-face {
     font-family: quote($font-name);
-    src: url($file-name + '.eot');
-    src: url($file-name + '.eot?#iefix') format('embedded-opentype'),
-    url($file-name + '.woff') format('woff'),
-    url($file-name + '.ttf') format('truetype'),
-    url($file-name + '.svg##{$font-name}') format('svg');
-    font-weight: $weight;
-    font-style: $style;
+    src: url($file-name + '.woff2') format('woff2'),
+         url($file-name + '.woff') format('woff'),
+         url($file-name + '.otf') format('opentype');
   }
 }
 

@@ -157,8 +157,8 @@ We end up with the following HTML :
     src="assets/img/landscape.png"
     srcset="assets/img/landscape.png 200w,
             assets/img/landscape@2x.png 400w,
-            assets/img/landscape_med.png 768w,
-            assets/img/landscape_med@2x.png 1536w,
+            assets/img/landscape_medium.png 768w,
+            assets/img/landscape_medium@2x.png 1536w,
             assets/img/landscape_large.png 1024w,
             assets/img/landscape_large@2x.png 2048w"
     alt="A beautiful mountain landscape">

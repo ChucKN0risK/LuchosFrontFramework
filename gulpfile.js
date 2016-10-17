@@ -156,47 +156,70 @@ gulp.task('copy-img', function() {
         .pipe(gulp.dest(path.img_resized));
 });
 
-gulp.task('resize-ipad2', function() {
+gulp.task('resize-small', function() {
     return gulp.src(path.img_to_resize)
         .pipe(changed(path.img_resized))
         .pipe(parallel(
-            imageResize({ width: 2048 }),
+            imageResize({ width: 200 }),
             os.cpus().length
         ))
-        .pipe(rename(function(path) { path.basename += "_med2"; }))
+        .pipe(rename(function(path) { path.basename; }))
         .pipe(gulp.dest(path.img_resized));
 });
 
-gulp.task('resize-ipad', function() {
+gulp.task('resize-small2', function() {
     return gulp.src(path.img_to_resize)
         .pipe(changed(path.img_resized))
         .pipe(parallel(
-            imageResize({ width: 1024 }),
+            imageResize({ width: 400 }),
             os.cpus().length
         ))
-        .pipe(rename(function(path) { path.basename += "_med"; }))
+        .pipe(rename(function(path) { path.basename += "@2x"; }))
         .pipe(gulp.dest(path.img_resized));
 });
 
-gulp.task('resize-mobile2', function() {
-    return gulp.src(path.img_to_resize)
-        .pipe(changed(path.img_resized))
-        .pipe(parallel(
-            imageResize({ width: 1536 }),
-            os.cpus().length
-        ))
-        .pipe(rename(function(path) { path.basename += "_small2"; }))
-        .pipe(gulp.dest(path.img_resized));
-});
-
-gulp.task('resize-mobile', function() {
+gulp.task('resize-medium', function() {
     return gulp.src(path.img_to_resize)
         .pipe(changed(path.img_resized))
         .pipe(parallel(
             imageResize({ width: 768 }),
             os.cpus().length
         ))
-        .pipe(rename(function(path) { path.basename += "_small"; }))
+        .pipe(rename(function(path) { path.basename += "_medium"; }))
+        .pipe(gulp.dest(path.img_resized));
+});
+
+gulp.task('resize-medium2', function() {
+    return gulp.src(path.img_to_resize)
+        .pipe(changed(path.img_resized))
+        .pipe(parallel(
+            imageResize({ width: 1536 }),
+            os.cpus().length
+        ))
+        .pipe(rename(function(path) { path.basename += "_medium@2x"; }))
+        .pipe(gulp.dest(path.img_resized));
+});
+
+gulp.task('resize-large', function() {
+    return gulp.src(path.img_to_resize)
+        .pipe(changed(path.img_resized))
+        .pipe(parallel(
+            imageResize({ width: 1024 }),
+            os.cpus().length
+        ))
+        .pipe(rename(function(path) { path.basename += "_large"; }))
+        .pipe(gulp.dest(path.img_resized));
+});
+
+
+gulp.task('resize-large2', function() {
+    return gulp.src(path.img_to_resize)
+        .pipe(changed(path.img_resized))
+        .pipe(parallel(
+            imageResize({ width: 2048 }),
+            os.cpus().length
+        ))
+        .pipe(rename(function(path) { path.basename += "_large@2x"; }))
         .pipe(gulp.dest(path.img_resized));
 });
 
@@ -206,7 +229,7 @@ gulp.task('clean-img-resized', function() {
 });
 
 // Compress Images
-gulp.task('img', ['copy-img', 'clean-img-resized', 'resize-ipad2', 'resize-ipad', 'resize-mobile2', 'resize-mobile'], function() {
+gulp.task('img', ['copy-img', 'clean-img-resized', 'resize-small', 'resize-small2', 'resize-medium', 'resize-medium2', 'resize-large', 'resize-large2'], function() {
     return gulp
         .src(path.img)
         .pipe(changed(path.dist_img))

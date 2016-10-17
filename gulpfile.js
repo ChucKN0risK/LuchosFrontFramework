@@ -19,6 +19,7 @@ var del              = require('del');
 var critical         = require('critical').stream;
 var imagemin         = require('gulp-imagemin');
 var svgstore         = require('gulp-svgstore');
+var svg2png          = require('gulp-svg2png');
 var svgmin           = require('gulp-svgmin');
 var rename           = require('gulp-rename');
 var size             = require('gulp-size');
@@ -250,6 +251,18 @@ gulp.task('svgstore', function() {
         .pipe(svgstore())
         .pipe(rename({ baseline: 'sprite' }))
         .pipe(gulp.dest(path.svgSprite));
+});
+
+// Generates PNG fallback for each SVG files in /icons directory
+// and puts them in icons/dest directory. This dest allows
+// svg4everybody to use these fallbacks.
+gulp.task('svg2png', function () {
+    // Define source files
+    return gulp.src( path.icons )
+        // Run the svg2png npm module on these source files
+        .pipe( svg2png() )
+        // Define where the response is distributed to
+        .pipe( gulp.dest( path.svgSprite ) )
 });
 
 // Generate & Inline Critical-path CSS

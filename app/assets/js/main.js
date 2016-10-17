@@ -25,6 +25,6 @@
 // document.querySelector('.el').previousElementSibling;
 // document.querySelector('.el').nextElementSibling;
 
-// $(function(){
+$(function(){
     console.info('main.js Loaded');
-// });
+});

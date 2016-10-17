@@ -27,6 +27,3 @@ sassdoc/
 
 # log
 npm-debug.log
-
-# Local Development Configuration
-localconfig.json

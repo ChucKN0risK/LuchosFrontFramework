@@ -13,40 +13,6 @@
   }
 }
 
-.media--icon {
-  @include mq($from: mobile, $until: wide) {
-    flex-direction: row;
-  }
-  @include mq($from: desktop) {
-    flex-direction: column;
-    & .media__title {
-      flex-grow: 1;
-      text-align: center;
-    }
-  }
-  & > .media__figure {
-    margin-bottom: 0;
-    @include mq($from: mobile, $until: desktop) {
-      margin-right: $padding-media;
-    }
-    @include mq($from: mobile, $until: tablet) {
-      font-size: ms(2);
-    }
-    @include mq($from: tablet, $until: desktop) {
-      font-size: ms(3);
-    }
-    @include mq($from: desktop) {
-      align-self: center;
-      font-size: ms(4);
-    }
-  }
-  & > .media__body {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-  }
-}
-
 .media--photo > .media__figure {
   @include mq($from: mobile, $until: desktop) {
     margin-right: 0;
@@ -71,6 +37,8 @@
 }
 
 .media__body {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
   flex: 1;
   &,
   &:last-child {
@@ -91,75 +59,5 @@
 
 .media__text {
   margin-bottom: .5rem;
-}
-
-.media--press {
-  align-items: center;
-  text-decoration: none;
-  .media__figure {
-    display: flex;
-    width: 13rem;
-    height: 3rem;
-    // @include mq($from: mobile, $until: tablet) {
-    //   width: 16rem;
-    // }
-    // @include mq($from: tablet, $until: desktop) {
-    //   width: 20rem;
-    // }
-    img {
-      height: 100%;
-      // width: auto;
-      margin: auto;
-    }
-    .logo--figaro {
-      width: auto;
-    }
-  }
-  // Attention Bidouillage !!
-  .logo-sportnumericus {
-    display: flex;
-    justify-content: center;
-    height: 4rem;
-    img {
-      height: 100%;
-      width: auto;
-    }
-    @include mq($from: desktop) {
-      height: 6rem;
-    }
-  }
-  .media__body {
-    text-align: center;
-  }
-}
-
-.media--testimony {
-  align-items: center;
-  .media__body {
-    text-align: center;
-  }
-  .user__name {
-    @include rms(1);
-    font-weight: 600;
-    color: $color1;
-  }
-  .user__team {
-    font-weight: 200;
-    opacity: .8;
-    color: tint($blue, 20%);
-  }
-  .user__testimony {
-    margin-top: 1rem;
-    font-weight: 200;
-  }
-  @include mq($from: desktop) {
-    align-items: flex-start;
-    .media__figure {
-      margin-right: 1rem;
-    }
-    .media__body {
-      text-align: left;
-    }
-  }
 }
 

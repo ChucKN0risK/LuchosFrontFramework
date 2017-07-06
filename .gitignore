@@ -1,5 +1,5 @@
 # OS generated files #
-######################
+#######################################
 .DS_Store
 .DS_Store?
 ._*
@@ -11,6 +11,7 @@ Thumbs.db
 .LSOverride
 
 # Files that might appear in the root of a volume
+#######################################
 .DocumentRevisions-V100
 .fseventsd
 .Spotlight-V100
@@ -19,11 +20,16 @@ Thumbs.db
 .VolumeIcon.icns
 
 # Dependency directories
-######################
+#######################################
 node_modules/
 .tmp
 .sass-cache
 sassdoc/
 
 # log
+#######################################
 npm-debug.log
+
+# Useless files & Folders
+#######################################
+dist/

@@ -70,10 +70,10 @@ Add a specified icon in yout HTML like so:
 
 If you're not comfortable with SVG sprite [Chris Coyier recommands a simpler technique](https://css-tricks.com/pretty-good-svg-icon-system/).
 
-To generate PNG fallback for browsers not supporting '<use>' run `gulp svg2png`. This task generates PNG fallback for each SVG files in `/icons` directory and puts them in `icons/dest` directory. These fallbacks will then be used by [svg4everybody](https://github.com/jonathantneal/svg4everybody).
+To generate PNG fallback for browsers not supporting `<use>`: run `gulp svg2png`. This task generates PNG fallback for each SVG files in `/icons` directory and puts them in `icons/dest` directory. These fallbacks will then be used by [svg4everybody](https://github.com/jonathantneal/svg4everybody).
 
 #### Build the project
-To build the project run 'gulp build'.
+To build the project run `gulp build`.
 
 ## Some pieces of advice
 

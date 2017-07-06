@@ -1,0 +1,19 @@
+{
+  "extends": "stylelint-config-standard",
+  "plugins": [
+    "stylelint-no-unsupported-browser-features"
+  ],
+  "rules": {
+    "at-rule-no-vendor-prefix": "true",
+    "media-feature-name-no-vendor-prefix": "true",
+    "property-no-vendor-prefix": "true",
+    "selector-no-vendor-prefix": "true",
+    "value-no-vendor-prefix": "true",
+    "declaration-empty-line-before": "false",
+    "at-rule-empty-line-before": "false",
+    "plugin/no-unsupported-browser-features": [true, {
+      "browsers": ['> 1%', 'Last 2 versions'],
+      "ignore": ['rem']
+    }]
+  }
+}

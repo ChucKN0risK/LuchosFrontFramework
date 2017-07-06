@@ -56,7 +56,7 @@ Just go to: `path/to/your/directory/sassdoc`
 - **Tools**: variables, sass functions, mixins, media-queries, utility-classes
 - **Vendors**: holds 3rd party code
 
-## Things you may want to to
+## Things you may want to do
 
 #### Use the SVG icon system
 Just add your SVG files in `assets/icons` and run `gulp svgstore`.

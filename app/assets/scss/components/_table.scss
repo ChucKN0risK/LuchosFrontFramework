@@ -12,7 +12,7 @@ td {
 }
 
 th {
-  font-family: $font1;
+  font-family: var(--color-primary);
   font-weight: 700;
 }
 
@@ -21,7 +21,7 @@ thead tr {
 }
 
 tbody {
-  font-family: $font1;
+  font-family: var(--color-primary);
 }
 
 
@@ -39,7 +39,7 @@ td {
 }
 
 th {
-  font-family: $font1;
+  font-family: var(--color-primary);
   font-weight: 700;
 }
 
@@ -48,7 +48,7 @@ thead tr {
 }
 
 tbody {
-  font-family: $font1;
+  font-family: var(--color-primary);
 }
 
 
@@ -103,7 +103,7 @@ tbody {
 .rtable th {
   @include rms(0);
   text-align: left;
-  font-family: $font1;
+  font-family: var(--color-primary);
 }
 
 .rtable th,

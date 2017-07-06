@@ -1,0 +1,108 @@
+/* ==|====================
+   Components / Separator
+   ======================= */
+
+.price-table-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  font-family: var(--font-primary);
+
+  @include mq($from: tablet) {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.price-table {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 25rem;
+  min-width: 19rem;
+  border-radius: var(--border-radius);
+  box-shadow: 0 5px 15px 0 rgba(0,0,0,0.05), 0 1px 2px 0 rgba(0,0,0,0.1);
+  color: var(--color-grey-50);
+  overflow: hidden;
+
+  @include mq($from: tablet) {
+    flex-grow: 1;
+  }
+
+  & + & {
+    @include mq($from: mobile, $until: tablet) {
+      margin-top: 2rem;
+    }
+    @include mq($from: tablet) {
+      margin-left: 2rem;
+    }
+  }
+}
+
+.price-table__row {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: var(--base-padding);
+  text-align: center;
+
+  &:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 1px;
+    width: calc(100% - (var(--base-padding) * 2));
+    background-color: var(--color-lightgrey-20);
+  }
+
+  @include mq($from: desktop) {
+    --base-padding: 1.5rem;
+  }
+}
+
+.price-table__row.price-table__header {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  color: var(--color-black);
+  font-size: 25px;
+  line-height: 1.32;
+
+  &::after {
+    width: 100%;
+    background-color: var(--color-grey-20);
+  }
+}
+
+.price-table__row.price-table__header--highlighted {
+  background-color: var(--color-purple-600);
+
+  &,
+  .price-table__row__variation,
+  .price-table__row__price-details {
+    color: var(--color-white);
+  }
+}
+
+.price-table__row__price-details {
+  text-transform: uppercase;
+  @include rms(-2);
+  color: var(--color-grey-30);
+}
+
+.price-table__header--highlighted {
+  
+}
+
+.price-table__row__text {
+  text-align: left;
+}
+
+.price-table__row__variation {
+  display: flex;
+  align-items: center;
+  color: var(--color-black);
+}
+

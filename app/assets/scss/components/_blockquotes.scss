@@ -9,36 +9,25 @@
 ///     <p>Lorem ipsum dolor sit amet</p>
 ///     <cite>Author</cite>
 ///   </blockquote>
-blockquote {
-  quotes: "\201C" "\201D";
-  p {
-    display: inline;
-  }
-  cite {
-    display: inline;
-  }
+.c-testimonial {
+  position: relative;
+  padding-left: 1rem;
+  max-width: 35rem;
+  @include rms(1);
+  text-align: center;
 }
 
-blockquote::before {
-  color: $color1;
-  content: open-quote;
-  font-size: 2em;
-  line-height: 0.1em;
-  margin-right: 0.5rem;
-  vertical-align: -0.4em;
-  @include mq($from: desktop) {
-    font-size: 3em;
-  }
+.c-testimonial__text {
+  display: inline;
 }
 
-blockquote::after {
-  color: $color1;
-  content: close-quote;
-  font-size: 2em;
-  line-height: 0.1em;
-  margin-left: 0.5rem;
-  vertical-align: -0.5em;
-  @include mq($from: desktop) {
-    font-size: 3em;
-  }
+.c-testimonial__author {
+  margin-top: 1rem;
+  margin-bottom: 0;
+  color: var(--color-black);
 }
+
+.c-testimonial__role {
+  font-family: var(--RobotoLight);
+}
+

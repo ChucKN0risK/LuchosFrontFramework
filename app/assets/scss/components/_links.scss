@@ -2,51 +2,24 @@
    Components / Links
    ======================= */
 
-%link {
-  color: $blue;
-  @include transition();
+.a-link {
+  text-decoration: none;
+  @include transition;
+}
+
+.a-link--primary {
+  color: var(--color-primary);
+  will-change: color;
+
   &:hover {
-    text-decoration: none;
-    color: shade($blue, 20%);
+    color: var(--color-purple-300);
   }
 }
 
-a {
-  @extend %link;
-  text-decoration: underline;
-}
+.a-link--secondary {
+  color: var(--color-grey-40);
 
-.link--icon {
-  @extend %link;
-  display: flex;
-  justify-content: flex-start;
-  text-decoration: none;
-  // & > i {
-  //   margin-right: .3rem;
-  // }
-  // @include mq($from: mobile) {
-  //   & > i {
-  //     @include size(100%);
-  //   }
-  // }
-  // @include mq($from: tablet) {
-  //   & > i {
-  //   }
-  // }
+  &:hover {
+    color: var(--color-purple-600);
+  }
 }
-
-.link--icon-rtl {
-  @extend %link;
-  display: flex;
-  text-decoration: none;
-  // & > i {
-  //     @include transition();
-  //     margin-left: .3rem;
-  // }
-  // &:hover {
-  //     & > i {
-  //         transform: translateX(.3rem);
-  //     }
-  // }
-}
-

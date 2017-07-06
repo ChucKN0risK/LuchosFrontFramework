@@ -15,12 +15,12 @@
   }
 
   @include mq($from: desktop, $until: wide) {
-    max-width: $max-content-width;
+    max-width: var(--max-content-width)
   }
 
   @include mq($from: wide) {
-    width: $max-content-width;
-    max-width: $max-content-width;
+    width: var(--max-content-width)
+    max-width: var(--max-content-width)
   }
 
   .card {
@@ -53,7 +53,7 @@
   width: 100%;
   height: 25rem;
   border: 1px solid $grey;
-  @include border-radius();
+  border-radius: var(--border-radius);
   @include transition;
   overflow: hidden;
 

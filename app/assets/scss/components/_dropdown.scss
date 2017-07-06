@@ -55,7 +55,7 @@
 .dropdown__toggle-text {
   padding: .3rem;
   border: 1px solid $white;
-  @include border-radius();
+  border-radius: var(--border-radius);
   margin-left: auto;
   text-transform: uppercase;
 }
@@ -68,7 +68,7 @@
 
 .dropdown-content {
   position: absolute;
-  background-color: $color1;
+  background-color: var(--color-primary);
   color: $white;
   list-style: none;
   opacity: 0;

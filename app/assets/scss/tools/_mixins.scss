@@ -380,19 +380,15 @@
 @mixin vector-bg-with-fallback($name) {
   background-image: url('#{$public_path}images/frontend/logos/#{$name}.png');
   background-image: none,
-                    url('#{$public_path}images/frontend/logos/#{$name}.svg');
+  url('#{$public_path}images/frontend/logos/#{$name}.svg');
 }
 
-/// Given the location of a webfont, will generate a font-face declaration with multiple file formats.
-/// Coverage for Internet Explorer 9 and above and all modern browsers on both desktop and mobile.
+/// Given the location of a webfont, will generate a font-face declaration with multiple file formats. IE9+ Support :)
 /// @access public
 /// @param {String} $font-name - Font family name
-/// @param {String} $file-name - File name (no extension)
-/// @param {String | Number} $weight [normal] - Font weight
-/// @param {String} $style [normal] - Font style
+/// @param {String} $file-name - File name with directory
 /// @example scss - Usage
 ///   @include font-face('gotham', '/fonts/gotham');
-/// @link http://stateofwebtype.com/
 @mixin font-face($font-name, $file-name) {
   @font-face {
     font-family: quote($font-name);

@@ -2,239 +2,40 @@
    Components / Buttons
    ======================= */
 
-// This is meant to be applied on a block element 
-// which will wrap at least two <button class="btn"> 
-// vertically on small resolutons and horizontaly 
-// on bigger resolutions.
-.btn-wrapper {
-  display: block;
-  width: 100%;
-  max-width: 12.5rem;
+.m-btn {
+  --button-height: 3rem;
 
-  button[class*="btn--"],
-  a[class*="btn--"] {
-    width: 100%;
-    margin-bottom: 1rem;
-    margin-right: auto;
-    margin-left: auto;
-    
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-
-  @include mq($from: tablet) {
-    display: block;
-    width: auto;
-    max-width: none;
-    text-align: center;
-
-    button[class*="btn--"],
-    a[class*="btn--"] {
-      display: inline-block;
-      margin-right: 1.875rem;
-      margin-bottom: 0;
-      width: auto;
-
-      &:last-child {
-        margin-right: 0;
-      }
-    }
-  }
-}
-
-html.flex .btn-wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-
-  .btn {
-    margin-bottom: 1rem;
-    
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-
-  @include mq($from: tablet) {
-    width: auto;
-
-    .btn {
-      margin-right: 1rem;
-      margin-bottom: 0;
-
-      &:last-child {
-        margin-right: 0;
-      }
-    }
-  }
-}
-
-// If you wonder when to use %extend and when to use mixin read this : http://csswizardry.com/2014/11/when-to-use-extend-when-to-use-a-mixin/
-// This module is supposed to be applied on a <a> or a >button> element.
-%button {
-  display: block;
-  padding: 15px 20px 13px;
-  max-width: 25rem;
-  font-family: $font1;
-  @include rms(0);
-  text-align: center;
-  text-decoration: none;
-  text-transform: uppercase;
-  @include transition;
-  backface-visibility: hidden;
-  cursor: pointer;
-}
-
-html.flex %button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: .3rem;
-  padding-bottom: .3rem;
-  max-width: 25rem;
-  font-size: ms(0);
-  text-align: center;
-  text-decoration: none;
-  @include border-radius;
-  @include transition;
-  backface-visibility: hidden;
-  border: 1px solid transparent;
-  cursor: pointer;
-}
-
-%tiny {
-  padding-right: .3rem;
-  padding-left: .3rem;
-  font-size: ms(-1);
-}
-
-%small {
-  padding-right: .5rem;
-  padding-left: .5rem;
-}
-
-%medium {
-  padding: .5rem .8rem;
-}
-
-%big {
-  padding: 1rem 1.2rem;
-}
-
-%large {
-  padding: 1rem 1.2rem;
-  min-width: 15rem;
-}
-
-%secondary {
-  border-color: $blue;
-  color: $blue;
-
-  &:hover {
-    background-color: $blue;
-    border-color: $blue;
-    color: $white;
-  }
-
-  &:active {
-    transform: scale(1.1);
-  }
-}
-
-%primary {
+  display: inline-block;
+  height: var(--button-height);
+  padding-right: 1.25rem;
+  padding-left: 1.25rem;
   border: none;
-  background-color: $red;
-  color: $black;
+  border-radius: var(--border-radius);
+  color: var(--color-primary);
+  text-decoration: none;
+  font-size: 14px;
+  line-height: var(--button-height);
+  font-family: var(--RobotoMedium);
+  font-weight: 500;
+  @include transition;
+  will-change: background-color;
 
   &:hover {
-    color: $black;
-    background-color: $blue;
-  }
-
-  &:active {
-    color: $white;
+    color: var(--color-white);
+    background-color: var(--color-primary);
   }
 }
 
-.btn {
-  @extend %button;
+.m-btn--primary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  box-shadow: 0 4px 6px 0 rgba(67, 0, 179, .10), 0 1px 3px 0 rgba(67, 0, 179, 0.16);
+  // box-shadow: 0 1px 8px 0 rgba(67,0,179,0.08), 0 5px 25px 0 rgba(67,0,179,0.1);
 
-  &--secondary {
-    @extend %button;
-    @extend %secondary;
-  }
-
-  &--primary {
-    @extend %button;
-    @extend %primary;
-  }
-
-  &--tiny {
-    @extend %tiny;
-  }
-
-  &--small {
-    @extend %small;
-  }
-
-  &--medium {
-    @extend %medium;
-  }
-
-  &--big {
-    @extend %big;
-  }
-
-  &--large {
-    @extend %large;
-  }
-}
-
-.btn--close {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: auto;
-  @include size(4rem);
-  font-size: ms(2);
-  cursor: pointer;
-}
-
-.btn--icon {
-  justify-content: center;
-
-  .btn__text {
-    margin-left: .3rem;
-  }
-}
-
-.btn--icon-rtl {
-  justify-content: center;
-
-  .btn__text {
-    margin-right: .3rem;
-  }
-}
-
-@each $social-network,
-$social-color in $social-colors {
-  .icon-#{$social-network}-with-circle {
-    color: $social-color;
-  }
-  .btn--#{$social-network} {
-    background-color: $social-color;
-    color: $white;
-    font-weight: 200;
-  }
-}
-
-.btn--facebook {
-  @include reset-link($white);
-  height: $input-height;
-  @include mq($from: desktop) {
-    padding-right: 1rem;
-    padding-left: 1rem;
+  &:hover {
+    background-color: var(--color-purple-500);
+    // box-shadow: 0 1px 8px 0 rgba(0,0,0, 0.08), 0 5px 25px 0 rgba(0,0,0, 0.1);
+    box-shadow: 0 7px 14px 0 rgba(67, 0, 179, .10), 0 3px 6px 0 rgba(67, 0, 179, .08);
+    transform: translateY(-1px);
   }
 }

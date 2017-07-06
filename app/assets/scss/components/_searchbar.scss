@@ -4,7 +4,7 @@
 
 .searchbar {
   display: flex;
-  @include border-radius();
+  border-radius: var(--border-radius);
   width: 100%;
   overflow: hidden;
   @include mq($from: desktop) {

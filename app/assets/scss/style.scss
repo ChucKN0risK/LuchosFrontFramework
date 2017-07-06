@@ -23,35 +23,37 @@
 @import "base/base";
 
 // Vendors
-@import "vendors/animate";
+// @import "vendors/animate";
 
 // Fonts
 @import "fonts/fonts";
 
 // Components
-@import "components/text-wrapper";
+// @import "components/text-wrapper";
 @import "components/btn";
 @import "components/icons";
 @import "components/media";
-@import "components/avatar";
-@import "components/dropdown";
+// @import "components/dropdown";
 @import "components/navigation";
-@import "components/alert";
-@import "components/tooltip";
-@import "components/blockquotes";
+// @import "components/tooltip";
+// @import "components/blockquotes";
 @import "components/links";
-@import "components/separator";
-@import "components/store-links";
+@import "components/list-pros";
+@import "components/price-table-list";
+@import "components/tag";
+@import "components/o-social-links";
+// @import "components/store-links";
 @import "components/logo";
-@import "components/card";
+// @import "components/card";
 @import "components/inputs";
-@import "components/table";
-@import "components/pagination";
-@import "components/searchbar";
-@import "components/scroll-indicator";
+// @import "components/table";
+// @import "components/searchbar";
+// @import "components/scroll-indicator";
 
 // Layout
+@import "layouts/content-sections";
 @import "layouts/header";
+@import "layouts/hero-sections";
 @import "layouts/media-wrappers";
 @import "layouts/footer";
 @import "layouts/forms";

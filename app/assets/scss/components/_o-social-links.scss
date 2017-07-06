@@ -1,0 +1,30 @@
+/* ==|======================
+   Components / Social Links
+   ========================= */
+
+.o-social-links-list {
+  display: flex;
+  list-style: none;
+}
+
+.o-social-links__item {
+  & + & {
+    margin-left: var(--base-padding);
+  }
+}
+
+.o-social-links__link {
+  display: flex;
+  @include size(1.5rem);
+
+  svg {
+    fill: currentColor;
+    @include transition;
+  }
+
+  &:hover {
+    svg {
+      fill: var(--color-primary);
+    }    
+  }
+}

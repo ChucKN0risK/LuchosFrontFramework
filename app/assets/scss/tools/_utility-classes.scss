@@ -11,6 +11,10 @@
   overflow: hidden !important;
 }
 
+.u-max-content-width {
+  max-width: var(--max-content-width) !important;
+}
+
 .u-hide {
   display: none !important;
   visibility: hidden !important;
@@ -45,26 +49,39 @@
 }
 
 .u-text-red {
-  color: $red !important;
+  color: var(--color-red) !important;
 }
 
 .u-text-blue {
-  color: $blue !important;
+  color: var(--color-blue) !important;
 }
 
 .u-text-yellow {
-  color: $yellow !important;
+  color: var(--color-yellow) !important;
 }
 
 .u-text-green {
-  color: $green !important;
+  color: var(--color-green) !important;
 }
 
 .u-text-orange {
-  color: $orange !important;
+  color: var(--color-orange) !important;
 }
 
-// This class aims to show list bullets wo that list doesn't touch the edge of the screen
+.u-text-purple {
+  color: var(--color-purple-600) !important;
+}
+
+.u-text-grey {
+  color: var(--color-grey-30) !important;
+}
+
+.u-text-black {
+  color: var(--color-black) !important;
+}
+
+// This class aims to show list bullets so
+// that list doesn't touch the edge of the screen
 .u-list-default {
   margin-left: 1rem !important;
 }
@@ -109,4 +126,17 @@
   right: 0;
   bottom: 0;
   left: 0;
+}
+
+// Visually hide content, leaving it accessible to screenreaders and ATs.
+// http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+.u-visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
 }

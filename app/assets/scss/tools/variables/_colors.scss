@@ -3,32 +3,50 @@
 // ----------------------
 
 // Graphic chart
-$red: #fa4a4a;
-$blue: #202f55;
-$grey: #909090;
-$lightgrey: #d0e9f3;
-$white: #fff;
+:root {
+  --color-white: #fff;
+  --color-black: #000;
+  --color-red: #fa4a4a;
+  --color-blue: #202f55;
+  --color-grey-10: rgba(0,0,0, .05);
+  --color-grey-20: rgba(0,0,0, .1);
+  --color-grey-30: rgba(0,0,0, .27);
+  --color-grey-40: rgba(0,0,0, .4);
+  --color-grey-50: rgba(0,0,0, .57);
+  --color-lightgrey-10: #f9f9f9;
+  --color-lightgrey-20: #e5e7ea;
+  --color-orange: #d35400;
+  --color-green: #27ae60;
+  --color-purple-300: #bfA9f2;
+  --color-purple-400: #9474dd;
+  --color-purple-500: #7A57d1;
+  --color-purple-600: #6032c3;
+  --color-purple-700: #4300b3;
+  --color-yellow: #f1c40f;
 
-$orange: #d35400;
-$green: #27ae60;
-$purple: #9b59b6;
-$yellow: #f1c40f;
-$black: #303030;
-$color1: $blue;
-$error: $red;
-$success: $green;
-// Using Sass Maps as explained here : https://jonsuh.com/blog/sass-maps/
-$social-colors: (facebook: #3b5998, twitter: #43bfe1, dribbble: #ea4c89, github: #171515, google: #db4437, youtube: #c4302b, linkedin: #3272bd);
-.social-link {
-  color: $white;
+  --color-primary: var(--color-purple-600);
+  --color-error: var(--color-red);
+  --color-success: var(--color-green);
 }
+
+
+
+// Using Sass Maps as explained here : https://jonsuh.com/blog/sass-maps/
+$social-colors: (
+  facebook: #3b5998,
+  twitter: #43bfe1,
+  dribbble: #ea4c89,
+  github: #171515,
+  google: #db4437,
+  youtube: #c4302b,
+  linkedin: #3272bd
+);
 
 @each $social-network,
 $social-color in $social-colors {
-  .icon-#{$social-network}-with-circle {
+  .icon--#{$social-network} {
     color: $social-color;
   }
 }
-
-// Example : <a class="social-link social-link--dribbble">Dribbble</a>
+// Example : <a class="icon icon--dribbble">Dribbble</a>
 

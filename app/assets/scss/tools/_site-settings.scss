@@ -8,20 +8,16 @@
 $audio-canvas-video: false; // True | False
 
 // Fonts
-$LatoBold: 'LatoBold', Arial, sans-serif;
-$DroidRegular: 'DroidSerifRegular', Times, sans-serif;
-$RalewayRegular: 'RalewayRegular', Verdana, sans-serif;
-$RalewayMedium: 'RalewayMedium', Verdana, sans-serif;
-$RalewaySemiBold: 'RalewaySemiBold', Verdana, sans-serif;
+:root {
+  --RobotoRegular: 'RobotoRegular', sans-serif;
+  --RobotoMedium: 'RobotoMedium', sans-serif;
+  --RobotoLight: 'RobotoLight', sans-serif;
 
-$font1: $RalewayRegular;
+  --font-primary: var(--RobotoRegular);
+}
 
 // = General Styles
 // -----------------------------
-@mixin border-radius {
-  border-radius: $border-radius;
-}
-
 @mixin transition {
   transition: all cubic-bezier(0.22, 0.61, 0.36, 1) .3s;
 }

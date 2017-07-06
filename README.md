@@ -54,7 +54,21 @@ Just go to: `path/to/your/directory/sassdoc`
 - **Layouts**: organisms aka wrapper templates 
 - **Pages**: individual pages
 - **Tools**: variables, sass functions, mixins, media-queries, utility-classes
-- **Vendors**: holds 3rd party code (here [animate.css](https://github.com/daneden/animate.css))
+- **Vendors**: holds 3rd party code
+
+#### Things you may want to to
+
+*Use the SVG icon system*
+Just add your SVG files in `assets/icons` and run `gulp svgstore`.
+This task takes all the icons situated in `assets/icons` and generates a sprite in `assets/icons/dest/icons.svg`.
+Add a specified icon in yout HTML like so:
+```
+<svg>
+    <use xlink:href="icons/dest/icons.svg#twitter"></use>
+</svg>
+```
+
+If you're not comfortable with SVG sprite [Chris Coyier recommands a simpler technique](https://css-tricks.com/pretty-good-svg-icon-system/).
 
 ## Some pieces of advice
 

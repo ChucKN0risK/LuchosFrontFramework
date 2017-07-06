@@ -6,8 +6,10 @@
     "Module",
     "SMACSS",
     "ES6",
-    "Hetic"
   ],
+  "scripts": {
+    "dploy": "gulp build; dploy prod"
+  },
   "main": "README.md",
   "author": {
     "name": "Louis Chenais",
@@ -21,7 +23,6 @@
   "license": "MIT",
   "devDependencies": {
     "browser-sync": "^2.12.3",
-    "concurrent-transform": "^1.0.0",
     "critical": "^0.8.0",
     "del": "^2.2.2",
     "gulp": "^3.9.1",

@@ -9,49 +9,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Lucho's Frontend Framework</title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <link rel="stylesheet" href="assets/css/style.css">
-    <!-- https://github.com/typekit/webfontloader -->
-    <script type="text/javascript">
-      WebFontConfig = {
-        google: { families: [ 'Raleway:400,700,400italic,700italic:latin' ] }
-      };
-      (function() {
-        var wf = document.createElement('script');
-        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-          '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-        wf.type = 'text/javascript';
-        wf.async = 'true';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(wf, s);
-      })(); </script>
-    <noscript>
-      <link href='http://fonts.googleapis.com/css?family=Raleway:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    </noscript>
-<!--     <style>
-      @font-face {
-        font-family: 'Lora';
-          src: url('lora-regular.woff2') format('woff2'),
-               url('lora-regular.woff') format('woff'),
-               url('lora-regular.ttf') format('truetype');
-        font-weight: 400;
-        font-style: normal;
-        }
-      @font-face {
-        font-family: 'Lora';
-          src: url('lora-italic.woff2') format('woff2'),
-               url('lora-italic.woff') format('woff'),
-               url('lora-italic.ttf') format('truetype');
-        font-weight: 400;
-        font-style: italic;
-        }
-        body {
-            font-family: serif;
-        }
-        .fonts-loaded body {
-            font-family: Lora, serif;
-        }
-    </style> -->
 </head>
 <body>
   <h1>h1</h1>
@@ -60,29 +19,7 @@
   <h4>h4</h4>
   <p>Lorem ipsum dolor sit amet, consectetur adip <span style="color: red;">i</span>sicing elit. Quidem adipisci <span style="color: red;">q</span>uasi ad ipsam, magni explicabo perferendis qui ullam atque odio.</p>
   <div class="test-mq"></div>
-<!-- <script src="fontfaceobserver.js"></script>
-<script>
-    (function( w ){
-    if( w.document.documentElement.className.indexOf( "fonts-loaded" ) > -1 ){
-        return;
-    }
-    var font1 = new w.FontFaceObserver( "Lora", {
-        weight: 400
-    });
-    var font2 = new w.FontFaceObserver( "Lora", {
-        weight: 400,
-        style: "italic"
-    });
-    w.Promise
-        .all([font1.check(), font2.check()])
-        .then(function(){
-            w.document.documentElement.className += " fonts-loaded";
-        });
-    }( this ));
-</script> -->
 <script src="assets/js/vendor/typerendering-1.1.0.min.js"></script>
-<!-- <script src="assets/js/vendor/justice.min.js"></script>
-<script>Justice.init();</script> -->
 <script src="assets/js/main.js"></script>
 </body>
 </html>

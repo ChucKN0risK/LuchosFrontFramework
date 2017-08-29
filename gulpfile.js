@@ -186,11 +186,11 @@ gulp.task('svgstore', function() {
 // svg4everybody to use these fallbacks.
 gulp.task('svg2png', function () {
     // Define source files
-    return gulp.src( path.icons )
+    return gulp.src(path.icons)
         // Run the svg2png npm module on these source files
-        .pipe( svg2png() )
+        .pipe(svg2png())
         // Define where the response is distributed to
-        .pipe( gulp.dest( path.svgSprite ) )
+        .pipe(gulp.dest(path.svgSprite))
 });
 
 // Deleting all dist content

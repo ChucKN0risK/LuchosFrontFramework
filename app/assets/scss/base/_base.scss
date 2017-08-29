@@ -42,6 +42,7 @@ html {
   // padding: 2em; // padding so that bullet list don't touche the edge of the screen
   text-align: left;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body,
@@ -68,6 +69,7 @@ $ms-base: 1rem 1.25rem;
 body {
   @include rms(0); // 1rem
   position: relative;
+  font-family: var(--font-primary);
   
   // Fluid type by Vitaly Friedman
   // https://speakerdeck.com/smashingmag/dirty-tricks-from-the-dark-corners-of-front-end

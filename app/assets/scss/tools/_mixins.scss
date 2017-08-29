@@ -430,3 +430,23 @@ $orientation) {
   }
 }
 
+/// Background gradient helper
+/// @author Zach Leatherman (@zachleat)
+///
+/// @access public
+///
+/// @link https://github.com/zachleat/zachleat.com/blob/a05bd3ff3391402a7fbeaf7fa699f21261c06b2e/web/css/_mixins.scss#L49
+@mixin textDecorationSkipInkFallback {
+  @supports (background-image: linear-gradient(to bottom, currentColor 75%, currentColor 75%)) and (not(text-decoration-skip: ink)) {
+    & {
+      text-decoration: none;
+      background-image: -webkit-linear-gradient(top, currentColor 75%, currentColor 75%);
+      background-image: linear-gradient(to bottom, currentColor 75%, currentColor 75%);
+      text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+      background-repeat: repeat-x;
+      background-size: 1px 1px;
+      background-position: 0 97%;
+    }
+  }
+}
+

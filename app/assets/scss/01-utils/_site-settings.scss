@@ -9,11 +9,11 @@ $audio-canvas-video: false; // True | False
 
 // Fonts
 :root {
-  --RobotoRegular: 'RobotoRegular', sans-serif;
-  --RobotoMedium: 'RobotoMedium', sans-serif;
-  --RobotoLight: 'RobotoLight', sans-serif;
+  --Gotham-Light: 'GothamLight', sans-serif;
+  --Gotham-Book: 'GothamBook', sans-serif;
+  --Gotham-Black: 'GothamBlack', sans-serif;
 
-  --font-primary: var(--RobotoRegular);
+  --font-primary: var(--Gotham-Light);
 }
 
 // = General Styles
@@ -24,6 +24,36 @@ $audio-canvas-video: false; // True | False
 
 @mixin box-shadow {
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 2px 10px 0 rgba(0, 0, 0, 0.4);
+}
+
+@mixin text-huge {
+  font-family: var(--Gotham-Black);
+  font-size: 14.6875rem; // 235px
+}
+
+@mixin text-fat {
+  font-family: var(--Gotham-Black);
+  font-size: 5.8125rem; // 93px
+}                                                    
+
+@mixin text-big {
+  font-family: var(--Gotham-Black);
+  font-size: 2.1875rem; // 35px
+}
+
+@mixin text-heavy {
+  font-family: var(--Gotham-Black);
+  font-size: 1.5rem; // 24px
+}
+
+@mixin text-booked {
+  font-family: var(--Gotham-Book);
+  font-size: 1.25rem; // 20px
+}
+
+@mixin text-light {
+  font-family: var(--Gotham-Light);
+  font-size: 0.9375rem; // 15px
 }
 
 $public_path: "../";

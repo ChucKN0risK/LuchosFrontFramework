@@ -10,6 +10,10 @@
 
 // Z-Index Scale (private vars)
 // --------------------------------------------------
+:root {  
+  --z-index-1: 10;
+}
+
 $zIndex-1:   10;
 $zIndex-2:   20;
 $zIndex-3:   30;

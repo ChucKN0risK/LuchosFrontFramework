@@ -1,0 +1,12 @@
+// ==|====================
+// Components / List
+// =======================
+
+.c-list {
+    color: var(--color-black);
+    line-height: 1;
+}
+
+.c-list__item + .c-list__item {
+  margin-top: 6px;
+}

@@ -11,7 +11,12 @@ $header-nav-breakpoint: 700px;
 --border-radius: 4px;
 --border-width: 1px;
 --base-padding: 1rem;
---box-shadow-screen: 0px 64px 80px -24px rgba(0,0,0,0.24); 
+--box-shadow-screen: 0px 64px 80px -24px rgba(0,0,0,0.24);
+
+/// ---------------------
+/// BUTTON
+/// ---------------------
+--button-height: 2.8125rem; //45px
 
 /// ---------------------
 /// GRID

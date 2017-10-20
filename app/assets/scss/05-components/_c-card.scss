@@ -1,0 +1,40 @@
+/* =======================
+   Components / Card
+   ======================= */
+
+.c-card-wrapper {
+  display: flex;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.c-card {
+  --card-width: 27.34375rem; //438px
+  
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  width: var(--card-width);
+  height: calc(var(--card-width) * 0.74200913242); //325px
+  padding: 1.5625rem; //25px
+  color: var(--color-white);
+  background-image: url('../img/dior.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  & + & {
+    margin-left: 0.8125rem; //13px
+  }
+}
+
+.c-card--small {
+  --card-width: 23.0625rem; //369px
+
+  width: var(--card-width); 
+  height: calc(var(--card-width) * 0.531165311653); //196px
+  background-image: url('../img/monochrome.jpg');
+}
+
+.c-card--content-on-bottom {
+  justify-content: flex-end;
+}

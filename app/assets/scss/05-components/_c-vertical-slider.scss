@@ -1,0 +1,120 @@
+// =============================
+// Components / Vertical Slider
+// =============================
+
+:root {
+  --vertical-slider-item-height: 3.4375rem; // 55px
+  --vertical-slider-item-pseudo-element-width: 15px;
+  --vertical-slider-item-before-left-offset: 90%;
+}
+
+.c-vertical-slider {
+  position: absolute;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--Gotham-Book);
+  color: var(--color-white);
+  font-size: 1rem; //16px
+  line-height: 1;
+}
+
+.c-vertical-slider__item {
+  position: relative;
+}
+
+.c-vertical-slider__item__content-toggler {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 3rem;
+  height: var(--vertical-slider-item-height);
+  @include transition;
+  outline: 0;
+  opacity: .7;
+  will-change: opacity;
+
+  &:hover {
+    opacity: 1;
+
+    &::before {
+      transform: translateY(-50%) scaleX(1);
+    }
+  }
+
+  &:hover,
+  &.is-active {
+    &::after {
+      transform: translateY(calc(6px - 50%)) scaleX(1);
+    }
+  }
+
+  &:hover + .c-vertical-slider__item__content-wrapper {
+    opacity: 1;
+
+    .c-vertical-slider__item__content,
+    .c-vertical-slider__item__content-text {
+      transform: none;
+    }
+
+    .c-vertical-slider__item__content-text {
+      opacity: 1;
+    }
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    height: 1px;
+    width: var(--vertical-slider-item-pseudo-element-width);
+    background-color: var(--color-white);
+    @include transition;
+    will-change: transform;
+  }
+
+  &::before {
+    top: 50%;
+    right: var(--vertical-slider-item-before-left-offset);
+    transform: translateY(-50%) scaleX(0);
+    transform-origin: right;
+  }
+
+  &::after {
+    top: 50%;
+    left: 85%;
+    transform: translateY(calc(6px - 50%)) scaleX(0);
+    transform-origin: left;
+  }
+}
+
+.c-vertical-slider__item__content-wrapper {
+  position: absolute;
+  top: 50%;
+  right: calc(var(--vertical-slider-item-before-left-offset) + var(--vertical-slider-item-pseudo-element-width));
+  transform: translateY(-50%);
+  overflow: hidden;
+  // Weird bug : somehow there is a grey line
+  // underlining our text. This is why we hide it.
+  text-decoration: none;
+}
+
+.c-vertical-slider__item__content,
+.c-vertical-slider__item__content-text {
+  @include transition;
+  will-change: transform;
+}
+
+.c-vertical-slider__item__content {
+  transform: translateX(100%);
+  overflow: hidden;
+}
+
+.c-vertical-slider__item__content-text {
+  transform: translateX(-100%);
+  transition-delay: .05s;
+  opacity: 0;
+}

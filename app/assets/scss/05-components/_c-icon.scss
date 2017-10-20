@@ -1,0 +1,22 @@
+// ==========================
+// Components / Icon
+// ==========================
+
+.c-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  max-height: var(--button-height);
+  max-width: var(--button-height);
+
+  svg {
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+  }
+}
+
+.c-icon--white {
+  color: white;
+}

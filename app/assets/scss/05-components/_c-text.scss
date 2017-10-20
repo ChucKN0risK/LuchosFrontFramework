@@ -1,0 +1,31 @@
+// =======================
+// Components / Text
+// =======================    
+
+.c-text {
+  text-transform: uppercase;
+}
+
+.c-text--huge {
+  @include text-huge();
+}
+
+.c-text--fat {
+  @include text-fat();
+}
+
+.c-text--big {
+  @include text-big();
+}
+
+.c-text--heavy {
+  @include text-heavy();
+}
+
+.c-text--booked {
+  @include text-booked();
+}
+
+.c-text--light {
+  @include text-light();
+}

@@ -1,0 +1,83 @@
+// =======================
+// Components / Buttons
+// =======================
+
+.c-button {
+  // --button-height is defined globally in
+  // scss/tools/variables/_general so it can
+  // be used by other components such as c-icon
+  --button-side-padding: 2.5rem; //40px
+
+  position: relative;
+  display: inline-block;
+  height: var(--button-height);
+  border: none;
+  padding-right: var(--button-side-padding);
+  padding-left: var(--button-side-padding);
+  background-color: var(--color-black);
+  box-shadow: 0 4px 6px 0 rgba(0,0,0,0.1), 0 1px 3px 0 rgba(0,0,0,0.16);
+  color: var(--color-white);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 14px;
+  line-height: var(--button-height);
+  font-family: var(--Gotham-Book);
+  will-change: color;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    @include size(100%);
+    background-color: var(--color-white);
+    transform: translateX(-100%);
+    @include transition;
+    z-index: 0;
+    // Some pixels can remain after the
+    // animation. We add this to hide them
+    backface-visibility: hidden;
+  }
+
+  &:hover {
+    color: var(--color-black);
+
+    &::before {
+      transform: none;
+    }
+    .c-button__text {
+      color: inherit; 
+    }
+  }
+}
+
+.c-button--white {
+  background-color: var(--color-white);
+  color: var(--color-black);
+
+  &::before {
+    background-color: var(--color-black);
+  }
+
+  &:hover {
+    color: var(--color-white);
+    
+    &::before {
+      transform: none;
+    }
+  }
+}
+
+.c-button--icon {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.c-button__text,
+.c-button__icon {
+  // Only positionned elements
+  // can have a z-index value
+  position: relative;
+  z-index: var(--z-index-1);
+}

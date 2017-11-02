@@ -1,0 +1,65 @@
+/* ==|====================
+   Layout / Footer
+   ======================= */
+
+.l-main-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: var(--border-width) solid var(--color-lightgrey-20);
+  text-align: center;
+}
+
+.l-main-footer__content {
+  display: flex;
+
+  @include mq($from: mobile, $until: 650px) {
+    justify-content: space-between;
+    flex-direction: column;
+  }
+
+  @include mq($from: 651px) {
+    align-items: center;
+  }
+}
+
+.l-main-footer__made + .l-main-footer__social-links {
+  position: relative;
+  height: 100%;
+
+  @include mq($from: mobile, $until: 650px) {
+    margin-top: 1rem;
+    justify-content: center;
+  }
+
+  @include mq($from: 651px) {
+    padding-left: 1rem;
+    margin-left: 1rem;
+    align-self: flex-start;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: calc(100% - 2px);
+      transform: translateY(-50%);
+      display: block;
+      background-color: var(--color-grey-40);;
+      @include size(3px);
+      border-radius: 100%;
+    }
+  }
+}
+
+.l-main-footer__copyrights {
+  font-family: var(--RobotoLight);
+
+  @include mq($from: mobile, $until: 650px) {
+    margin-top: 1rem;
+  }
+
+  @include mq($from: 651px) {
+    margin-left: auto;
+  }
+}
+

@@ -1,0 +1,72 @@
+// ----------------------
+// == Variables / General
+// ----------------------
+
+$header-nav-breakpoint: 700px;
+
+:root {
+/// ---------------------
+/// STYLE
+/// ---------------------
+--border-radius: 4px;
+--border-width: 1px;
+--base-padding: 1rem;
+--box-shadow-screen: 0px 64px 80px -24px rgba(0,0,0,0.24);
+
+/// ---------------------
+/// BUTTON
+/// ---------------------
+--button-height: 2.8125rem; //45px
+
+/// ---------------------
+/// GRID
+/// ---------------------
+--max-content-width: 90rem;
+
+/// ---------------------
+/// HEADER
+/// ---------------------
+--header--main-height: 3rem;
+
+/// ---------------------
+/// MODAL
+/// ---------------------
+// --modal-header-height: 4rem;
+// --modal-padding: 2rem;
+
+/// ---------------------
+/// ALERT
+/// ---------------------
+// --alert-side-padding: 1.3rem;
+// --tooltip-icon-color: --blue;
+
+/// ---------------------
+/// DROPDOWN
+/// ---------------------
+// --dropdown-height: 3rem;
+// --padding-dropdown: 1rem ;
+// --bgc-dropdown: --blue;
+
+/// ---------------------
+/// MEDIA
+/// ---------------------
+--padding-media: 1rem;
+
+/// ---------------------
+/// NAV
+/// ---------------------
+--nav--main-height: 4rem;
+
+/// ---------------------
+/// FORM
+/// ---------------------
+--input-height: 3rem;
+--single-form-width--tablet: 18rem;
+--single-form-width--desktop: 30rem;
+
+/// ---------------------
+/// FOOTER
+/// ---------------------
+// --footer-padding: 1rem;
+// --footer-social-icon-size: 2.5rem;
+}

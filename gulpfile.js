@@ -15,7 +15,6 @@ var uncss            = require('gulp-uncss');
 var browserSync      = require('browser-sync');
 var uglify           = require('gulp-uglify');
 var del              = require('del');
-var critical         = require('critical').stream;
 var imagemin         = require('gulp-imagemin');
 var rename           = require('gulp-rename');
 var svgstore         = require('gulp-svgstore');
@@ -25,8 +24,6 @@ var rename           = require('gulp-rename');
 var size             = require('gulp-size');
 var dom              = require('gulp-dom');
 var changed          = require('gulp-changed');
-var parallel         = require('concurrent-transform');
-var os               = require('os');
 var rename           = require('gulp-rename');
 
 // ---------------------------------------------------------------
@@ -42,9 +39,9 @@ var path = {
     img_to_resize: 'app/assets/img-to-resize/**/*.{png,jpeg,jpg,gif}',
     icons: 'app/assets/icons/*.svg',
     svgSprite: 'app/assets/icons/dest',
-    fonts: 'app/assets/fonts/*.{ttf,woff,eof,svg,otf}',
+    fonts: 'app/assets/fonts/*.{woff,woff2,otf}',
     html: 'app/*.html',
-    php: 'app/*.php',
+    favicons: 'app/favicons/*.{png,xml,ico,json,svg}',
     dist: 'dist/',
     dist_js: 'dist/assets/js/',
     dist_js_vendor: 'dist/assets/js/vendor/',
@@ -52,6 +49,7 @@ var path = {
     dist_img: 'dist/assets/img/',
     dist_fonts: 'dist/assets/fonts/',
     dist_icons: 'dist/assets/icons/',
+    dist_favicons: 'dist/favicons/',
 };
 
 var autoprefixerOptions = {
@@ -136,7 +134,7 @@ gulp.task('sass-prod', function() {
 // in the .html files of the app/.
 gulp.task('uncss', function() {
     return gulp
-        .src(path.dist_css + "style.css")
+        .src(path.dist_css + 'style.css')
         .pipe(uncss({
             html: [path.html]
         }))
@@ -157,64 +155,17 @@ gulp.task('copy-img', function() {
         .pipe(gulp.dest(path.img_resized));
 });
 
-gulp.task('resize-ipad2', function() {
-    return gulp.src(path.img_to_resize)
-        .pipe(changed(path.img_resized))
-        .pipe(parallel(
-            imageResize({ width: 2048 }),
-            os.cpus().length
-        ))
-        .pipe(rename(function(path) { path.basename += "_med2"; }))
-        .pipe(gulp.dest(path.img_resized));
-});
-
-gulp.task('resize-ipad', function() {
-    return gulp.src(path.img_to_resize)
-        .pipe(changed(path.img_resized))
-        .pipe(parallel(
-            imageResize({ width: 1024 }),
-            os.cpus().length
-        ))
-        .pipe(rename(function(path) { path.basename += "_med"; }))
-        .pipe(gulp.dest(path.img_resized));
-});
-
-gulp.task('resize-mobile2', function() {
-    return gulp.src(path.img_to_resize)
-        .pipe(changed(path.img_resized))
-        .pipe(parallel(
-            imageResize({ width: 1536 }),
-            os.cpus().length
-        ))
-        .pipe(rename(function(path) { path.basename += "_small2"; }))
-        .pipe(gulp.dest(path.img_resized));
-});
-
-gulp.task('resize-mobile', function() {
-    return gulp.src(path.img_to_resize)
-        .pipe(changed(path.img_resized))
-        .pipe(parallel(
-            imageResize({ width: 768 }),
-            os.cpus().length
-        ))
-        .pipe(rename(function(path) { path.basename += "_small"; }))
-        .pipe(gulp.dest(path.img_resized));
-});
-
 // Compress Images
-gulp.task('clean-img-resized', function() {
-    return del.sync(path.img_resized);
-});
-
-// Compress Images
-gulp.task('img', ['copy-img', 'clean-img-resized', 'resize-ipad2', 'resize-ipad', 'resize-mobile2', 'resize-mobile'], function() {
+gulp.task('img', ['copy-img'], function() {
     return gulp
         .src(path.img)
         .pipe(changed(path.dist_img))
-        .pipe(imagemin({
-            progressive: true,
-            svgoPlugins: [{ removeViewBox: false }],
-        }))
+        .pipe(imagemin([
+            imagemin.gifsicle({interlaced: true}),
+            imagemin.jpegtran({progressive: true}),
+            imagemin.optipng({optimizationLevel: 5}),
+            imagemin.svgo({plugins: [{removeViewBox: false}]})
+        ]))
         .pipe(gulp.dest(path.dist_img));
 });
 
@@ -235,51 +186,11 @@ gulp.task('svgstore', function() {
 // svg4everybody to use these fallbacks.
 gulp.task('svg2png', function () {
     // Define source files
-    return gulp.src( path.icons )
+    return gulp.src(path.icons)
         // Run the svg2png npm module on these source files
-        .pipe( svg2png() )
+        .pipe(svg2png())
         // Define where the response is distributed to
-        .pipe( gulp.dest( path.svgSprite ) )
-});
-
-// Generate & Inline Critical-path CSS
-gulp.task('critical', function() {
-    return gulp
-        .src(path.html)
-        .pipe(critical({
-            base: './',
-            inline: true,
-            minify: true,
-            dimensions: [{
-                height: 1300,
-                width: 900
-            }]
-        }))
-        .pipe(gulp.dest(path.dist));
-});
-
-// Run a Google Page Speed Insight Test for mobile
-gulp.task('PSIMobile', function() {
-    return psi(site, {
-        // key: key
-        nokey: 'true',
-        strategy: 'mobile',
-    }, function(err, data) {
-        console.log(data.score);
-        console.log(data.pageStats);
-    });
-});
-
-// Run a Google Page Speed Insight Test for desktop
-gulp.task('PSIDesktop', function() {
-    return psi(site, {
-        nokey: 'true',
-        // key: key,
-        strategy: 'desktop',
-    }, function(err, data) {
-        console.log(data.score);
-        console.log(data.pageStats);
-    });
+        .pipe(gulp.dest(path.svgSprite))
 });
 
 // Deleting all dist content
@@ -306,16 +217,12 @@ gulp.task('build', ['clean', 'sass-prod', 'js-prod', 'img', 'svgstore'], functio
         }))
         .pipe(gulp.dest(path.dist));
 
-    // Copy PHP files to dist
-    gulp.src(path.php)
-        .pipe(gulp.dest(path.dist));
-
     // Copy fonts files to dist
     gulp.src(path.fonts)
         .pipe(gulp.dest(path.dist_fonts));
 
     // Copy SVG icons to dist
-    gulp.src(path.icons)
+    gulp.src(path.icons) 
         .pipe(gulp.dest(path.dist_icons));
 
     // Copy SVG sprite & PNG fallbacks to dist
@@ -325,4 +232,8 @@ gulp.task('build', ['clean', 'sass-prod', 'js-prod', 'img', 'svgstore'], functio
     // Copy Config files to dist
     gulp.src('app/*.{htaccess,xml,txt}', { dot: true })
         .pipe(gulp.dest(path.dist));
+
+    // Copy favicons to dist
+    gulp.src(path.favicons)
+        .pipe(gulp.dest(path.dist_favicons));
 });

@@ -1,0 +1,42 @@
+/* ==|====================
+   Layout / Forms
+   ======================= */
+
+.l-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 30rem;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: var(--font-primary);
+}
+
+.l-form--subscribe-alpha {
+  .l-form__email {
+    flex-grow: 1;
+  }
+}
+
+.l-form--subscribe-alpha__fullname-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+
+  .input-wrapper {
+    margin-bottom: 0;
+  }
+
+  .input-wrapper + .input-wrapper {
+    @include mq($from: mobile, $until: 549px) {
+      margin-top: 1rem;
+    }
+    @include mq($from: 550px) {
+      margin-left: 1rem;
+    }
+  }
+
+  @include mq($from: 550px) {
+    flex-direction: row;
+  }
+}

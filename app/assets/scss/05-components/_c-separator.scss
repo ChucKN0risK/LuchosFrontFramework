@@ -1,0 +1,15 @@
+// =======================
+// Components / Separator
+// =======================
+
+.c-separator {
+  width: 3.75rem; //60px
+  height: 2px;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  background-color: var(--color-black);
+}
+
+.c-separator--white {
+  background-color: var(--color-white);
+}

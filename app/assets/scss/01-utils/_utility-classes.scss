@@ -1,0 +1,142 @@
+ // ----------------------
+ // == Utility Classes
+ // ----------------------
+
+ // Apply these classes on element only when
+ // the rule you want to set is independant from
+ // the rest of your element style. 
+ // Using '!important' here is recommanded 
+
+.u-no-scroll {
+  overflow: hidden !important;
+}
+
+.u-max-content-width {
+  max-width: var(--max-content-width) !important;
+}
+
+.u-hide {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+.u-text-uppercase {
+  text-transform: uppercase !important;
+}
+
+.u-text-bold {
+  font-weight: bold !important;
+}
+
+.u-text-italic {
+  font-style: italic !important;
+}
+
+.u-text-left-align {
+  text-align: left !important;
+}
+
+.u-text-centered {
+  text-align: center !important;
+}
+
+.u-text-right-align {
+  text-align: right !important;
+}
+
+.u-text-justify {
+  text-align: justify !important;
+}
+
+.u-text-red {
+  color: var(--color-red) !important;
+}
+
+.u-text-blue {
+  color: var(--color-blue) !important;
+}
+
+.u-text-yellow {
+  color: var(--color-yellow) !important;
+}
+
+.u-text-green {
+  color: var(--color-green) !important;
+}
+
+.u-text-orange {
+  color: var(--color-orange) !important;
+}
+
+.u-text-purple {
+  color: var(--color-purple-600) !important;
+}
+
+.u-text-grey {
+  color: var(--color-grey-30) !important;
+}
+
+.u-text-black {
+  color: var(--color-black) !important;
+}
+
+// This class aims to show list bullets so
+// that list doesn't touch the edge of the screen
+.u-list-default {
+  margin-left: 1rem !important;
+}
+
+.u-list-reset {
+  list-style: none !important;
+  padding-left: 0 !important;
+}
+
+.u-mb1 {
+  margin-bottom: 1rem !important;
+}
+
+.u-mb2 {
+  margin-bottom: 2rem !important;
+}
+
+.u-mt1 {
+  margin-top: 1rem !important;
+}
+
+.u-mt2 {
+  margin-top: 2rem !important;
+}
+
+// This class adds a coma at every li except the ast one.
+// Note: This tip may not be ideal for accessibility, 
+// specifically screen readers. And copy/paste from the browser 
+// doesn't work with CSS-generated content. Proceed with caution.
+.u-coma-sep-items > li:not(:last-child):after {
+  content: ',';
+}
+
+// Apply this class to add vertical lines helping
+// you to apply a proper vertical rythm
+.u-baseline:after {
+  background: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05) 24px, rgba(0, 0, 0, 0.1) 24px, rgba(0, 0, 0, 0.1) 48px);
+  content: '';
+  position: absolute;
+  display: block;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+// Visually hide content, leaving it accessible to screenreaders and ATs.
+// http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+.u-visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  overflow: hidden !important;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px) !important;
+}

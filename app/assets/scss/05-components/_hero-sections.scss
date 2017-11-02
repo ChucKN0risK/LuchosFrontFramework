@@ -1,0 +1,44 @@
+/* ==|======================
+   Layout / Hero Sections
+   ========================= */
+
+.l-hero-section {
+  text-align: center;
+
+  @include mq($from: tablet) {
+    background-image: url('../img/hero-bg.png');
+    background-repeat: no-repeat;
+    background-size: 70%;
+    background-position: center;
+    padding-top: 10rem;
+  }
+  @include mq($from: desktop) {
+    padding-top: 15rem;
+    background-size: 980px;
+  }
+}
+
+.l-hero-section__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.l-hero-section__title {
+  font-size: 31px;
+  line-height: 1.3225806452;
+
+  @include mq($from: tablet) {
+    max-width: 80%;
+  }
+}
+
+.l-hero-section__subtitle {
+  font-size: 20px;
+  line-height: 1.35;
+}
+
+.l-hero-section__cta {
+  display: inline-block;
+  margin-top: 2.5rem;
+}

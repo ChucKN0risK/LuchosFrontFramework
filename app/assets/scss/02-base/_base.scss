@@ -1,0 +1,145 @@
+// ========================================================================================
+// Base | Default, single element selectors that will look the same regardless of location.
+// ========================================================================================
+
+/**
+ * High-, page-level styling.
+ *
+ * 1. Force scrollbars to always be visible to prevent awkward ‘jumps’ when
+ *    navigating between pages that do/do not have enough content to produce
+ *    scrollbars naturally.
+ * 2. Ensure the page always fills at least the entire height of the viewport.
+ * 3. Prevent certain mobile browsers from automatically zooming fonts.
+ */
+
+html {
+  // Web Font Loader Classes
+  // Refer to https://prowebtype.com/delivering-web-fonts/ & https://github.com/typekit/webfontloader
+  // .wf-loading p {
+  // /* styles for fallback fonts */
+  // }
+  // .wf-active p {
+  //   /* styles for custom fonts */
+  // }
+  // .wf-inactive p {
+  //   /* use fallback fonts */
+  // }
+  overflow-y: scroll;
+  /* [1] */
+  min-height: 100vh;
+  /* [2] */
+  -webkit-text-size-adjust: 100%;
+  /* [3] */
+  -ms-text-size-adjust: 100%;
+  /* [3] */
+  // Mobile First Approach
+  // Refer to https://prowebtype.com/setting-type/
+  font-family: var(--font-primary), serif;
+  font-size: 100%;
+  // line-height: 1.6;
+  font-weight: 400;
+  margin: 0 auto;
+  // padding: 2em; // padding so that bullet list don't touche the edge of the screen
+  text-align: left;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body,
+html {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  color: var(--color-black);
+}
+
+// ---------------------------------
+// TYPOGRAPHY MODULAR SCALE
+// ---------------------------------
+// First we need to specify our default modular scale settings :
+$ms-base: 1rem 1.25rem;
+//$ms-ratio: $minor-third;
+// ! THIS SECTION IS RESERVED FOR THE RESPONSIVE MODULAR SCALE FRAMEWORK !
+// Use a minor-third for mobile, a major-third for tablet
+// and a fourth for desktop and for larger screens
+@include rms-set-scales( 16px, $minor-third, mq-get-breakpoint-width(tablet) $major-third, mq-get-breakpoint-width(desktop) $fourth);
+// ---------------------------------
+// GENERAL SETTINGS
+// ---------------------------------
+body {
+  @include rms(0); // 1rem
+  position: relative;
+  font-family: var(--font-primary);
+  
+  // Fluid type by Vitaly Friedman
+  // https://speakerdeck.com/smashingmag/dirty-tricks-from-the-dark-corners-of-front-end
+  //font-size: calc(16px + (24 - 16)*(100vw - 320px)/(1920 - 320));
+
+  // Remove the breakpoint block added 
+  // by the media-queries mixin
+  &.build-prod {
+    &::before {
+      display: none !important;
+    }
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.2;
+  @include transition();
+}
+
+// The ms() function usually ranges from -6 to 6/7
+h1 {
+  @include rms(4);
+}
+
+h2 {
+  @include rms(3);
+}
+
+h3 {
+  @include rms(2);
+}
+
+h4 {
+  @include rms(1);
+}
+
+h5 {
+  @include rms(0);
+}
+
+p,
+a,
+ul,
+blockquote,
+figcaption {
+  font-family: var(--font-primary);
+  color: var(--color-grey-50);
+  line-height: 1.5;
+}
+
+img {
+  height: auto;
+  width: 100%;
+}
+
+button {
+  cursor: pointer;
+}
+
+// button {
+//   cursor: pointer;
+// }
+
+::selection {
+  background: var(--color-primary);
+  color: var(--color-white);
+  text-shadow: none;
+}

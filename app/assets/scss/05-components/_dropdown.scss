@@ -1,0 +1,321 @@
+/* ==|====================
+   Components / Dropdown
+   ======================= */
+
+.dropdown {
+  position: relative;
+  top: 0;
+  // top: $header--main-height;
+  display: flex;
+  height: $dropdown-height;
+  @include dropdown($padding-dropdown, $bgc-dropdown);
+  padding-top: .6rem;
+  padding-bottom: .6rem;
+  text-decoration: none;
+  z-index: $zIndex-dropdown;
+  cursor: pointer;
+  @include transition();
+
+  &:hover {
+    color: $white;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:active {
+    background-color: darken($bgc-dropdown, 10%);
+  }
+
+  &.is-fixed {
+    position: fixed;
+  }
+
+  @include mq($from: desktop) {
+    display: none;
+  }
+}
+
+.dropdown__content {
+  display: flex;
+  align-items: center;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.dropdown__toggle-icon {
+  margin-left: auto;
+  @include transition();
+  .dropdown.is-expanded & {
+    transform: rotate(180deg);
+  }
+}
+
+.dropdown__toggle-text {
+  padding: .3rem;
+  border: 1px solid $white;
+  border-radius: var(--border-radius);
+  margin-left: auto;
+  text-transform: uppercase;
+}
+
+.dropdown__content__text {
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+}
+
+.dropdown-content {
+  position: absolute;
+  background-color: var(--color-primary);
+  color: $white;
+  list-style: none;
+  opacity: 0;
+  transform: translateY(-200%);
+  @include transition();
+  // Prevent DOM Repainting Issues
+  backface-visibility: hidden;
+  z-index: $zIndex-dropdownMenu;
+
+  &.is-opened {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  @include mq($from: mobile, $until: desktop) {
+    width: 100%;
+  }
+
+  @include mq($from: desktop, $until: wide) {
+    min-width: 15rem;
+    right: 0;
+  }
+}
+
+.dropdown-content--main-header {
+  height: 100vh;
+  background-color: $white;
+  color: $black;
+  right: 0;
+
+  @include mq($from: desktop) {
+    height: auto;
+    min-width: 20rem;
+    background-color: $black;
+    color: $white;
+  }
+}
+
+.dropdown-content__title {
+  margin-bottom: 1rem;
+  text-align: center;
+  //If the background is dark we increase the letter spacing for a better readability
+  letter-spacing: 1px;
+}
+
+.dropdown-content__form {
+  padding: 1rem;
+  flex-direction: column;
+  justify-content: center;
+
+  @include mq($from: desktop) {
+    padding: 2rem;
+  }
+}
+
+.dropdown-content__form__btn {
+  margin: auto;
+  width: 100%;
+  height: $input-height;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.dropdown-content__form__btn--facebook {
+  margin: auto;
+  width: 100%;
+  height: $input-height;
+}
+
+.dropdown-content__form__item {
+  margin-bottom: 1rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+  // //If the background is dark we increase the letter-spacing for a better readability
+  // & label {
+  //     letter-spacing: .5px;
+  //     opacity: .8;
+  //     font-weight: 100;
+  // }
+}
+
+.dropdown-content__item {
+  @include flex-vertical-center();
+  border-bottom: 1px solid $lightgrey;
+
+  &:last-child {
+    border: none;
+  }
+
+  @include mq($from: desktop) {
+    border-color: tint($black, 20%);
+  }
+}
+
+.dropdown-content__item--list {
+  flex-direction: column;
+
+  ul {
+    width: 100%;
+  }
+
+  li {
+    // In order to align verticaly the item with the above content
+    padding-left: 3.3rem;
+    color: $black;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    
+    @include mq($from: desktop) {
+      color: $white;
+      &:hover {
+        background-color: tint($black, 15%);
+      }
+      &:active {
+        background-color: $white;
+      }
+    }
+  }
+}
+
+.dropdown-content__item--list__title {
+  flex-grow: 1;
+  padding: 1rem;
+  width: 100%;
+  padding-bottom: .5rem;
+  color: $black;
+  font-weight: 400;
+  // & > i {
+  //   margin-right: 1rem;
+  //   color: $blue;
+  // }
+  @include mq($from: desktop) {
+    color: $white;
+  }
+}
+
+.dropdown-content__item__link {
+  flex-grow: 1;
+  padding: 1rem;
+  @include reset-link($black);
+  font-weight: 400;
+  // & > i {
+  //   margin-right: 1rem;
+  //   color: $blue;
+  // }
+  &:hover {
+    background-color: tint($black, 15%);
+    color: $white;
+  }
+  &:active {
+    background-color: $white;
+    color: $black;
+  }
+  @include mq($from: desktop) {
+    @include reset-link($white);
+    &:active {
+      background-color: $white;
+      color: $black;
+    }
+  }
+}
+
+.nav--fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh; //100%
+  background-color: rgba($blue, 0.95);
+  color: set-color($blue);
+  padding: 1rem;
+  z-index: $zIndex-fullNav;
+  @include transition();
+  backface-visibility: hidden;
+  opacity: 0;
+  visibility: hidden;
+  perspective: 50em;
+  &.is-active {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.nav--fullscreen__list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 90%;
+  opacity: .7;
+  transform: rotateX(30deg);
+  //transform: translateY(-25%) rotateX(35deg);
+  @include transition();
+  .nav--fullscreen.is-active & {
+    opacity: 1;
+    transform: rotateX(0deg);
+  }
+}
+
+.nav--fullscreen__item {
+  text-align: center;
+  padding: .5rem 0;
+  font-size: ms(2);
+  letter-spacing: 1px;
+  font-weight: lighter;
+  &.close-nav {
+    width: 100%;
+    opacity: 1;
+  }
+  &.is-active {
+    font-weight: 700;
+    opacity: 1;
+    .nav--fullscreen__item__link {
+      opacity: 1;
+      color: $white;
+    }
+  }
+}
+
+.nav--fullscreen__item__link {
+  display: flex;
+  flex-direction: column;
+  opacity: .7;
+  color: $white;
+  text-decoration: none;
+  @include transition();
+  &:after {
+    content: '';
+    align-self: flex-end;
+    height: 2px;
+    background-color: $white;
+    width: 100%;
+    opacity: 0;
+    transform: scale(0);
+    backface-visibility: hidden;
+    @include transition();
+  }
+  &:hover {
+    color: $white;
+    opacity: 1;
+    &:after {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
+

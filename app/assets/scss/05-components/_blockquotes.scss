@@ -1,0 +1,33 @@
+/* ==|====================
+   Components / Blockquotes
+   ======================= */
+
+/// Quotes layout taken from CSS Tricks :
+/// https://css-tricks.com/snippets/css/simple-and-nice-blockquote-styling/
+/// @example html - Usage
+///   <blockquote>
+///     <p>Lorem ipsum dolor sit amet</p>
+///     <cite>Author</cite>
+///   </blockquote>
+.c-testimonial {
+  position: relative;
+  padding-left: 1rem;
+  max-width: 35rem;
+  @include rms(1);
+  text-align: center;
+}
+
+.c-testimonial__text {
+  display: inline;
+}
+
+.c-testimonial__author {
+  margin-top: 1rem;
+  margin-bottom: 0;
+  color: var(--color-black);
+}
+
+.c-testimonial__role {
+  font-family: var(--RobotoLight);
+}
+

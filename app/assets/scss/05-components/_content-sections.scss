@@ -1,0 +1,143 @@
+/* ==|======================
+   Layout / Content Sections
+   ========================= */
+
+// These blocks are the one at the base
+// of our content such as the <header>, <main>
+// and <footer>. They should take the full
+// page width and have a base padding
+.l-base-section {
+  padding: var(--base-padding, 1rem);
+
+  @include mq($from: desktop) {
+    padding: calc(var(--base-padding, 2rem) * 2);
+  }
+}
+
+// The content inside our base layout elements
+// (such as header, footer, section...)
+// may not take the full width of its parent.
+// Hence we give it a max-width, make it take
+// its parent's height and center it
+.l-content-wrapper {
+  width: 100%;
+  max-width: var(--max-content-width);
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &:not(.l-hero-section) {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+
+    @include mq($from: tablet) {
+      padding-top: calc(var(--base-padding, 1rem) * 5);
+      padding-bottom: calc(var(--base-padding, 1rem) * 5);    
+    }
+  }
+}
+
+.section--large-spaced {
+  &:not(.l-hero-section) {
+    @include mq($from: tablet) {
+      padding-top: calc(var(--base-padding, 1rem) * 10);
+      padding-bottom: calc(var(--base-padding, 1rem) * 10);    
+    }
+  }
+}
+
+.section--bottom-border {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 1px;
+    width: calc(100% - (var(--base-padding) * 2));
+    max-width: var(--max-content-width);
+    background-color: var(--color-grey-20);
+  }
+}
+
+.section--bg-lightgrey {
+  background-color: var(--color-lightgrey-10);
+}
+
+.section--form-alpha {
+  .section__subtitle {
+    max-width: 30rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.section--contact {
+  text-align: center;
+}
+
+// .section--contact__content {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+// }
+
+.section--contact__icon {
+  max-width: 4.375rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1.5rem;
+
+  svg {
+    height: 65px;
+  }
+}
+
+.section--contact__text {
+  max-width: 30rem;
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--color-black);
+  font-size: 20px;
+  line-height: 1.52;
+
+  @include mq($from: tablet) {
+    font-size: 25px;
+  }
+}
+
+.section--price-table {
+  .section__subtitle {
+    margin-bottom: 1.5rem;
+  }
+  .m-tag {
+    margin-bottom: 4rem;
+  }
+}
+
+.section__title {
+  margin-bottom: 2rem;
+  font-size: 36px;
+  line-height: 1.1388888889;
+  font-family: var(--RobotoLight);
+  font-weight: 300;
+}
+
+.section__subtitle {
+  font-size: 19px;
+  line-height: 1.5789473684;
+  margin-bottom: 3rem;
+}
+
+.section__cta {
+  margin-top: 4rem;
+}

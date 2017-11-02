@@ -1,0 +1,114 @@
+/* ==|=====================
+   Components / Table
+   ======================== */
+
+table {
+  overflow: hidden;
+}
+
+th,
+td {
+  padding: 1rem;
+}
+
+th {
+  font-family: var(--color-primary);
+  font-weight: 700;
+}
+
+thead tr {
+  border: 0;
+}
+
+tbody {
+  font-family: var(--color-primary);
+}
+
+
+/* ==|=====================
+   Components / Table
+   ======================== */
+
+table {
+  overflow: hidden;
+}
+
+th,
+td {
+  padding: 1rem;
+}
+
+th {
+  font-family: var(--color-primary);
+  font-weight: 700;
+}
+
+thead tr {
+  border: 0;
+}
+
+tbody {
+  font-family: var(--color-primary);
+}
+
+
+/*!
+  CSS only Responsive Tables
+  http://dbushell.com/2016/03/04/css-only-responsive-tables/
+  by David Bushell
+*/
+
+.rtable {
+  /*!
+    IE needs inline-block to position scrolling shadows otherwise use:
+    display: block;
+    max-width: min-content;
+  */
+  display: inline-block;
+  vertical-align: top;
+  max-width: 100%;
+  overflow-x: auto;
+  // optional - looks better for small cell values
+  white-space: nowrap;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.rtable {
+  // optional - enable iOS momentum scrolling
+  -webkit-overflow-scrolling: touch;
+  // scrolling shadows
+  background: radial-gradient(left, ellipse, rgba(0, 0, 0, .2) 0%, rgba(0, 0, 0, 0) 75%) 0 center, radial-gradient(right, ellipse, rgba(0, 0, 0, .2) 0%, rgba(0, 0, 0, 0) 75%) 100% center;
+  background-size: 10px 100%, 10px 100%;
+  background-attachment: scroll, scroll;
+  background-repeat: no-repeat;
+}
+
+// change these gradients from white to your background colour if it differs
+// gradient on the first cells to hide the left shadow
+.rtable td:first-child {
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 100%);
+  background-repeat: no-repeat;
+  background-size: 20px 100%;
+}
+
+// gradient on the last cells to hide the right shadow
+.rtable td:last-child {
+  background-image: linear-gradient(to left, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 100%);
+  background-repeat: no-repeat;
+  background-position: 100% 0;
+  background-size: 20px 100%;
+}
+
+.rtable th {
+  @include rms(0);
+  text-align: left;
+  font-family: var(--color-primary);
+}
+
+.rtable th,
+.rtable td {
+  padding: 6px 12px;
+  border-bottom: 2px solid $lightgrey;
+}
+

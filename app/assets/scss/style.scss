@@ -1,57 +1,54 @@
-/** IMPORT ORDER
-* It's important that this order remains unchanged.
-* However the partials inside the Fonts / Layout / Components can be changed.
-*/
+// 01 - Utils
+// ---------------------
+@import "01-utils/variables";
+@import "01-utils/functions";
+@import "01-utils/mixins";
+@import "01-utils/site-settings";
+@import "01-utils/media-queries";
+@import "01-utils/utility-classes";
+@import "01-utils/family";
 
-/* Compass
-@import "compass/css3/images";*/
+// 02 - Base
+// ---------------------
+@import "02-base/sanitize";
+@import "02-base/typography/modular-scale";
+@import "02-base/typography/responsive-modular-scale";
+@import "02-base/base";
 
+// 03 - Vendors
+// ---------------------
+// @import "03-vendors/animate";
 
-// Tools
-@import "tools/variables";
-@import "tools/functions";
-@import "tools/mixins";
-@import "tools/site-settings";
-@import "tools/media-queries";
-@import "tools/utility-classes";
-@import "tools/family";
+// 04 - Fonts
+// ---------------------
+@import "04-fonts/fonts";
 
-// Base
-@import "base/sanitize";
-@import "base/typography/modular-scale";
-@import "base/typography/responsive-modular-scale";
-@import "base/base";
+// 05 - Components
+// ---------------------
+@import "05-components/c-logo";
+@import "05-components/c-button";
+@import "05-components/c-icon";
+@import "05-components/c-text";
+@import "05-components/c-separator";
+@import "05-components/c-list";
+@import "05-components/c-card";
+@import "05-components/c-vertical-slider";
+// @import "05-components/media";
+// @import "05-components/text-wrapper";
+// @import "05-components/dropdown";
+// @import "05-components/navigation";
+// @import "05-components/tooltip";
+// @import "05-components/blockquotes";
+// @import "05-components/links";
+// @import "05-components/list-pros";
+// @import "05-components/price-table-list";
+// @import "05-components/tag";
+// @import "05-components/o-social-links";
+// @import "05-components/store-links";
+// @import "05-components/inputs";
+// @import "05-components/table";
+// @import "05-components/searchbar";
+// @import "05-components/scroll-indicator";
 
-// Vendors
-@import "vendors/animate";
-
-// Fonts
-@import "fonts/fonts";
-
-// Components
-@import "components/text-wrapper";
-@import "components/btn";
-@import "components/icons";
-@import "components/media";
-@import "components/avatar";
-@import "components/dropdown";
-@import "components/navigation";
-@import "components/alert";
-@import "components/tooltip";
-@import "components/blockquotes";
-@import "components/links";
-@import "components/separator";
-@import "components/store-links";
-@import "components/logo";
-@import "components/card";
-@import "components/inputs";
-@import "components/table";
-@import "components/pagination";
-@import "components/searchbar";
-@import "components/scroll-indicator";
-
-// Layout
-@import "layouts/header";
-@import "layouts/media-wrappers";
-@import "layouts/footer";
-@import "layouts/forms";
+// 06 - Pages
+// ---------------------

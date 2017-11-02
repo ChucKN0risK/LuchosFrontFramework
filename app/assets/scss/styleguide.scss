@@ -1,22 +1,23 @@
 /// -------------------------
 /// STYLEGUIDE SPECIFIC STYLE
 /// -------------------------
-@import "tools/variables";
-@import "tools/functions";
-@import "tools/mixins";
-@import "tools/site-settings";
-@import "tools/media-queries";
-@import "base/sanitize";
-@import "base/typography/modular-scale";
-@import "base/typography/responsive-modular-scale";
-@import "base/base";
-@import "fonts/fonts";
+@import "01-utils/variables";
+@import "01-utils/functions";
+@import "01-utils/mixins";
+@import "01-utils/site-settings";
+@import "01-utils/media-queries";
+@import "02-base/sanitize";
+@import "02-base/typography/modular-scale";
+@import "02-base/typography/responsive-modular-scale";
+@import "02-base/base";
+@import "04-fonts/fonts";
 
 /// ----------------------
 /// GENERAL STYLE
 /// ----------------------
 .styleguide {
     &__title {
+        font-family: var(--Gotham-Black);
         text-align: center;
         margin: 3rem 0;
     }
@@ -36,8 +37,9 @@
 
 .styleguide__section__title {
     text-align: center;
-    margin-bottom: 1rem;
-    color: $blue;
+    margin-bottom: 2rem;
+    font-family: var(--Gotham-Book);
+
     a {
         text-align: center;
     }
@@ -57,13 +59,25 @@
         justify-content: space-around;
         padding: 0 5rem;
     }
+    &--logos,
     &--typography,
     &--buttons {
         @include flex-vertical-center();
-        button[class*="btn--"],
-        a[class*="btn--"] {
-            margin-bottom: 1rem;
+        .c-logo + .c-logo,
+        .c-button + .c-button {
+            margin-top: 2rem;
         }
+    }
+    &--icons {
+        display: grid;
+        grid-template-rows: repeat(2, 45px);
+        grid-template-columns: repeat(10, 45px);
+        grid-gap: 1rem;
+    }
+    &--vertical-slider {
+        position: relative;
+        min-height: 70vh;
+        background-color: var(--color-black);
     }
 }
 
@@ -152,22 +166,22 @@
 
     .service-presentation {
         .media--presentation-item:nth-child(odd) {
-            background-color: $lightgrey;
+            background-color: var(--color-lightgrey-20);
             .media__title {
-                color: $blue;
+                color: var(--color-blue);
             }
             .media__figure {
                 margin-right: 0;
                 @include mq($from: desktop) {
                     order: 1;
-                    margin-left: $padding-media;
+                    margin-left: var(--color-padding-media);
                 }
             }
         }
 
         .media--presentation-item:nth-child(even) {
             .media__title {
-                color: $red;
+                color: var(--color-red);
             }
         }
     }

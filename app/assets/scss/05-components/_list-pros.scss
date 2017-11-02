@@ -1,0 +1,33 @@
+//=======================
+// Components / List Pros
+// =======================
+
+.list-pros {
+  list-style: none;
+  color: var(--color-grey-50);
+  font-family: var(--RobotoLight);
+  font-weight: 300;
+  font-size: 13px;
+  line-height: 1.5384615385;
+
+  li {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    &::before {
+      content: '';
+      display: block;
+      @include size(1rem);
+      margin-right: var(--padding-media);
+      background-image: url('../icons/check.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+  }
+
+  li + li {
+    margin-top: 1rem;
+  }
+}

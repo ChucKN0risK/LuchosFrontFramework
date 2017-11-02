@@ -1,0 +1,36 @@
+// ==|====================
+// Components / Logo
+// =======================
+
+.c-logo {
+  width: 7.875rem; // 126px
+  height: 10.9375rem; // 175px
+
+  svg {
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+  }
+}
+
+// Apply this class to make the logo smaller
+.c-logo--small {
+  width: 3.43725rem; // 55px
+  height: 4.5625rem; // 73px
+}
+
+// Apply this class to make the logo white
+.c-logo--white {
+  color: white;
+}
+
+// Apply this class to make the logo black
+.c-logo--black {
+  color: black;
+}
+
+// Apply this class to remove the 'ultranoir'
+// text part in the SVG
+.c-logo--no-secondary-text .c-logo__secondary-text {
+  display: none;
+}

@@ -1,0 +1,56 @@
+/* ==|====================
+   Layout / Header
+   ======================= */
+
+.l-main-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.l-main-header__content {
+}
+
+.l-main-header__nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include mq($from: $header-nav-breakpoint) {
+    justify-content: space-between;
+  }
+}
+
+.l-main-header__nav__anchors-list {
+  display: none;
+
+  @include mq($from: $header-nav-breakpoint) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.l-main-header__nav__anchor {
+  & + & {
+    margin-left: 3rem;
+  }
+}
+
+.l-main-header__nav__item-list {
+  display: none;
+
+  @include mq($from: $header-nav-breakpoint) {
+    display: flex;
+  }
+}
+
+.l-main-header__nav__item {
+  @include mq($from: 550px) {
+    & + & {
+      margin-left: 1rem;
+    }
+  } 
+}
+
+

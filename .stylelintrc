@@ -12,8 +12,9 @@
     "declaration-empty-line-before": "false",
     "at-rule-empty-line-before": "false",
     "plugin/no-unsupported-browser-features": [true, {
-      "browsers": ['> 1%', 'Last 2 versions'],
+      "browsers": ['ChromeAndroid', 'Android', 'iOS', 'OperaMobile', 'ExplorerMobile'],
       "ignore": ['rem']
     }]
+    "ignoreAtRules": ["/regex/", "include"]
   }
 }

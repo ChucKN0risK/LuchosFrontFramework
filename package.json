@@ -5,7 +5,7 @@
   "keywords": [
     "Module",
     "SMACSS",
-    "ES6",
+    "ES6"
   ],
   "scripts": {
     "dploy": "gulp build; dploy prod"

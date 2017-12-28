@@ -70,9 +70,12 @@
     }
     &--icons {
         display: grid;
-        grid-template-rows: repeat(2, 45px);
-        grid-template-columns: repeat(10, 45px);
+        grid-template-columns: repeat(auto-fill, minmax(45px, 1fr));
         grid-gap: 1rem;
+
+        & > * {
+            height: 45px;
+        }
     }
     &--vertical-slider {
         position: relative;

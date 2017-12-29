@@ -168,6 +168,7 @@ gulp.task('img', ['copy-img'], function() {
         ], {
             verbose: true
         }))
+        .pipe(size())
         .pipe(gulp.dest(path.dist_img_resized));
 });
 

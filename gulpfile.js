@@ -165,8 +165,10 @@ gulp.task('img', ['copy-img'], function() {
             imagemin.jpegtran({progressive: true}),
             imagemin.optipng({optimizationLevel: 5}),
             imagemin.svgo({plugins: [{removeViewBox: false}]})
-        ]))
-        .pipe(gulp.dest(path.dist_img));
+        ], {
+            verbose: true
+        }))
+        .pipe(gulp.dest(path.dist_img_resized));
 });
 
 // Sprite all the SVG inside the 'icons' folder

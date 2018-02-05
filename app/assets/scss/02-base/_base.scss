@@ -24,14 +24,9 @@ html {
   // .wf-inactive p {
   //   /* use fallback fonts */
   // }
-  overflow-y: scroll;
-  /* [1] */
-  min-height: 100vh;
-  /* [2] */
-  -webkit-text-size-adjust: 100%;
-  /* [3] */
-  -ms-text-size-adjust: 100%;
-  /* [3] */
+  overflow-y: scroll; /* [1] */
+  min-height: 100vh; /* [2] */
+  text-size-adjust: 100%; /* [3] */
   // Mobile First Approach
   // Refer to https://prowebtype.com/setting-type/
   font-family: var(--font-primary), serif;
@@ -63,14 +58,16 @@ $ms-base: 1rem 1.25rem;
 // Use a minor-third for mobile, a major-third for tablet
 // and a fourth for desktop and for larger screens
 @include rms-set-scales( 16px, $minor-third, mq-get-breakpoint-width(tablet) $major-third, mq-get-breakpoint-width(desktop) $fourth);
+
 // ---------------------------------
 // GENERAL SETTINGS
 // ---------------------------------
+
 body {
   @include rms(0); // 1rem
   position: relative;
   font-family: var(--font-primary);
-  
+
   // Fluid type by Vitaly Friedman
   // https://speakerdeck.com/smashingmag/dirty-tricks-from-the-dark-corners-of-front-end
   //font-size: calc(16px + (24 - 16)*(100vw - 320px)/(1920 - 320));

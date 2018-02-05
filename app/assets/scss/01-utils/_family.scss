@@ -1,3 +1,5 @@
+/* stylelint-disable */
+
 /// Select all children from the first to `$num`.
 /// @group with-arguments
 /// @content [Write the style you want to apply to the children, and it will be added within the @content directive]
@@ -320,3 +322,5 @@
 @function order-index($i, $index) {
   @return ($index + $i);
 }
+
+/* stylelint-enable */

@@ -7,7 +7,6 @@
   // scss/tools/variables/_general so it can
   // be used by other components such as c-icon
   --button-side-padding: 2.5rem; //40px
-
   position: relative;
   display: inline-block;
   height: var(--button-height);
@@ -15,7 +14,7 @@
   padding-right: var(--button-side-padding);
   padding-left: var(--button-side-padding);
   background-color: var(--color-black);
-  box-shadow: 0 4px 6px 0 rgba(0,0,0,0.1), 0 1px 3px 0 rgba(0,0,0,0.16);
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1), 0 1px 3px 0 rgba(0, 0, 0, 0.16);
   color: var(--color-white);
   text-decoration: none;
   text-transform: uppercase;
@@ -46,9 +45,6 @@
     &::before {
       transform: none;
     }
-    .c-button__text {
-      color: inherit; 
-    }
   }
 }
 
@@ -62,7 +58,7 @@
 
   &:hover {
     color: var(--color-white);
-    
+
     &::before {
       transform: none;
     }
@@ -80,4 +76,10 @@
   // can have a z-index value
   position: relative;
   z-index: var(--z-index-1);
+}
+
+.c-button__text {
+  .c-button:hover & {
+    color: inherit;
+  }
 }

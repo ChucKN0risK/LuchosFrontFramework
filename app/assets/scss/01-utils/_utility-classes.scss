@@ -1,11 +1,11 @@
- // ----------------------
- // == Utility Classes
- // ----------------------
+// ----------------------
+// == Utility Classes
+// ----------------------
 
- // Apply these classes on element only when
- // the rule you want to set is independant from
- // the rest of your element style. 
- // Using '!important' here is recommanded 
+// Apply these classes on element only when
+// the rule you want to set is independant from
+// the rest of your element style. 
+// Using '!important' here is recommanded 
 
 .u-no-scroll {
   overflow: hidden !important;
@@ -111,13 +111,13 @@
 // Note: This tip may not be ideal for accessibility, 
 // specifically screen readers. And copy/paste from the browser 
 // doesn't work with CSS-generated content. Proceed with caution.
-.u-coma-sep-items > li:not(:last-child):after {
+.u-coma-sep-items > li:not(:last-child)::after {
   content: ',';
 }
 
 // Apply this class to add vertical lines helping
 // you to apply a proper vertical rythm
-.u-baseline:after {
+.u-baseline::after {
   background: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05) 24px, rgba(0, 0, 0, 0.1) 24px, rgba(0, 0, 0, 0.1) 48px);
   content: '';
   position: absolute;

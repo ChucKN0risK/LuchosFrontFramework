@@ -450,3 +450,33 @@ $orientation) {
   }
 }
 
+/// Precise control over responsive typography for Sass. `strip-unit()` function by Hugo Giraudel
+/// @access public
+/// @param {String} $min-vw - Minimum viewport width
+/// @param {String} $max-vw - Maximum viewport width
+/// @param {String} $min-font-size - Minimum font size
+/// @param {String} $max-font-size - Maximum font size
+/// @example scss - Usage
+///   @include fluid-type(320px, 1440px, 14px, 18px);
+/// @link http://madebymike.com.au/writing/precise-control-responsive-typography/
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+@mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {
+  $u1: unit($min-vw);
+  $u2: unit($max-vw);
+  $u3: unit($min-font-size);
+  $u4: unit($max-font-size);
+
+  @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+    & {
+      font-size: $min-font-size;
+      @media screen and (min-width: $min-vw) {
+        font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+      }
+      @media screen and (min-width: $max-vw) {
+        font-size: $max-font-size;
+      }
+    }
+  }
+}

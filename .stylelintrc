@@ -1,7 +1,8 @@
 {
   "extends": "stylelint-config-standard",
   "plugins": [
-    "stylelint-no-unsupported-browser-features"
+    "stylelint-no-unsupported-browser-features",
+    "stylelint-scss"
   ],
   "rules": {
     "at-rule-no-vendor-prefix": true,
@@ -16,9 +17,12 @@
       ignore: ["comments"]
     }],
     "plugin/no-unsupported-browser-features": [true, {
-      "browsers": ['ChromeAndroid', 'Android', 'iOS', 'OperaMobile', 'ExplorerMobile'],
       "ignore": ['rem']
     }],
-    "ignoreAtRules": ["/regex/", "include"]
+    "at-rule-no-unknown": null,
+    "scss/at-rule-no-unknown": true,
+    "block-closing-brace-newline-after": ["always", {
+      ignoreAtRules: ["if", "else"]
+    }]
   }
 }

@@ -140,3 +140,14 @@
   clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
   clip: rect(1px, 1px, 1px, 1px) !important;
 }
+
+// "Break out" of a parent's containing width to take the full screen of a page
+// https://twitter.com/Una/status/951519740840873984
+.u-full-width {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}

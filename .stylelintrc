@@ -11,6 +11,10 @@
     "value-no-vendor-prefix": true,
     "declaration-empty-line-before": "never",
     "at-rule-empty-line-before": "never",
+    "color-hex-case": "upper",
+    "max-empty-lines": [2, {
+      ignore: ["comments"]
+    }],
     "plugin/no-unsupported-browser-features": [true, {
       "browsers": ['> 1%', 'Last 2 versions'],
       "ignore": ['rem']

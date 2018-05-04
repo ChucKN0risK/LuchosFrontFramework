@@ -11,7 +11,8 @@ var sourcemaps       = require('gulp-sourcemaps');
 var autoprefixer     = require('gulp-autoprefixer');
 var cleanCSS         = require('gulp-clean-css');
 var stripCssComments = require('gulp-strip-css-comments');
-var uncss            = require('gulp-uncss');
+var postcss          = require('gulp-postcss');
+var uncss            = require('postcss-uncss');
 var browserSync      = require('browser-sync');
 var uglify           = require('gulp-uglify');
 var del              = require('del');
@@ -133,11 +134,14 @@ gulp.task('sass-prod', function() {
 // this file the css rules that are not applied
 // in the .html files of the app/.
 gulp.task('uncss', function() {
+    var plugins = [
+        uncss({
+            html: [path.html]
+        }),
+    ];
     return gulp
         .src(path.dist_css + 'style.css')
-        .pipe(uncss({
-            html: [path.html]
-        }))
+        .pipe(postcss(plugins))
         .pipe(gulp.dest(path.dist_css));
 });
 
@@ -169,7 +173,7 @@ gulp.task('img', ['copy-img'], function() {
             verbose: true
         }))
         .pipe(size())
-        .pipe(gulp.dest(path.dist_img_resized));
+        .pipe(gulp.dest(path.dist_img));
 });
 
 // Sprite all the SVG inside the 'icons' folder

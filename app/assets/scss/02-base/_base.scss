@@ -137,6 +137,32 @@ a[href^="http"]:empty::before {
   content: attr(href);
 }
 
+// Taken from : https://github.com/alphagov/govuk-frontend/blob/master/src/globals/scss/core/_links.scss#L28
+@include mq($media-type: print) {
+  // When printing, append the the destination URL to the link text, as long
+  // as the URL starts with either `/`, `http://` or `https://`.
+  a[href^="/"],
+  a[href^="http://"],
+  a[href^="https://"] {
+    &::after {
+      content: " (" attr(href) ")";
+      font-size: 90%;
+
+      // Because the URLs may be very long, ensure that they may be broken
+      // at arbitrary points if there are no otherwise acceptable break
+      // points in the line
+      word-wrap: break-word;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { 
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
 ::selection {
   background: var(--color-primary);
   color: var(--color-white);

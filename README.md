@@ -171,4 +171,5 @@ Monitoring closely what’s happening in the front-end world will help you impro
 	* [@davidwalshblog](https://twitter.com/davidwalshblog)  
 	* [@paul_irish](https://twitter.com/paul_irish)  
 	* [@lukew](https://twitter.com/lukew)
+	* [@ireaderinokun](https://twitter.com/ireaderinokun)
 

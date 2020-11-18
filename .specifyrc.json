@@ -1,0 +1,28 @@
+{
+  "repository": "@hetic/G01-E08-Light",
+  "rules": [
+    {
+      "path": "src/assets/styles/01-utils/variables/colors/_light-theme.scss",
+      "filter":{
+          "types": ["color"]
+      },
+      "parsers": [
+          {
+              "name": "kebabcasify",
+              "options": {
+                  "keys": ["name"]
+              }
+          },
+          {
+              "name": "to-css-custom-properties",
+              "options": {
+                "formatConfig": {
+                  "selector": ":root[data-theme='light']"
+                }
+              }
+          }
+          
+      ]
+    }
+  ]
+}
